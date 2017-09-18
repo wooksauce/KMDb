@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon client/src/index.html",
+    "start": "nodemon client/static/index.html",
     "compile": "webpack --watch"
   },
   "keywords": [],

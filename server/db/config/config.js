@@ -9,3 +9,5 @@ db.authenticate()
 .catch(err => {
   console.log('DB not connected');
 })
+
+module.exports = db;

@@ -1,6 +1,7 @@
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
+const routes = require('./routes')
 
 const app = express();
 
@@ -13,7 +14,9 @@ app.use(parser.json());
 
 app.use([arser.urlencoded({extended: true})]);
 
-app.use(express.static(path.join(__dirname, '../client/src/index.html')));
+app.use(express.static(path.join(__dirname, '../client/static')));
+
+app.use('/api', routes)
 
 app.listen(port, () => {
   console.log(`node listening on ${port}`);

@@ -53,7 +53,7 @@ class App extends Component {
     axios.get('/api/sortMovies/' + sortBy)
     .then(({data}) => {
       console.log('movies sorted successfully', data)
-      // this.getAllMovies();
+      this.setState({allMovies: data});
     })
     .catch(err => {
       console.log('sorting error occured', err)
@@ -69,7 +69,9 @@ class App extends Component {
         <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
         <div>
           <label>Sort by:</label>
-          <button onClick={this.sortThem('title')}> Title </button>
+          <button onClick={() => {this.sortThem('title')}}> Title </button>
+          <button onClick={() => {this.sortThem('rating')}}> IMDB Rating </button>
+          <button onClick={() => {this.sortThem('myRating')}}> My Rating </button>
         </div>
         <MovieList movies={this.state.allMovies} deleteMovie={this.deleteMovie} />
       </div>

@@ -14,7 +14,7 @@ module.exports = {
 
   sortMovies: (req, res) => {
     console.log('server sort', req.params)
-    Movie.findAll({ limit: 10, sort: [req.params.sortBy, descending]})
+    Movie.findAll({ limit: 10, order: [[req.params.sortBy, 'DESC']]})
     .then(movies => {
       res.status(200).send(movies);
     })

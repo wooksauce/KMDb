@@ -6,7 +6,7 @@ const routes = require('./routes/serverRouter')
 
 const app = express();
 
-const port = 5555;
+const port = 3334;
 
 //initialize db
 require('./db/config/config');

@@ -7,33 +7,43 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      allMovies: []
+      allMovies: [],
+      movieArchive: []
     };
     this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidMount() {
+    this.getAllMovies();
+  }
+
+  getAllMovies() {
     axios.get('/api/getMovies')
     .then(({data}) => {
       this.setState({
-        allMovies: data
+        allMovies: data,
+        movieArchive: data
       });
+      console.log('app movies', this.state.allMovies, 'movie arch', this.state.movieArchive)
+    })
+    .catch(err => {
+      console.log(err);
     })
   }
 
-  searchForMovie(title) {
-    axios.get('/api/searchMovie/' + title)
-    .then(data => {
-      console.log('search data',data)
-      this.setState({
-        movieSearched: data
-      });
-      console.log('client search', data)
-    })
-    .catch(err => {
-      console.log('wrong name', err);
-    })
-  }
+  // searchForMovie(title) {
+  //   axios.get('/api/searchMovie/' + title)
+  //   .then(data => {
+  //     console.log('search data',data)
+  //     this.setState({
+  //       movieSearched: data
+  //     });
+  //     console.log('client search', data)
+  //   })
+  //   .catch(err => {
+  //     console.log('wrong name', err);
+  //   })
+  // }
 
   submitHandler(movie) {
     this.setState({allMovies: [movie]})
@@ -45,7 +55,7 @@ class App extends Component {
         <a href="/">
           <img src='https://image.ibb.co/jprur5/KMDb.png' width="120" />
         </a>
-        <Search movies={this.state.allMovies} submitHandler={this.submitHandler} />
+        <Search movies={this.state.allMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
         <MovieList movies={this.state.allMovies} />
       </div>
     )

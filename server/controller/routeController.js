@@ -12,25 +12,29 @@ module.exports = {
     })
   },
 
-  searchMovie: (req, res) => {
-    Movie.findOne({where: {title: req.params.title}})
-    .then(movie => {
-      console.log('server search', movie)
-      res.status(200).send("sent",movie);
-    })
-    .catch(err => {
-      res.status(404).send("an error occured", err);
-    })
-  },
+  // searchMovie: (req, res) => {
+  //   console.log('rs req', req.body, req.params)
+  //   imdb.get(req.body.title, {apiLeu: process.env.IMDB_API_KEY})
+  //   .then(movie => {
+      
+  //   })
+  //   .then(movie => {
+  //     console.log('server search', movie)
+  //     res.status(200).send(movie);
+  //   })
+  //   .catch(err => {
+  //     res.status(404).send("an error occured", err);
+  //   })
+  // },
 
   postMovie: (req, res) => {
+    console.log('in post at least')
     const movieInfo = {};
     movieInfo.title = req.body.title;
     movieInfo.myRating = req.body.myRating;
     movieInfo.comments = req.body.comments;
     imdb.get(movieInfo.title, {apiKey: process.env.IMDB_API_KEY})
     .then(movie => {
-      console.log(movie)
       movieInfo.poster = movie.poster
       movieInfo.year = movie.year
       movieInfo.genre = movie.genres

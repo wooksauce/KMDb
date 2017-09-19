@@ -11,6 +11,7 @@ class App extends Component {
       movieArchive: []
     };
     this.submitHandler = this.submitHandler.bind(this);
+    this.getAllMovies = this.getAllMovies.bind(this);
   }
 
   componentDidMount() {
@@ -53,9 +54,9 @@ class App extends Component {
     return (
       <div>
         <a href="/">
-          <img src='https://image.ibb.co/jprur5/KMDb.png' width="120" />
+          <img src='https://image.ibb.co/jprur5/KMDb.png' width="100" />
         </a>
-        <Search movies={this.state.allMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
+        <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
         <MovieList movies={this.state.allMovies} />
       </div>
     )

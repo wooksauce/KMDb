@@ -21,6 +21,7 @@ class Search extends Component {
     .then(({data}) => {
       if (data)
       console.log('client search', data)
+      this.props.getAllMovies();
     })
     .catch(err => {
       console.log('wrong name', err);
@@ -37,9 +38,14 @@ class Search extends Component {
         this.setState({movieExist: true});
         this.props.submitHandler(this.props.archive[i]);
         console.log('im here', this.state.movieExist)
+        break;
       } else {
+        console.log('dne', title)
         this.setState({movieExist: false});
       }
+    }
+    if (this.props.archive.length === 0) {
+      this.setState({movieExist: false});
     }
   }
 

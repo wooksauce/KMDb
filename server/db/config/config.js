@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const db = new Sequelize('postgres://cbhxlajh:XGVIRslvugnCAHHGnRtmf1hbka9qi9T-@elmer.db.elephantsql.com:5432/cbhxlajh');
+const db = new Sequelize(process.env.DB_URL);
 
 db.authenticate()
 .then(data => {

@@ -1,4 +1,5 @@
 const Movie = require('../db/index');
+const imdb = require('imdb-api');
 
 module.exports = {
   getMovies: (req, res) => {
@@ -12,12 +13,26 @@ module.exports = {
   },
 
   postMovie: (req, res) => {
-    Movie.create(req.body)
-    .then(data => {
-      res.status(200).send(data);
+    const movieInfo = {};
+    movieInfo.title = req.body.title;
+    movieInfo.myRating = req.body.myRating;
+    movieInfo.comments = req.body.comments;
+    imdb.get(movieInfo.title, {apiKey: process.env.IMDB_API_KEY})
+    .then(movie => {
+      console.log(movie)
+      movieInfo.poster = movie.poster
+      movieInfo.year = movie.year
+      movieInfo.genre = movie.genres
+      movieInfo.rating = movie.rating
     })
-    .catch(err => {
-      res.status(404).send("an error occured", err);
+    .then(() => {
+      Movie.create(movieInfo)
+      .then(data => {
+        res.status(200).send(data);
+      })
+      .catch(err => {
+        res.status(404).send("an error occured", err);
+      })
     })
   },
 

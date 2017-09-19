@@ -20,6 +20,13 @@ class App extends Component {
     })
   }
 
+  submitHandler() {
+    axios.post('api/postMovie')
+    .then(movie => {
+      
+    })
+  }
+
   render() {
     return (
       <div>

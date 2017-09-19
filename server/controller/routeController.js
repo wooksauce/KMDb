@@ -24,7 +24,6 @@ module.exports = {
   },
 
   postMovie: (req, res) => {
-    console.log('in post at least')
     const movieInfo = {};
     movieInfo.title = req.body.title;
     movieInfo.myRating = req.body.myRating;
@@ -51,7 +50,6 @@ module.exports = {
   },
 
   deleteMovie: (req, res) => {
-    console.log('delete id', req.params)
     Movie.destroy({where: {id: req.params.id}})
     .then(destroyed => {
       res.sendStatus(200).send(destroyed);

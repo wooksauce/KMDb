@@ -64,16 +64,16 @@ class App extends Component {
     return (
       <div>
         <a href="/">
-          <img src='https://image.ibb.co/jprur5/KMDb.png' width="100" />
+          <img src='https://image.ibb.co/jprur5/KMDb.png' width="130" />
         </a>
         <h1 className="mainTitle">Kiwook's Movie Database</h1>
         <div className="filmPic"></div> 
         <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
         <div className="sortButtons">
           <label>Sort by: </label>
-          <button id="sortTitle" onClick={() => {this.sortThem('title')}}> Title </button>
-          <button id="sortIMDBrating" onClick={() => {this.sortThem('rating')}}> IMDB Rating </button>
-          <button id="sortRating" onClick={() => {this.sortThem('myRating')}}> My Rating </button>
+          <button className="sortTitle" onClick={() => {this.sortThem('title')}}> Title </button>
+          <button className="sortIMDBrating" onClick={() => {this.sortThem('rating')}}> IMDB Rating </button>
+          <button className="sortRating" onClick={() => {this.sortThem('myRating')}}> My Rating </button>
         </div>
         <MovieList movies={this.state.allMovies} deleteMovie={this.deleteMovie} />
       </div>

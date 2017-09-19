@@ -4,6 +4,7 @@ import MovieEntry from './MovieEntry';
 
 const MovieList = ({movies}) => (
   <div className="movieList">
+    {console.log('movielist', movies)}
     {movies.map((movie, i) => (
       <MovieEntry movie={movie} poster={movie.poster} title={movie.title} year={movie.year} 
         genre={movie.genre} rating={movie.rating} myRating={movie.myRating} 

@@ -8,8 +8,8 @@ class MovieEntry extends Component {
   render() {
     return (
       <div className="movieEntry">
-        <div className="container">
-          <img className="poster" src={this.props.poster} width="180" />
+        <div className="entryContainer">
+          <img className="poster" src={this.props.poster} width="160" />
           <div className="title"> {this.props.title} </div>
           <div className="year"> {this.props.year} </div>
           <div className="genre"> {this.props.genre} </div>

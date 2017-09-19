@@ -47,18 +47,20 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="search">
-        <form>
-          <input className="movieTitle" type="text" placeholder="Movie Title" name="title" value={this.state.title} onChange={this.handleChange} />
-        </form>
-        <button id="search" onClick={() => this.onClick(this.state.title)}> Search </button>
+      <div className="searchContainer">
+        <div className="search">
+          <form className="movieTitleForm">
+            <input className="movieTitle" type="text" placeholder="Movie Title" name="title" value={this.state.title} onChange={this.handleChange} />
+          </form>
+          <button className="searchButton" onClick={() => this.onClick(this.state.title)}> Search </button>
+        </div>
         {!this.state.movieExist &&
-          <div>
-            <form>
-              <input className="myRating" type="number" min= "0" max="10" placeholder="My Own Rating" name="myRating" value={this.state.myRating} onChange={this.handleChange} />
-              <input className="movieComments" type="text" placeholder="Comments" name="comments" value={this.state.comments} onChange={this.handleChange} />
+          <div className="addInfo">
+            <form className="addInfoForm">
+              <input className="myRatingInput" type="number" min= "0" max="10" placeholder="My Own Rating" name="myRating" value={this.state.myRating} onChange={this.handleChange} />
+              <textarea className="movieComments" type="text" placeholder="Comments" name="comments" value={this.state.comments} onChange={this.handleChange} />
             </form>
-            <button id="addMovie" onClick={() => this.searchForMovie(this.state)}> Add </button>
+            <button className="addMovieButton" onClick={() => this.searchForMovie(this.state)}> Add </button>
           </div>
         }
       </div>

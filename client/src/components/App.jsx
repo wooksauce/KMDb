@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('api/getMovies')
+    axios.get('/api/getMovies')
     .then(movies => {
       this.setState = {
         allMovies: movies
@@ -21,9 +21,9 @@ class App extends Component {
   }
 
   submitHandler() {
-    axios.post('api/postMovie')
+    axios.post('/api/postMovie')
     .then(movie => {
-      
+
     })
   }
 
@@ -31,6 +31,7 @@ class App extends Component {
     return (
       <div>
         <Search />
+        {console.log('App all movies', this.state.allMovies)}
         <MovieList movies={this.state.allMovies} />
       </div>
     )

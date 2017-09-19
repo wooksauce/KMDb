@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 
-export default class componentName extends Component {
+class MovieEntry extends Component {
+
   render() {
     return (
-      <div>
-        
+      <div className="movieEntry">
+        <div className="container">
+          <div className="poster"> {poster} </div>
+          <div className="title"> {title} </div>
+        </div>
       </div>
     )
   }
 }
+
+export default MovieEntry

@@ -12,6 +12,16 @@ module.exports = {
     })
   },
 
+  searchMovie: (req, res) => {
+    Movie.findOne({where: {title: req.params.title}})
+    .then(movie => {
+      res.status(200).send(movie);
+    })
+    .catch(err => {
+      res.status(404).send("an error occured", err);
+    })
+  },
+
   postMovie: (req, res) => {
     const movieInfo = {};
     movieInfo.title = req.body.title;

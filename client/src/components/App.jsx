@@ -5,18 +5,20 @@ import axios from 'axios';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       allMovies: []
-    }
+    };
   }
 
   componentDidMount() {
     axios.get('/api/getMovies')
-    .then(movies => {
-      this.setState = {
-        allMovies: movies
-      }
+    .then(({data}) => {
+      console.log('movies', data)
+      this.setState({
+        allMovies: data
+      });
+      console.log('get', this.state.allMovies)
     })
   }
 
@@ -31,7 +33,6 @@ class App extends Component {
     return (
       <div>
         <Search />
-        {console.log('App all movies', this.state.allMovies)}
         <MovieList movies={this.state.allMovies} />
       </div>
     )

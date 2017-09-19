@@ -1,17 +1,25 @@
 import React, {Component} from 'react';
 
 class MovieEntry extends Component {
+  constructor() {
+    super();
+  }
 
   render() {
     return (
       <div className="movieEntry">
         <div className="container">
-          <div className="poster"> {poster} </div>
-          <div className="title"> {title} </div>
+          <img className="poster" src={this.props.poster} width="180" />
+          <div className="title"> {this.props.title} </div>
+          <div className="year"> {this.props.year} </div>
+          <div className="genre"> {this.props.genre} </div>
+          <div className="rating"> {this.props.rating} </div>
+          <div className="myRating"> {this.props.myRating} </div>
+          <div className="comments"> {this.props.comments} </div>
         </div>
       </div>
     )
   }
 }
 
-export default MovieEntry
+export default MovieEntry;

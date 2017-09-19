@@ -17,6 +17,7 @@ class MovieEntry extends Component {
           <div className="myRating"> {this.props.myRating} </div>
           <div className="comments"> {this.props.comments} </div>
         </div>
+        <button id="deleteButton" onClick={() => this.props.deleteMovie(this.props.id)}> x </button>
       </div>
     )
   }

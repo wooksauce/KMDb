@@ -12,20 +12,16 @@ module.exports = {
     })
   },
 
-  // searchMovie: (req, res) => {
-  //   console.log('rs req', req.body, req.params)
-  //   imdb.get(req.body.title, {apiLeu: process.env.IMDB_API_KEY})
-  //   .then(movie => {
-      
-  //   })
-  //   .then(movie => {
-  //     console.log('server search', movie)
-  //     res.status(200).send(movie);
-  //   })
-  //   .catch(err => {
-  //     res.status(404).send("an error occured", err);
-  //   })
-  // },
+  sortMovies: (req, res) => {
+    console.log('server sort', req.params)
+    Movie.findAll({ limit: 10, sort: [req.params.sortBy, descending]})
+    .then(movies => {
+      res.status(200).send(movies);
+    })
+    .catch(err => {
+      res.status(404).send("an error occured", err);
+    })
+  },
 
   postMovie: (req, res) => {
     console.log('in post at least')
@@ -52,12 +48,13 @@ module.exports = {
   },
 
   deleteMovie: (req, res) => {
+    console.log('delete id', req.params)
     Movie.destroy({where: {id: req.params.id}})
     .then(destroyed => {
-      res.status(200).send(destroyed);
+      res.sendStatus(200).send(destroyed);
     })
     .catch(err => {
-      res.status(404).send("an error occured", err);
+      res.sendStatus(404).send("an error occured", err);
     })
   }
 }

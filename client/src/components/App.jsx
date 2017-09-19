@@ -12,6 +12,8 @@ class App extends Component {
     };
     this.submitHandler = this.submitHandler.bind(this);
     this.getAllMovies = this.getAllMovies.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
+    this.sortThem = this.sortThem.bind(this);
   }
 
   componentDidMount() {
@@ -32,22 +34,30 @@ class App extends Component {
     })
   }
 
-  // searchForMovie(title) {
-  //   axios.get('/api/searchMovie/' + title)
-  //   .then(data => {
-  //     console.log('search data',data)
-  //     this.setState({
-  //       movieSearched: data
-  //     });
-  //     console.log('client search', data)
-  //   })
-  //   .catch(err => {
-  //     console.log('wrong name', err);
-  //   })
-  // }
+  deleteMovie(id) {
+    axios.delete('/api/deleteMovie/' + id)
+    .then(({data}) => {
+      console.log('movie deleted successfully', data)
+      this.getAllMovies();
+    })
+    .catch(err => {
+      console.log('error occured', err)
+    })
+  }
 
   submitHandler(movie) {
     this.setState({allMovies: [movie]})
+  }
+
+  sortThem(sortBy) {
+    axios.get('/api/sortMovies/' + sortBy)
+    .then(({data}) => {
+      console.log('movies sorted successfully', data)
+      // this.getAllMovies();
+    })
+    .catch(err => {
+      console.log('sorting error occured', err)
+    })
   }
 
   render() {
@@ -57,7 +67,11 @@ class App extends Component {
           <img src='https://image.ibb.co/jprur5/KMDb.png' width="100" />
         </a>
         <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
-        <MovieList movies={this.state.allMovies} />
+        <div>
+          <label>Sort by:</label>
+          <button onClick={this.sortThem('title')}> Title </button>
+        </div>
+        <MovieList movies={this.state.allMovies} deleteMovie={this.deleteMovie} />
       </div>
     )
   }

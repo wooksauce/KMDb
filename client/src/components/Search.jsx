@@ -16,11 +16,9 @@ class Search extends Component {
   }
 
   searchForMovie(obj) {
-    console.log('title', obj)
     axios.post('/api/postMovie/' + obj.title, obj)
     .then(({data}) => {
       if (data)
-      console.log('client search', data)
       this.props.getAllMovies();
     })
     .catch(err => {
@@ -34,13 +32,11 @@ class Search extends Component {
 
   onClick(title) {
     for (var i = 0; i < this.props.archive.length; i++) {
-      if (title === this.props.archive[i].title) {
+      if (this.props.archive[i].title.includes(title)) {
         this.setState({movieExist: true});
         this.props.submitHandler(this.props.archive[i]);
-        console.log('im here', this.state.movieExist)
         break;
       } else {
-        console.log('dne', title)
         this.setState({movieExist: false});
       }
     }

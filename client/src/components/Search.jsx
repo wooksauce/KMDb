@@ -20,6 +20,11 @@ class Search extends Component {
     .then(({data}) => {
       if (data)
       this.props.getAllMovies();
+      this.setState({
+        title: '',
+        myRating: '',
+        comments: ''
+      })
     })
     .catch(err => {
       console.log('wrong name', err);

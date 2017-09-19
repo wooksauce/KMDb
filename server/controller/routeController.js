@@ -45,6 +45,9 @@ module.exports = {
         res.status(404).send("an error occured", err);
       })
     })
+    .catch(err => {
+      console.log('wrong name', err)
+    })
   },
 
   deleteMovie: (req, res) => {

@@ -1,21 +1,26 @@
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: #FDEAE7;
+  background: #FDEAE7 url("http://hddfhm.com/images/film-roll-clipart-4.png") repeat-y right top;
+  background-size: 40%
+  
 }
 
 h1 {
   text-align: center;
-  margin-top: 0;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-size: 45px;
 }
 
 .searchContainer {
   padding: 10px 0px 10px 0px;
-  background-color: rgb(255, 242, 241);
+  background-color: rgba(255, 243, 243, 0.7);
   width: 60%;
   display: -webkit-box;
   -webkit-box-pack: center;
   -webkit-box-align: center;
   position: relative;
+  height: 110px;
   left: 20%;
 }
 
@@ -30,7 +35,6 @@ h1 {
 .myRatingInput {
   vertical-align: top;
   margin-left: 20px;
-  margin-top: 2px;
   width: 100px;
 }
 
@@ -43,6 +47,7 @@ h1 {
 .addMovieButton {
   margin-top: 55px;
 }
+
 .movieComments {
   text-align: top;
   margin-left: 20px;
@@ -52,7 +57,7 @@ h1 {
 }
 
 .addInfo {
-  padding: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
   background-color: rgb(255, 242, 241);
   width: 50%;
   display: -webkit-box;
@@ -70,7 +75,51 @@ h1 {
 
 .movieList {
   padding: 0px 0px 15px 0px;
-  width: 50%;
+  width: 60%;
   position: relative;
   left: 20%;
+}
+
+/* .entryContainer {
+  margin-bottom: 150px;
+} */
+
+.deleteButton {
+  margin-left: 5px;
+  margin-top: 100px;
+  float: left;
+}
+
+.poster {
+  margin-left: 10px;
+  margin-top: 10px;
+  float: left;
+}
+
+.imdbInfo {
+  float: left;
+  margin: 15px 10px 10px 20px;
+}
+
+.movieEntry {
+  width: 100%;
+  background-color: rgba(231, 236, 255, 0.34);
+  height: 240px;
+  margin: 10px 0px 30px 0px
+}
+
+.myInfo { 
+  float: right;
+  margin-top: 15px;
+}
+
+.comments {
+  margin-top: 0px;
+  width: 320px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.filmPic{
+  background: url("http://hddfhm.com/images/film-roll-clipart-4.png") no-repeat right top;
 }

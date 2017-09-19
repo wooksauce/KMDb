@@ -67,9 +67,10 @@ class App extends Component {
           <img src='https://image.ibb.co/jprur5/KMDb.png' width="100" />
         </a>
         <h1 className="mainTitle">Kiwook's Movie Database</h1>
+        <div className="filmPic"></div> 
         <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
         <div className="sortButtons">
-          <label>Sort by:</label>
+          <label>Sort by: </label>
           <button id="sortTitle" onClick={() => {this.sortThem('title')}}> Title </button>
           <button id="sortIMDBrating" onClick={() => {this.sortThem('rating')}}> IMDB Rating </button>
           <button id="sortRating" onClick={() => {this.sortThem('myRating')}}> My Rating </button>

@@ -7,4 +7,4 @@ router.post('/postMovie', control.postMovie);
 
 router.delete('/deleteMovie/:id', control.deleteMovie);
 
-module.exports = routes;
+module.exports = router;

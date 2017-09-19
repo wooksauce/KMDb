@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Movies from './Movies';
+import MovieList from './MovieList';
 import Search from './Search';
 import axios from 'axios';
 
@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div>
         <Search />
-        <Movies movies={this.state}/>
+        <MovieList movies={this.state.allMovies} />
       </div>
     )
   }

@@ -28,8 +28,9 @@ module.exports = {
     movieInfo.title = req.body.title;
     movieInfo.myRating = req.body.myRating;
     movieInfo.comments = req.body.comments;
-    imdb.get(movieInfo.title, {apiKey: process.env.IMDB_API_KEY})
+    imdb.get(movieInfo.title, {apiKey: '629c12bf'})
     .then(movie => {
+      console.log('here')
       movieInfo.poster = movie.poster
       movieInfo.year = movie.year
       movieInfo.genre = movie.genres

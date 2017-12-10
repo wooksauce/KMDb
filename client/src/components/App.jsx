@@ -27,7 +27,6 @@ class App extends Component {
         allMovies: data,
         movieArchive: data
       });
-      console.log('app movies', this.state.allMovies, 'movie arch', this.state.movieArchive)
     })
     .catch(err => {
       console.log(err);
@@ -37,7 +36,6 @@ class App extends Component {
   deleteMovie(id) {
     axios.delete('/api/deleteMovie/' + id)
     .then(({data}) => {
-      console.log('movie deleted successfully', data)
       this.getAllMovies();
     })
     .catch(err => {

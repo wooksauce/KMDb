@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import App from "./pages/App";
+import App from './pages/App';
+import rootReducer from './reducers'
 import '../../styles/styles.css';
 
 const middleware = applyMiddleware(thunk, logger());
-// need a reducer
-// const store = createStore(middleware)
+const store = createStore(rootReducer, middleware)
 
 render(
   <Provider store = {store} >

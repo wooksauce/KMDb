@@ -28,3 +28,16 @@ export const moviesFetchSuccess = (movies) => {
   }
 }
 
+export const moviesFetchData = () => {
+  return (dispatch) => {
+    dispatch(moviesLoading(true))
+    axios.get('/api/getMovies')
+      .then(({ data }) => {
+        dispatch(moviesLoading(false))
+        dispatch(moviesFetchSuccess(data))
+      })
+      .catch((err) => {
+        dispatch(moviesErrored(err))
+      })
+  }
+}

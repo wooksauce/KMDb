@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import App from "./components/App";
+import App from "./pages/App";
 import '../../styles/styles.css';
 
 const middleware = applyMiddleware(thunk, logger());

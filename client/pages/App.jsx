@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MovieList from './MovieList';
-import Search from './Search';
+import MovieList from '../components/MovieList';
+import Search from '../components/Search';
 import axios from 'axios';
 
 class App extends Component {

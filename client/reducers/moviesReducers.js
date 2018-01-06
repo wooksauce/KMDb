@@ -1,11 +1,16 @@
-const initialState = {
+// const initialState = {
+//   errored: false,
+//   loading: false,
+//   movies: [],
+//   search: '',
+// }
+
+export default function moviesReducer(state={
   errored: false,
   loading: false,
   movies: [],
   search: '',
-}
-
-export default function moviesReducer(state=initialState, action) {
+}, action) {
   switch (action.type) {
     case 'MOVIES_SEARCH_PHRASE': {
       return {...state, search: action.search};

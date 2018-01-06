@@ -16,10 +16,13 @@ const webpackConfig = {
 };
 
 webpackConfig.module.loaders.push({
-  test: /\.js[x]?$/,
-  exclude: /node_modules/,
+  test: /\.js$|\.jsx$/,
+  exclude: /node_moduçles/,
   loader: 'babel-loader',
-  options: { presets: ['es2015', 'react']},
+  options: {
+    presets: ['es2015', 'react'], 
+    plugins: ["transform-es2015-destructuring", "transform-object-rest-spread"]
+  },
 });
 
 webpackConfig.module.loaders.push({

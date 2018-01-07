@@ -7,7 +7,7 @@ const initialState = {
 
 export default function moviesReducer(state=initialState, action) {
   switch (action.type) {
-    case 'MOVIES_SEARCH_PHRASE': {
+    case 'MOVIES_IMDB_SEARCH': {
       return {...state, search: action.search};
     }
     case 'MOVIES_ERRORED': {

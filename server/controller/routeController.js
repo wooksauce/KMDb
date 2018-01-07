@@ -13,13 +13,14 @@ module.exports = {
   },
 
   searchMovies: (req, res) => {
+    console.log('req params', req.params)
     imdb.search({
-      title: req.params.seaerch}, {
+      title: req.params.search}, {
         apiKey: process.env.IMDB_API_KEY
       }).then(() => {
         console.log('im in search thing');
       }).catch((err) => {
-        console.log(err);
+        console.log('server ctrl err', err);
       })
   },
 

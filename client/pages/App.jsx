@@ -12,27 +12,9 @@ class App extends Component {
       movieArchive: []
     };
     this.submitHandler = this.submitHandler.bind(this);
-    // this.getAllMovies = this.getAllMovies.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
     this.sortThem = this.sortThem.bind(this);
   }
-
-  componentDidMount() {
-    this.getAllMovies();
-  }
-
-  // getAllMovies() {
-  //   axios.get('/api/getMovies')
-  //   .then(({data}) => {
-  //     this.setState({
-  //       allMovies: data,
-  //       movieArchive: data
-  //     });
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
-  // }
 
   deleteMovie(id) {
     axios.delete('/api/deleteMovie/' + id)
@@ -68,7 +50,7 @@ class App extends Component {
         </a>
         <h1 className="mainTitle">Kiwook's Movie Database</h1>
         <div className="filmPic"></div> 
-        <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
+        {/* <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} /> */}
         <div className="sortButtons">
           <label>Sort by: </label>
           <button className="sortTitle" onClick={() => {this.sortThem('title')}}> Title </button>

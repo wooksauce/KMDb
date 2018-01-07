@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieList from '../components/MovieList';
 import Search from '../components/Search';
+import MovieContainer from '../container/MovieContainer';
 import axios from 'axios';
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
       movieArchive: []
     };
     this.submitHandler = this.submitHandler.bind(this);
-    this.getAllMovies = this.getAllMovies.bind(this);
+    // this.getAllMovies = this.getAllMovies.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
     this.sortThem = this.sortThem.bind(this);
   }
@@ -20,18 +21,18 @@ class App extends Component {
     this.getAllMovies();
   }
 
-  getAllMovies() {
-    axios.get('/api/getMovies')
-    .then(({data}) => {
-      this.setState({
-        allMovies: data,
-        movieArchive: data
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+  // getAllMovies() {
+  //   axios.get('/api/getMovies')
+  //   .then(({data}) => {
+  //     this.setState({
+  //       allMovies: data,
+  //       movieArchive: data
+  //     });
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
+  // }
 
   deleteMovie(id) {
     axios.delete('/api/deleteMovie/' + id)
@@ -61,6 +62,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <MovieContainer />
         <a href="/">
           <img src='https://image.ibb.co/jprur5/KMDb.png' width="130" />
         </a>

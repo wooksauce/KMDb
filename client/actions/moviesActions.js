@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const moviesIMDbSearch = (search) => {
+export const moviesIMDbSearchTitle = (search) => {
   return {
-    type: 'MOVIES_IMDB_SEARCH',
+    type: 'MOVIES_IMDB_SEARCH_TITLE',
     search: search,
   }
 }
@@ -45,7 +45,7 @@ export const moviesFetchData = () => {
 export const moviesFetchIMDbSearch = (searchStr) => {
   console.log('im in action at least')
   return (dispatch) => {
-    axios.get('/api/searchMovies/Interstell')
+    axios.get('/api/searchMovies/' + searchStr)
       .then(() => {
         console.log('im in search action')
       })

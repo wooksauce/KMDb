@@ -2,43 +2,45 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { moviesFetchIMDbSearch } from '../actions/moviesActions'
+import { moviesIMDbSearchTitle, moviesFetchIMDbSearch } from '../actions/moviesActions'
 
 class Search extends Component {
-  constructor() {
-    super()
-    this.state = {
-      title: '',
-      myRating: '',
-      comments: '',
-      movieExist: true
-    }
-    // this.handleChange = this.handleChange.bind(this);
+  constructor(props) {
+    super(props)
+    // this.state = {
+    //   title: '',
+    //   myRating: '',
+    //   comments: '',
+    //   movieExist: true
+    // }
+    this.handleSearchTyping = this.handleSearchTyping.bind(this);
     // this.searchForMovie = this.searchForMovie.bind(this);
     // this.onClick = this.onClick.bind(this);
   }
 
-  searchMovie(obj) {
-    axios.post('/api/postMovie/' + obj.title, obj)
-    .then(({data}) => {
-      if (data)
-      this.props.getAllMovies();
-      this.setState({
-        title: '',
-        myRating: '',
-        comments: ''
-      })
-    })
-    .catch(err => {
-      console.log('wrong name', err);
-    })
+  // searchMovie(obj) {
+  //   axios.post('/api/postMovie/' + obj.title, obj)
+  //   .then(({data}) => {
+  //     if (data)
+  //     this.props.getAllMovies();
+  //     this.setState({
+  //       title: '',
+  //       myRating: '',
+  //       comments: ''
+  //     })
+  //   })
+  //   .catch(err => {
+  //     console.log('wrong name', err);
+  //   })
+  // }
+
+  handleSearchTyping(e) {
+    this.props.searchTitle(e.target.value);
   }
 
-  searchIMDbResults(searchStr) {
-    this.props.fetchIMDbSearchResults(searchStr);
+  searchIMDbResults() {
+    this.props.fetchIMDbSearchResults(this.props.search);
     console.log('i clicked')
-    // this.setState({[e.target.name]: e.target.value});
-
   }
 
   searchKMDbResults(e) {
@@ -64,9 +66,9 @@ class Search extends Component {
     return (
       <div>
         <form>
-          <input className="movieTitle" type="text" placeholder="Movie Title" name="title" value={this.state.title} onChange={this.handleChange} />
+          <input className="movieTitle" type="text" placeholder="Movie Title" onChange={(e) => this.handleSearchTyping(e)} />
         </form>
-        <button className="searchButton" onClick={() => this.searchIMDbResults('inters')}> Search </button>
+        <button className="searchButton" onClick={() => this.searchIMDbResults()}> Search </button>
       </div>
       // <div className="searchContainer">
       //   <div className="search">
@@ -89,18 +91,21 @@ class Search extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    search: state.movies.search,
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     search: state.movies.search,
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    searchTitle: (title) => {
+      dispatch(moviesIMDbSearchTitle(title));
+    },
     fetchIMDbSearchResults: (searchStr) => {
-      dispatch(moviesFetchIMDbSearch(searchStr))
-    }
-  }
+      dispatch(moviesFetchIMDbSearch(searchStr));
+    },
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);

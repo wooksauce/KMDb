@@ -18,7 +18,7 @@ class MovieContainer extends Component {
     return(
       <div>
         <p> Hi </p>
-        <Search />
+        <Search search={this.props.search} />
       </div>
     )
   }
@@ -26,7 +26,8 @@ class MovieContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movies.movies
+    movies: state.movies.movies,
+    search: state.movies.search,
   }
 }
 
@@ -34,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllMovies: () => {
       dispatch(moviesFetchData());
-    }
+    },
   }
 }
 

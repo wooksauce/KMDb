@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieList from '../components/MovieList';
 import Search from '../components/Search';
+import MovieContainer from '../container/MovieContainer';
 import axios from 'axios';
 
 class App extends Component {
@@ -11,26 +12,8 @@ class App extends Component {
       movieArchive: []
     };
     this.submitHandler = this.submitHandler.bind(this);
-    this.getAllMovies = this.getAllMovies.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
     this.sortThem = this.sortThem.bind(this);
-  }
-
-  componentDidMount() {
-    this.getAllMovies();
-  }
-
-  getAllMovies() {
-    axios.get('/api/getMovies')
-    .then(({data}) => {
-      this.setState({
-        allMovies: data,
-        movieArchive: data
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    })
   }
 
   deleteMovie(id) {
@@ -61,12 +44,13 @@ class App extends Component {
   render() {
     return (
       <div>
+        <MovieContainer />
         <a href="/">
           <img src='https://image.ibb.co/jprur5/KMDb.png' width="130" />
         </a>
         <h1 className="mainTitle">Kiwook's Movie Database</h1>
         <div className="filmPic"></div> 
-        <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} />
+        {/* <Search movies={this.state.allMovies} getAllMovies={this.getAllMovies} submitHandler={this.submitHandler} archive={this.state.movieArchive} /> */}
         <div className="sortButtons">
           <label>Sort by: </label>
           <button className="sortTitle" onClick={() => {this.sortThem('title')}}> Title </button>

@@ -12,6 +12,18 @@ module.exports = {
     })
   },
 
+  searchMovies: (req, res) => {
+    console.log('req params', req.params)
+    imdb.search({
+      title: req.params.search}, {
+        apiKey: process.env.IMDB_API_KEY
+      }).then(() => {
+        console.log('im in search ctroller');
+      }).catch((err) => {
+        console.log('server ctrl err', err);
+      })
+  },
+
   sortMovies: (req, res) => {
     let order = req.params.sortBy === 'title' ? 'ASC' : 'DESC';
     Movie.findAll({ limit: 10, order: [[req.params.sortBy, order]]})

@@ -43,7 +43,6 @@ export const moviesFetchData = () => {
 }
 
 export const moviesFetchIMDbSearch = (searchStr) => {
-  console.log('im in action at least')
   return (dispatch) => {
     axios.get('/api/searchMovies/' + searchStr)
       .then(() => {

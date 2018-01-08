@@ -7,35 +7,15 @@ import { moviesIMDbSearchTitle, moviesFetchIMDbSearch } from '../actions/moviesA
 class Search extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   title: '',
-    //   myRating: '',
-    //   comments: '',
-    //   movieExist: true
-    // }
     this.handleSearchTyping = this.handleSearchTyping.bind(this);
-    // this.searchForMovie = this.searchForMovie.bind(this);
-    // this.onClick = this.onClick.bind(this);
   }
-
-  // searchMovie(obj) {
-  //   axios.post('/api/postMovie/' + obj.title, obj)
-  //   .then(({data}) => {
-  //     if (data)
-  //     this.props.getAllMovies();
-  //     this.setState({
-  //       title: '',
-  //       myRating: '',
-  //       comments: ''
-  //     })
-  //   })
-  //   .catch(err => {
-  //     console.log('wrong name', err);
-  //   })
-  // }
 
   handleSearchTyping(e) {
     this.props.searchTitle(e.target.value);
+    // if (e.which == 13 || e.keyCode == 13) {
+    //   e.preventDefault();
+    //   this.searchIMDbResults(this.props.search);
+    // }
   }
 
   searchIMDbResults() {
@@ -43,30 +23,28 @@ class Search extends Component {
     console.log('i clicked')
   }
 
+  keyPressEnter(e) {
+    if (e.key === 'Enter' || e.which == 13 || e.keyCode == 13) {
+      e.preventDefault();
+      this.searchIMDbResults(this.props.search);
+    }
+  }
+
   searchKMDbResults(e) {
 
   }
-
-  // onClick(title) {
-  //   for (var i = 0; i < this.props.archive.length; i++) {
-  //     if (this.props.archive[i].title.includes(title)) {
-  //       this.setState({movieExist: true});
-  //       this.props.submitHandler(this.props.archive[i]);
-  //       break;
-  //     } else {
-  //       this.setState({movieExist: false});
-  //     }
-  //   }
-  //   if (this.props.archive.length === 0) {
-  //     this.setState({movieExist: false});
-  //   }
-  // }
 
   render() {
     return (
       <div>
         <form>
-          <input className="movieTitle" type="text" placeholder="Movie Title" onChange={(e) => this.handleSearchTyping(e)} />
+          <input
+            className="movieTitle" 
+            type="text"
+            placeholder="Movie Title"
+            onChange={(e) => this.handleSearchTyping(e)}
+            onKeyPress={(e) => this.keyPressEnter(e)}
+          />
         </form>
         <button className="searchButton" onClick={() => this.searchIMDbResults()}> Search </button>
       </div>

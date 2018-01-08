@@ -18,7 +18,7 @@ module.exports = {
       title: req.params.search}, {
         apiKey: process.env.IMDB_API_KEY
       }).then(() => {
-        console.log('im in search thing');
+        console.log('im in search ctroller');
       }).catch((err) => {
         console.log('server ctrl err', err);
       })

@@ -29,13 +29,15 @@ module.exports = {
     console.log('udb req params', req.params)
     let searchStr = req.params.search
     let modified = '[' + searchStr.split('').join('|') + ']';
-    Movie.findall({
-      title: {
-        [Op.regexp]: modified,
+    Movie.findAll({
+      where: {
+        title: {
+          [Op.regexp]: modified,
+        }
       }
     })
-      .then(() => {
-        console.log('im in udb search ctroller');
+      .then((movie) => {
+        console.log('im in udb search ctroller', movie);
       }).catch((err) => {
         console.log('server udb ctrl err', err);
       })

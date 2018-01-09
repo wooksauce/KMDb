@@ -3,7 +3,9 @@ const control = require('../controller/routeController');
 
 router.get('/getMovies', control.getMovies);
 
-router.get('/searchMovies/:search', control.searchMovies);
+router.get('/searchIMDbMovies/:search', control.searchIMDbMovies);
+
+router.get('/searchUserMovies/:search', control.searchUDbMovies);
 
 router.get('/sortMovies/:sortBy', control.sortMovies);
 

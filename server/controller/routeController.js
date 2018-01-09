@@ -1,5 +1,7 @@
 const Movie = require('../db/index');
 const imdb = require('imdb-api');
+var Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports = {
   getMovies: (req, res) => {
@@ -12,8 +14,7 @@ module.exports = {
     })
   },
 
-  searchMovies: (req, res) => {
-    console.log('req params', req.params)
+  searchIMDbMovies: (req, res) => {
     imdb.search({
       title: req.params.search}, {
         apiKey: process.env.IMDB_API_KEY
@@ -21,6 +22,22 @@ module.exports = {
         console.log('im in search ctroller');
       }).catch((err) => {
         console.log('server ctrl err', err);
+      })
+  },
+
+  searchUDbMovies: (req, res) => {
+    console.log('udb req params', req.params)
+    let searchStr = req.params.search
+    let modified = '[' + searchStr.split('').join('|') + ']';
+    Movie.findall({
+      title: {
+        [Op.regexp]: modified,
+      }
+    })
+      .then(() => {
+        console.log('im in udb search ctroller');
+      }).catch((err) => {
+        console.log('server udb ctrl err', err);
       })
   },
 

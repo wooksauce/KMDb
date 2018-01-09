@@ -9,7 +9,7 @@ class App extends Component {
     super();
     this.state = {
       allMovies: [],
-      movieArchive: []
+      movieArchive: [],
     };
     this.submitHandler = this.submitHandler.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);

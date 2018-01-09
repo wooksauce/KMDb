@@ -44,12 +44,24 @@ export const moviesFetchData = () => {
 
 export const moviesFetchIMDbSearch = (searchStr) => {
   return (dispatch) => {
-    axios.get('/api/searchMovies/' + searchStr)
+    axios.get('/api/searchIMDbMovies/' + searchStr)
       .then(() => {
         console.log('im in search action')
       })
       .catch((err) => {
         console.log('search action err', err)
+      })
+  }
+}
+
+export const moviesFetchUDbSearch = (searchStr) => {
+  return (dispatch) => {
+    axios.get('/api/searchUserMovies/' + searchStr)
+      .then(() => {
+        console.log('im in search action')
+      })
+      .catch((err) => {
+        console.log('search udb action err', err)
       })
   }
 }

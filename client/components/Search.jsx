@@ -2,36 +2,38 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { moviesIMDbSearchTitle, moviesFetchIMDbSearch } from '../actions/moviesActions'
+import { moviesIMDbSearchTitle, moviesFetchUDbSearch, moviesFetchIMDbSearch } from '../actions/moviesActions'
 
 class Search extends Component {
   constructor(props) {
     super(props)
-    this.handleSearchTyping = this.handleSearchTyping.bind(this);
   }
 
   handleSearchTyping(e) {
     this.props.searchTitle(e.target.value);
-    // if (e.which == 13 || e.keyCode == 13) {
-    //   e.preventDefault();
-    //   this.searchIMDbResults(this.props.search);
-    // }
   }
 
   searchIMDbResults() {
     this.props.fetchIMDbSearchResults(this.props.search);
-    console.log('i clicked')
+  }
+
+  searchUDbResults() {
+    this.props.fetchUDbSearchResults(this.props.search);
   }
 
   keyPressEnter(e) {
     if (e.key === 'Enter' || e.which == 13 || e.keyCode == 13) {
       e.preventDefault();
       this.searchIMDbResults(this.props.search);
+      this.searchUDbResults(this.props.search);
     }
   }
 
   searchKMDbResults(e) {
-
+    if (e.key === 'Enter' || e.which == 13 || e.keyCode == 13) {
+      e.preventDefault();
+      // search UDb here
+    }
   }
 
   render() {
@@ -39,7 +41,7 @@ class Search extends Component {
       <div>
         <form>
           <input
-            className="movieTitle" 
+            className="movieTitle"
             type="text"
             placeholder="Movie Title"
             onChange={(e) => this.handleSearchTyping(e)}
@@ -55,7 +57,7 @@ class Search extends Component {
       //     </form>
       //     <button className="searchButton" onClick={() => this.onClick(this.state.title)}> Search </button>
       //   </div>
-      //   {!this.state.movieExist &&
+      //   {!this.state.monevieExist &&
       //     <div className="addInfo">
       //       <form className="addInfoForm">
       //         <input className="myRatingInput" type="number" min= "0" max="10" placeholder="My Own Rating" name="myRating" value={this.state.myRating} onChange={this.handleChange} />
@@ -69,12 +71,6 @@ class Search extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     search: state.movies.search,
-//   }
-// }
-
 const mapDispatchToProps = (dispatch) => {
   return {
     searchTitle: (title) => {
@@ -82,6 +78,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchIMDbSearchResults: (searchStr) => {
       dispatch(moviesFetchIMDbSearch(searchStr));
+    },
+    fetchUDbSearchResults: (searchStr) => {
+      dispatch(moviesFetchUDbSearch(searchStr));
     },
   };
 }

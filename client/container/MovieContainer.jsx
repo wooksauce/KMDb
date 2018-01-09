@@ -18,7 +18,7 @@ class MovieContainer extends Component {
     return(
       <div>
         <p> Hi </p>
-        <Search search={this.props.search} />
+        <Search search={this.props.search} udbResults={this.props.udbResults} />
       </div>
     )
   }
@@ -28,6 +28,7 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
     search: state.movies.search,
+    udbResults: state.movies.udbResults,
   }
 }
 

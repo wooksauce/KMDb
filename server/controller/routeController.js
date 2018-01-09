@@ -36,8 +36,8 @@ module.exports = {
         }
       }
     })
-      .then((movie) => {
-        console.log('im in udb search ctroller', movie);
+      .then((movies) => {
+        res.status(200).send(movies);
       }).catch((err) => {
         console.log('server udb ctrl err', err);
       })

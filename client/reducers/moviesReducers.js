@@ -3,12 +3,16 @@ const initialState = {
   loading: false,
   movies: [],
   search: '',
+  udbResults: [],
 }
 
 export default function moviesReducer(state=initialState, action) {
   switch (action.type) {
     case 'MOVIES_IMDB_SEARCH_TITLE': {
       return {...state, search: action.search};
+    }
+    case 'MOVIES_UDB_SEARCH_RESULTS': {
+      return {...state, udbResults: action.udbResults};
     }
     case 'MOVIES_ERRORED': {
       return {...state, errored: true}

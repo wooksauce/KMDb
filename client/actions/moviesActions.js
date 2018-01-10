@@ -64,8 +64,9 @@ export const moviesUDbSearchResult = (movies) => {
 export const moviesFetchUDbSearch = (searchStr) => {
   return (dispatch) => {
     axios.get('/api/searchUserMovies/' + searchStr)
-      .then((movies) => {
-        dispatch(moviesUDbSearchResult(movies));
+      .then(({ data }) => {
+        console.log('data', data)
+        dispatch(moviesUDbSearchResult(data));
       })
       .catch((err) => {
         console.log('search udb action err', err);

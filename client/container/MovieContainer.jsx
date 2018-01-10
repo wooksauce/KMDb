@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { moviesFetchData } from '../actions/moviesActions';
 import Search from '../components/Search';
+import UDbSearchResults from '../components/UDbMoviesSearched'
 
 class MovieContainer extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class MovieContainer extends Component {
     return(
       <div>
         <p> Hi </p>
-        <Search search={this.props.search} udbResults={this.props.udbResults} />
+        <Search search={this.props.search} />
+        <UDbSearchResults udbResults={this.props.udbResults} />
       </div>
     )
   }

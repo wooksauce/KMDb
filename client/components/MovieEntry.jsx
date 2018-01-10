@@ -1,30 +1,34 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class MovieEntry extends Component {
-  constructor() {
-    super();
+export default class MovieEntry extends Component {
+  constructor(props) {
+    super(props)
   }
 
   render() {
-    return (
-      <div className="movieEntry">
-        <div className="entryContainer">
-          <button className="deleteButton" onClick={() => this.props.deleteMovie(this.props.id)}> x </button>
-          <img className="poster" src={this.props.poster} width="140" />
-          <div className="imdbInfo">
-            <div className="info title"> Movie Title:  {this.props.title} </div>
-            <div className="info year"> Release Year:  {this.props.year} </div>
-            <div className="info genre"> Genre:  {this.props.genre} </div>
-            <div className="info rating"> IMDb Rating:  {this.props.rating} </div>
-          </div>
-          <div className="myInfo">
-            <div className="info myRating"> KMDb Rating:  {this.props.myRating} </div>
-            <p className="info comments"> Comments:  {this.props.comments} </p>
+    const { title, poster, year, genre, rating, myRating, comments, imdb } = this.props.movie;
+    let resultSource = 'udb'
+    if (imdb) {
+      resultSource = 'imdb'
+    }
+    return(
+      <div className={resultSource + "MovieEntry"}>
+        <div className={resultSource + "MovieEntryContainer"}>
+          <img className={resultSource + "MovieEntryPoster"} src={poster} width='140'/>
+          <div className={resultSource + "MovieInfoContainer"}>
+            <div className={resultSource + "ImdbInfo"}>
+              <div className={resultSource + "Info title"}> {title} </div>
+              <div className={resultSource + "Info year"}> {year} </div>
+              <div className={resultSource + "Info genre"}> {genre} </div>
+              <div className={resultSource + "Info rating"}> {rating} </div>
+            </div>
+            <div className={resultSource + "MyInfo"}>
+              <div className={resultSource + "Info myRating"}> {myRating} </div>
+              <div className={resultSource + "Info comments"}> {comments} </div>
+            </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-
-export default MovieEntry;

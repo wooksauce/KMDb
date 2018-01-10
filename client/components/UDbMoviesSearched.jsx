@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MovieEntry from './UDbSearchMovieEntry';
+import MovieEntry from './MovieEntry';
 
-export default class UserMoviesSearched extends Component {
+export default class UDbMoviesSearched extends Component {
   constructor(props) {
     super(props)
   }
@@ -12,9 +12,8 @@ export default class UserMoviesSearched extends Component {
       return null;
     }
     const udbMovies = makeMovieEntry(udbResults);
-    console.log('udbResults', this.props.udbResults)
     return (
-      <div>
+      <div className="udbResultsContainer searchList">
         {udbMovies}
       </div>
     );
@@ -23,6 +22,6 @@ export default class UserMoviesSearched extends Component {
 
 const makeMovieEntry = (movies = []) => {
   if (movies) {
-    return movies.map((movie) => <MovieEntry movie={movie} key={movie.id} />)
+    return movies.map((movie) => <MovieEntry movie={movie} imdb={false} key={movie.id} />)
   }
 }

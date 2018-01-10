@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { moviesFetchData } from '../actions/moviesActions';
 import Search from '../components/Search';
 import UDbSearchResults from '../components/UDbMoviesSearched'
+import IMDbSearchResults from '../components/IMDbMoviesSearched'
 
 class MovieContainer extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class MovieContainer extends Component {
         <p> Hi </p>
         <Search search={this.props.search} />
         <UDbSearchResults udbResults={this.props.udbResults} />
+        <IMDbSearchResults imdbResults={this.props.imdbResults} />
       </div>
     )
   }
@@ -31,6 +33,7 @@ const mapStateToProps = (state) => {
     movies: state.movies.movies,
     search: state.movies.search,
     udbResults: state.movies.udbResults,
+    imdbResults: state.movies.imdbResults,
   }
 }
 

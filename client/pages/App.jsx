@@ -42,8 +42,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <a href="/">
+      <div className="basePage appGrid">
+        <a href="/" className="siteLogo">
           <img src='https://image.ibb.co/jprur5/KMDb.png' width="130" />
         </a>
         <h1 className="mainTitle">Kiwook's Movie Database</h1>

@@ -26,11 +26,3 @@ const makeMovieEntry = (movies = []) => {
     return movies.map((movie) => <MovieEntry movie={movie} key={movie.id} />)
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     udbResults: state.movies.udbResults,
-//   }
-// }
-
-// export default connect(mapStateToProps, null) (UserMoviesSearched);

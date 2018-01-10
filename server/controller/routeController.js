@@ -18,8 +18,9 @@ module.exports = {
     imdb.search({
       title: req.params.search}, {
         apiKey: process.env.IMDB_API_KEY
-      }).then(() => {
-        console.log('im in search ctroller');
+      }).then((movies) => {
+        console.log('im in search ctroller', movies);
+        res.status(200).send(movies);
       }).catch((err) => {
         console.log('server ctrl err', err);
       })

@@ -4,6 +4,7 @@ const initialState = {
   movies: [],
   search: '',
   udbResults: [],
+  imdbResults: [],
 }
 
 export default function moviesReducer(state=initialState, action) {
@@ -13,6 +14,9 @@ export default function moviesReducer(state=initialState, action) {
     }
     case 'MOVIES_UDB_SEARCH_RESULTS': {
       return {...state, udbResults: action.udbResults};
+    }
+    case 'MOVIES_IMDB_SEARCH_RESULTS': {
+      return {...state, imdbResults: action.imdbResults};
     }
     case 'MOVIES_ERRORED': {
       return {...state, errored: true}

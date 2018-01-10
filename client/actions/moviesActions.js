@@ -45,8 +45,9 @@ export const moviesFetchData = () => {
 export const moviesFetchIMDbSearch = (searchStr) => {
   return (dispatch) => {
     axios.get('/api/searchIMDbMovies/' + searchStr)
-      .then(() => {
-        console.log('im in search action')
+      .then(({ data }) => {
+        console.log('im in search imdb action');
+        dispatch(moviesIMDbSearchResult(data.results));
       })
       .catch((err) => {
         console.log('search action err', err)
@@ -58,6 +59,13 @@ export const moviesUDbSearchResult = (movies) => {
   return {
     type: 'MOVIES_UDB_SEARCH_RESULTS',
     udbResults: movies,
+  }
+}
+
+export const moviesIMDbSearchResult = (movies) => {
+  return {
+    type: 'MOVIES_IMDB_SEARCH_RESULTS',
+    imdbResults: movies,
   }
 }
 

@@ -7,14 +7,13 @@ export default class MovieEntry extends Component {
 
   render() {
     const { title, poster, year, genre, rating, myRating, comments, imdb } = this.props.movie;
-    let resultSource = 'udb'
-    if (imdb) {
-      resultSource = 'imdb'
-    }
+    const resultSource = imdb ? 'imdb' : 'udb'
+    const displayPoster = displayPosterImage(poster, resultSource);
     return(
       <div className={resultSource + "MovieEntry"}>
         <div className={resultSource + "MovieEntryContainer"}>
-          <img className={resultSource + "MovieEntryPoster"} src={poster} width='140'/>
+          {/* <img className={resultSource + "MovieEntryPoster"} src={poster} width='140'/> */}
+          {displayPoster}
           <div className={resultSource + "MovieInfoContainer"}>
             <div className={resultSource + "ImdbInfo"}>
               <div className={resultSource + "Info title"}> {title} </div>
@@ -31,4 +30,17 @@ export default class MovieEntry extends Component {
       </div>
     );
   }
+}
+
+const displayPosterImage = (posterUrl, dataSource) => {
+  if (!posterUrl || posterUrl === 'N/A') {
+    return(
+      <div className={dataSource + "NoPoster"}>
+        <p> No poster </p>
+      </div>
+    );
+  }
+  return(
+    <img className={dataSource + "MovieEntryPoster"} src={posterUrl} width='140'/>
+  );
 }

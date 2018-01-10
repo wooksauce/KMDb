@@ -19,7 +19,6 @@ class MovieContainer extends Component {
   render() {
     return(
       <div>
-        <p> Hi </p>
         <Search search={this.props.search} />
         <UDbSearchResults udbResults={this.props.udbResults} />
         <IMDbSearchResults imdbResults={this.props.imdbResults} />

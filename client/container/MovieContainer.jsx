@@ -6,6 +6,7 @@ import { moviesFetchData } from '../actions/moviesActions';
 import Search from '../components/Search';
 import UDbSearchResults from '../components/UDbMoviesSearched'
 import IMDbSearchResults from '../components/IMDbMoviesSearched'
+import Carousel from '../components/MovieCarousel'
 
 class MovieContainer extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class MovieContainer extends Component {
     return(
       <div className="movieContainer">
         <Search search={this.props.search} />
+        <Carousel />
         <UDbSearchResults udbResults={this.props.udbResults} />
         <IMDbSearchResults imdbResults={this.props.imdbResults} />
       </div>

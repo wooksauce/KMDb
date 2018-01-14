@@ -30,8 +30,8 @@
   grid-template-columns: "1fr 1fr 1fr 1fr";
   grid-template-rows: auto;
   grid-template-areas:
-  ". searchBar searchBar searchBar searchBar ."
-  ". imdbResCon imdbResCon udbResCon udbResCon ."
+  "searchBar searchBar searchBar searchBar"
+  "imdbResCon imdbResCon udbResCon udbResCon"
 }
 
 .searchBar {

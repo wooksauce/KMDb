@@ -20,7 +20,7 @@ webpackConfig.module.loaders.push({
   exclude: /node_moduçles/,
   loader: 'babel-loader',
   options: {
-    presets: ['es2015', 'react'], 
+    presets: ['es2015', 'react'],
     plugins: ["transform-es2015-destructuring", "transform-object-rest-spread"]
   },
 });

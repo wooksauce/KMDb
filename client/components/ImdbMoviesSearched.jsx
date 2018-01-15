@@ -22,7 +22,7 @@ export default class ImdbMoviesSearched extends Component {
 
 //same as the one in UDbMoviesSearched. Should I have this in container level? or import it?
 const makeMovieEntry = (movies = []) => {
-  if (movies) {
+  if (movies.length) {
     return movies.map((movie) => <MovieEntry movie={movie} imdb={true} key={movie.imdbid} />)
   }
 }

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { moviesFetchData } from '../actions/moviesActions';
+import { moviesFetchData, moviesCarousel } from '../actions/moviesActions';
 import Search from '../components/Search';
-import UDbSearchResults from '../components/UDbMoviesSearched'
-import IMDbSearchResults from '../components/IMDbMoviesSearched'
-import Carousel from '../components/MovieCarousel'
+import UDbSearchResults from '../components/UDbMoviesSearched';
+import IMDbSearchResults from '../components/IMDbMoviesSearched';
+import Carousel from '../components/MovieCarousel';
 
 class MovieContainer extends Component {
   constructor(props) {
@@ -15,13 +15,14 @@ class MovieContainer extends Component {
 
   componentDidMount() {
     this.props.fetchAllMovies();
+    this.props.fetchCarouselData();
   }
 
   render() {
     return(
       <div className="movieContainer">
         <Search search={this.props.search} />
-        <Carousel />
+        <Carousel carousel={this.props.carousel} />
         <UDbSearchResults udbResults={this.props.udbResults} />
         <IMDbSearchResults imdbResults={this.props.imdbResults} />
       </div>
@@ -35,6 +36,7 @@ const mapStateToProps = (state) => {
     search: state.movies.search,
     udbResults: state.movies.udbResults,
     imdbResults: state.movies.imdbResults,
+    carousel: state.carousel.carouselData,
   }
 }
 
@@ -43,6 +45,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchAllMovies: () => {
       dispatch(moviesFetchData());
     },
+    fetchCarouselData: () => {
+      dispatch(moviesCarousel());
+    }
   }
 }
 

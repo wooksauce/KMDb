@@ -81,3 +81,28 @@ export const moviesFetchUDbSearch = (searchStr) => {
       })
   }
 }
+
+export const moviesCarousel = () => {
+  //in the future, it will get some useful movie data
+  const carouselData = [
+    {
+      title: 'Room',
+      poster: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjE4NzgzNzEwMl5BMl5BanBnXkFtZTgwMTMzMDE0NjE@._V1_SY1000_SX675_AL_.jpg',
+      rating: 8.2,
+    },
+    {
+      title: 'Whiplash',
+      poster: 'https://images-na.ssl-images-amazon.com/images/M/MV5BOTVhMWQ5MDktMGE3OS00MjVlLWExZWYtMzY2MTg4ZGFiZDQ5L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_SX675_AL_.jpg',
+      rating: 8.5,
+    },
+    {
+      title: 'Spotlight',
+      poster: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjIyOTM5OTIzNV5BMl5BanBnXkFtZTgwMDkzODE2NjE@._V1_SY1000_CR0,0,676,1000_AL_.jpg',
+      rating: 8.1,
+    },
+  ]
+  return {
+    type: 'MOVIES_CAROUSEL',
+    data: carouselData,
+  }
+}

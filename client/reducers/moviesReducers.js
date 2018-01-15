@@ -19,10 +19,10 @@ export default function moviesReducer(state=initialState, action) {
       return {...state, imdbResults: action.imdbResults};
     }
     case 'MOVIES_ERRORED': {
-      return {...state, errored: true}
+      return {...state, errored: true};
     }
     case 'MOVIES_LOADING': {
-      return {...state, loading: true}
+      return {...state, loading: true};
     }
     case 'MOVIES_FETCH_SUCCESS': {
       return {
@@ -30,7 +30,7 @@ export default function moviesReducer(state=initialState, action) {
         errored: false,
         loading: false,
         movies: action.movies,
-      }
+      };
     }
   }
   return state;

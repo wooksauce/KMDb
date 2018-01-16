@@ -33,13 +33,23 @@ class MovieCarousel extends Component {
     }
     console.log('pos', this.state.carouselPos)
     let slide = carousel[this.state.carouselPos];
+    const imgStyles = {
+      'backgroundImage': `url(${slide.poster})`,
+    }
     return(
       <div className="carouselContainer">
-        <div onClick={()=>this.clickPrev()}> Prev </div>
         <div className="carouselImgContainer">
-          <img className="carouselImg" src={slide.poster} height="180px" />
+          <div
+            className="carouselImg"
+            style={imgStyles}
+          />
+          <div className="prev" onClick={()=>this.clickPrev()}>
+            <span className="arrows arrowLeft">&#8249;</span>
+          </div>
+          <div className="next" onClick={()=>this.clickNext()}>
+            <span className="arrows arrowRight">&#8250;</span>
+          </div>
         </div>
-        <div onClick={()=>this.clickNext()}> Next </div>
       </div>
     )
   }

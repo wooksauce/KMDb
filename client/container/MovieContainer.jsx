@@ -21,10 +21,14 @@ class MovieContainer extends Component {
   render() {
     return(
       <div className="movieContainer">
-        <Search search={this.props.search} />
-        <Carousel carousel={this.props.carousel} />
-        <UDbSearchResults udbResults={this.props.udbResults} />
-        <IMDbSearchResults imdbResults={this.props.imdbResults} />
+        <div className="movieContainerOne">
+          <Search search={this.props.search} />
+          <Carousel carousel={this.props.carousel} />
+        </div>
+        <div className="movieContainerTwo">
+          <UDbSearchResults udbResults={this.props.udbResults} />
+          <IMDbSearchResults imdbResults={this.props.imdbResults} />
+        </div>
       </div>
     )
   }

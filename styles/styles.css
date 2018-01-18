@@ -26,14 +26,34 @@
 }
 
 .movieContainer {
-  grid-area: movieCon;
   display: grid;
+  grid-area: movieCon;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "movieConOne"
+  "movieConTwo"
+}
+
+.movieContainerOne {
+  display: grid;
+  justify-self: center;
+  grid-area: movieConOne;
   grid-template-columns: "1fr 1fr 1fr 1fr";
   grid-template-rows: auto;
   grid-template-areas:
   "searchBar searchBar searchBar searchBar"
   "carouselCon carouselCon carouselCon carouselCon"
-  "imdbResCon imdbResCon udbResCon udbResCon"
+}
+
+.movieContainerTwo {
+  width: 100%;
+  grid-area: movieConTwo;
+  display: grid;
+  grid-template-columns: "1fr 1fr";
+  grid-template-rows: auto;
+  grid-template-areas:
+  "imdbResCon udbResCon"
 }
 
 .searchBar {
@@ -56,8 +76,8 @@
 
 
 .carouselImgContainer {
-  height: 400px;
-  width: 250px;
+  height: 300px;
+  width: 200px;
   position: relative;
 }
 

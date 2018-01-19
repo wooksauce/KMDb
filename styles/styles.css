@@ -36,6 +36,7 @@
 }
 
 .movieContainerOne {
+  background-color: rgba(224, 210, 183, 0.514);
   display: grid;
   justify-self: center;
   grid-area: movieConOne;

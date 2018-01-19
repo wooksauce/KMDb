@@ -14,6 +14,9 @@ export default class UDbMoviesSearched extends Component {
     const udbMovies = makeMovieEntry(udbResults);
     return (
       <div className="udbResultsContainer searchList">
+        <div className="udbResultsTitle">
+          <p className="udbResultsTitleText"> From UDb </p>
+        </div>
         {udbMovies}
       </div>
     );

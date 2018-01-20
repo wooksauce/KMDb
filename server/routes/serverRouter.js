@@ -9,7 +9,7 @@ router.get('/searchUserMovies/:search', control.searchUDbMovies);
 
 router.get('/sortMovies/:sortBy', control.sortMovies);
 
-router.post('/postMovie/:title', control.postMovie);
+router.post('/saveMovie/', control.saveMovie);
 
 router.delete('/deleteMovie/:id', control.deleteMovie);
 

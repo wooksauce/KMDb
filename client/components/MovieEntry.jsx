@@ -34,8 +34,16 @@ export default class MovieEntry extends Component {
   }
 
   handleSave() {
-    const { title, poster, year, genre, rating, myRating, comments, imdb } = this.props.movie;
-    axios.post
+    const { title, poster, year, genre, rating } = this.props.movie;
+    axios.post('/api/saveMovie', {
+      title: title,
+      poster: poster,
+      year: year,
+      genre: genre,
+      imdbRating: rating,
+      myRating: this.state.myRating,
+      myComment: this.state.myComment,
+    })
     this.handleCloseModal();
   }
 

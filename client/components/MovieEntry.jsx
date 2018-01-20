@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
 
 export default class MovieEntry extends Component {
   constructor(props) {
@@ -26,14 +26,32 @@ export default class MovieEntry extends Component {
     return(
       <div className={resultSource + "MovieEntry"}>
         <div className={resultSource + "MovieEntryContainer"} onClick={this.handleOpenModal}>
-        <ReactModal
+        <Modal
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"
            onRequestClose={this.handleCloseModal}
         >
-          <p>Modal text!</p>
+          <p className="modalTitle">Modal Title Goes Here</p>
+          <form>
+            <div>
+              <label for="userMovieRating"> Your Rating </label>
+              <input
+                id="userMovieRating"
+                type="number"
+                step="0.1"
+                min="1"
+                max="10"
+                placeholder="Your Rating"
+                // onChange={(e) => this.handleSearchTyping(e)}
+                // onKeyPress={(e) => this.keyPressEnter(e)}
+              />
+            </div>
+            <div>
+              <input type="submit"/>
+            </div>
+          </form>
           <button onClick={this.handleCloseModal}>Close Modal</button>
-        </ReactModal>
+        </Modal>
           <img className={resultSource + "MovieEntryPoster"} src={posterUrl} width='140'/>
           <div className={resultSource + "MovieInfoContainer"}>
             <div className={resultSource + "ImdbInfo"}>

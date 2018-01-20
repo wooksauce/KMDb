@@ -1,22 +1,42 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 
 export default class MovieEntry extends Component {
   constructor(props) {
     super(props)
     this.state = {
       showModal: false,
+      myRating: '',
+      myComment: '',
     }
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.handleMyRating = this.handleMyRating.bind(this);
+    this.handleMyComment = this.handleMyComment.bind(this);
   }
 
   handleOpenModal () {
-    this.setState({ showModal: true });
+    this.setState({showModal: true});
   }
 
   handleCloseModal () {
-    this.setState({ showModal: false });
+    this.setState({showModal: false});
+  }
+
+  handleMyRating(num) {
+    this.setState({myRating: num})
+  }
+
+  handleMyComment(text) {
+    this.setState({myComment: text})
+  }
+
+  handleSave() {
+    const { title, poster, year, genre, rating, myRating, comments, imdb } = this.props.movie;
+    axios.post
+    this.handleCloseModal();
   }
 
   render() {
@@ -31,7 +51,7 @@ export default class MovieEntry extends Component {
            contentLabel="onRequestClose Example"
            onRequestClose={this.handleCloseModal}
         >
-          <p className="modalTitle">Modal Title Goes Here</p>
+          <p className="entryModalTitle">Modal Title Goes Here</p>
           <form>
             <div>
               <label htmlFor="userMovieRating"> Your Rating: </label>
@@ -41,6 +61,7 @@ export default class MovieEntry extends Component {
                 step="0.1"
                 min="1"
                 max="10"
+                onChange={(e) => this.handleMyRating(e.target.value)}
                 required
                 // onChange={(e) => this.handleSearchTyping(e)}
                 // onKeyPress={(e) => this.keyPressEnter(e)}
@@ -50,12 +71,13 @@ export default class MovieEntry extends Component {
               <label htmlFor="userComment"></label>
               <textarea
                 id="userComment"
-                placeholder="write how you feel about the movie here"
+                placeholder="write whatever you wanna say about the movie"
+                onChange={(e) => this.handleMyComment(e.target.value)}
               >
               </textarea>
             </div>
             <div>
-              <input type="submit"/>
+              <button type="button" className="userInfoSaveButton" onClick={this.handleSave}>Save</button>
             </div>
           </form>
           <button onClick={this.handleCloseModal}>Close Modal</button>

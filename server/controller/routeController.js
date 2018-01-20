@@ -19,10 +19,10 @@ module.exports = {
       title: req.params.search}, {
         apiKey: process.env.IMDB_API_KEY
       }).then((movies) => {
-        console.log('im in search ctroller', movies);
+        // console.log('im in search ctroller', movies);
         res.status(200).send(movies);
       }).catch((err) => {
-        console.log('server ctrl err', err);
+        // console.log('server ctrl err', err);
       })
   },
 
@@ -56,15 +56,15 @@ module.exports = {
   },
 
   saveMovie: (req, res) => {
-    const { title, poster, year, genre, imdbRating, myRating, myComment } = req.body;
+    const { title, posterUrl, year, genre, userRating, userComment } = req.body;
     const movieInfo = {
       title: title,
-      poster: poster,
+      posterUrl: posterUrl,
       year: year,
       genre: genre,
-      rating: imdbRating,
-      myRating: myRating,
-      myComment: myComment,
+      // rating: imdbRating,
+      userRating: userRating,
+      userComment: userComment,
     };
     // movieInfo.title = req.body.title;
     // movieInfo.myRating = req.body.myRating;

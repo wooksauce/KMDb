@@ -25,6 +25,12 @@ export default class UDbMoviesSearched extends Component {
 
 const makeMovieEntry = (movies = []) => {
   if (movies.length) {
-    return movies.map((movie) => <MovieEntry movie={movie} imdb={false} key={movie.id} />)
+    return movies.map((movie) =>
+      <MovieEntry
+        movie={movie}
+        imdb={false}
+        key={movie.id}
+      />
+    )
   }
 }

@@ -2,7 +2,7 @@ const db = require('./config/config');
 const Sequelize = require('sequelize');
 
 const Movie = db.define('Movie', {
-  poster: {
+  posterUrl: {
     type: Sequelize.STRING,
     allowNull: true
   },
@@ -18,15 +18,15 @@ const Movie = db.define('Movie', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  rating: {
+  imdbRating: {
     type: Sequelize.FLOAT,
     allowNull: true
   },
-  myRating: {
+  userRating: {
     type: Sequelize.FLOAT,
     allowNull: true
   },
-  comments: {
+  userComment: {
     type: Sequelize.STRING,
     allowNull: true
   }

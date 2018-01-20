@@ -7,8 +7,8 @@ export default class MovieEntry extends Component {
     super(props)
     this.state = {
       showModal: false,
-      myRating: '',
-      myComment: '',
+      userRating: '',
+      userComment: '',
     }
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -34,23 +34,30 @@ export default class MovieEntry extends Component {
   }
 
   handleSave() {
-    const { title, poster, year, genre, rating } = this.props.movie;
+    const { title, poster, year, genre } = this.props.movie;
     axios.post('/api/saveMovie', {
       title: title,
-      poster: poster,
+      posterUrl: poster,
       year: year,
       genre: genre,
-      imdbRating: rating,
-      myRating: this.state.myRating,
-      myComment: this.state.myComment,
+      userRating: this.state.myRating,
+      userComment: this.state.myComment,
     })
     this.handleCloseModal();
   }
 
   render() {
-    const { title, poster, year, genre, rating, myRating, comments, imdb } = this.props.movie;
+    const { title, poster, posterUrl, year, genre, userRating, userComment, imdb } = this.props.movie;
+    console.log('wth', this.props.movie)
     const resultSource = imdb ? 'imdb' : 'udb'
-    const posterUrl = (!poster || poster === 'N/A') ? 'https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF' : poster;
+    let posterToDisplay
+    if (posterUrl) {
+      posterToDisplay = posterUrl;
+    } else if (poster) {
+      posterToDisplay = poster;
+    } else {
+      posterToDisplay = 'https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF';
+    }
     return(
       <div className={resultSource + "MovieEntry"}>
         <div className={resultSource + "MovieEntryContainer"} onClick={this.handleOpenModal}>
@@ -90,17 +97,17 @@ export default class MovieEntry extends Component {
           </form>
           <button onClick={this.handleCloseModal}>Close Modal</button>
         </Modal>
-          <img className={resultSource + "MovieEntryPoster"} src={posterUrl} width='140'/>
+          <img className={resultSource + "MovieEntryPoster"} src={posterToDisplay} width='140'/>
           <div className={resultSource + "MovieInfoContainer"}>
             <div className={resultSource + "ImdbInfo"}>
               <div className={resultSource + "Info title"}> {title} </div>
               <div className={resultSource + "Info year"}> {year} </div>
               <div className={resultSource + "Info genre"}> {genre} </div>
-              <div className={resultSource + "Info rating"}> {rating} </div>
+              {/* <div className={resultSource + "Info rating"}> {imdbRating} </div> */}
             </div>
             <div className={resultSource + "MyInfo"}>
-              <div className={resultSource + "Info myRating"}> {myRating} </div>
-              <div className={resultSource + "Info comments"}> {comments} </div>
+              <div className={resultSource + "Info myRating"}> {userRating} </div>
+              <div className={resultSource + "Info comments"}> {userComment} </div>
             </div>
           </div>
         </div>

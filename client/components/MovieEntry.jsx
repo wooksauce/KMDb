@@ -34,17 +34,25 @@ export default class MovieEntry extends Component {
           <p className="modalTitle">Modal Title Goes Here</p>
           <form>
             <div>
-              <label for="userMovieRating"> Your Rating </label>
+              <label htmlFor="userMovieRating"> Your Rating: </label>
               <input
                 id="userMovieRating"
                 type="number"
                 step="0.1"
                 min="1"
                 max="10"
-                placeholder="Your Rating"
+                required
                 // onChange={(e) => this.handleSearchTyping(e)}
                 // onKeyPress={(e) => this.keyPressEnter(e)}
               />
+            </div>
+            <div>
+              <label htmlFor="userComment"></label>
+              <textarea
+                id="userComment"
+                placeholder="write how you feel about the movie here"
+              >
+              </textarea>
             </div>
             <div>
               <input type="submit"/>

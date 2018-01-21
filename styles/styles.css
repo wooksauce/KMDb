@@ -6,23 +6,33 @@
 .appGrid {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: grid;
-  grid-template-columns: 10% 1fr 10%;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-  ". siteLogo ."
-  ". mainTitle ."
-  ". . ."
-  ". movieCon ."
+  "topHeader"
+  "movieCon"
+}
+
+.topHeader {
+  background: rgb(243, 243, 243);
+  padding: 2%;
+  display: grid;
+  grid-area: topHeader;
+  grid-template-columns: 20% 30% 30% 20%;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "siteLogo mainTitle mainTitle ."
 }
 
 .siteLogo {
   grid-area: siteLogo;
-  margin: 20;
 }
 
 .mainTitle {
   grid-area: mainTitle;
   justify-self: center;
+  align-self: center;
+  font-size: 1.8em;
 }
 
 .movieContainer {
@@ -31,25 +41,29 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-  "movieConOne"
-  "movieConTwo"
+  "searchCon"
+  "posterArea"
+  "searchResultsArea"
 }
 
-.movieContainerOne {
-  background-color: rgba(224, 210, 183, 0.514);
-  display: grid;
-  justify-self: center;
-  grid-area: movieConOne;
-  grid-template-columns: "1fr 1fr 1fr 1fr";
-  grid-template-rows: auto;
-  grid-template-areas:
-  "searchBar searchBar searchBar searchBar"
-  "carouselCon carouselCon carouselCon carouselCon"
-}
-
-.movieContainerTwo {
+.searchContainer {
+  background-color: rgb(243, 243, 243);
+  padding: 2%;
   width: 100%;
-  grid-area: movieConTwo;
+  grid-area: searchCon;
+}
+
+.posterArea {
+  height: 120%;
+  background-color: rgb(255, 255, 255);
+  grid-area: posterArea;
+  position: relative;
+  height: 120%;
+}
+
+.searchResultsArea {
+  width: 100%;
+  grid-area: searchResultsArea;
   display: grid;
   grid-template-columns: "1fr 1fr";
   grid-template-rows: auto;
@@ -58,11 +72,11 @@
 }
 
 .searchBar {
-  grid-area: searchBar;
-  justify-self: center;
+  text-align: center;
 }
 
 .carouselContainer {
+  height: 100%;
   grid-area: carouselCon;
   justify-self: center;
 }
@@ -80,6 +94,9 @@
   height: 300px;
   width: 200px;
   position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .carouselImg {

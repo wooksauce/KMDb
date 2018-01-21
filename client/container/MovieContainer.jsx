@@ -21,11 +21,13 @@ class MovieContainer extends Component {
   render() {
     return(
       <div className="movieContainer">
-        <div className="movieContainerOne">
+        <div className="searchContainer">
           <Search search={this.props.search} />
+        </div>
+        <div className="posterArea">
           <Carousel carousel={this.props.carousel} />
         </div>
-        <div className="movieContainerTwo">
+        <div className="searchResultsArea">
           <UDbSearchResults udbResults={this.props.udbResults} />
           <IMDbSearchResults imdbResults={this.props.imdbResults} />
         </div>

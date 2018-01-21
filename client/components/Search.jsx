@@ -27,7 +27,7 @@ class Search extends Component {
   render() {
     return (
       <div className="searchBar">
-        <form>
+        <form className="searchForm">
           <input
             className="movieTitle"
             type="text"

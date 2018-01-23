@@ -68,6 +68,7 @@ export default class MovieEntry extends Component {
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"
            onRequestClose={this.handleCloseModal}
+           appElement={document.getElementById('app')}
         >
           <p className="entryModalTitle">Modal Title Goes Here</p>
           <form>

@@ -52,11 +52,10 @@ export default class MovieEntry extends Component {
     const { title, poster, posterUrl, year, genre, userRating, userComment } = this.props.movie;
     const imdb = this.props.imdb;
     const resultSource = imdb ? 'imdb' : 'udb'
-    console.log('resultsrc', resultSource)
     let posterToDisplay
     if (posterUrl) {
       posterToDisplay = posterUrl;
-    } else if (poster) {
+    } else if (poster !== 'N/A') {
       posterToDisplay = poster;
     } else {
       posterToDisplay = 'https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF';

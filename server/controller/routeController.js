@@ -27,7 +27,6 @@ module.exports = {
   },
 
   searchUDbMovies: (req, res) => {
-    console.log('udb req params', req.params)
     let searchStr = req.params.search
     let modified = '^[' + searchStr.split('').join('|') + ']';
     Movie.findAll({

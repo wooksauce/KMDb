@@ -17,8 +17,10 @@ export default class MovieEntry extends Component {
     this.handleMyComment = this.handleMyComment.bind(this);
   }
 
-  handleOpenModal () {
-    this.setState({showModal: true});
+  handleOpenModal (resultSrc) {
+    if (resultSrc === 'imdb') {
+      this.setState({showModal: true});
+    }
   }
 
   handleCloseModal () {
@@ -47,8 +49,8 @@ export default class MovieEntry extends Component {
   }
 
   render() {
-    const { title, poster, posterUrl, year, genre, userRating, userComment, imdb } = this.props.movie;
-    console.log('wth', this.props.movie)
+    const { title, poster, posterUrl, year, genre, userRating, userComment } = this.props.movie;
+    const imdb = this.props.imdb;
     const resultSource = imdb ? 'imdb' : 'udb'
     let posterToDisplay
     if (posterUrl) {
@@ -60,7 +62,7 @@ export default class MovieEntry extends Component {
     }
     return(
       <div className={resultSource + "MovieEntry"}>
-        <div className={resultSource + "MovieEntryContainer"} onClick={this.handleOpenModal}>
+        <div className={resultSource + "MovieEntryContainer"} onClick={this.handleOpenModal(resultSource)}>
         <Modal
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"

@@ -31,7 +31,6 @@ class MovieCarousel extends Component {
     if (!carousel || !carousel.length) {
       return null
     }
-    console.log('pos', this.state.carouselPos)
     let slide = carousel[this.state.carouselPos];
     const imgStyles = {
       'backgroundImage': `url(${slide.posterUrl})`,

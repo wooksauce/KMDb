@@ -65,17 +65,7 @@ module.exports = {
       userRating: userRating,
       userComment: userComment,
     };
-    // movieInfo.title = req.body.title;
-    // movieInfo.myRating = req.body.myRating;
-    // movieInfo.comments = req.body.comments;
-    // imdb.get(movieInfo.title, {apiKey: '629c12bf'})
-    // .then(movie => {
-    //   console.log('here')
-    //   movieInfo.poster = movie.poster
-    //   movieInfo.year = movie.year
-    //   movieInfo.genre = movie.genres
-    //   movieInfo.rating = movie.rating
-    // })
+
     Movie.create(movieInfo)
       .then(data => {
         res.status(200).send(data);
@@ -83,9 +73,6 @@ module.exports = {
       .catch(err => {
         res.status(404).send("an error occured", err);
       })
-    // .catch(err => {
-    //   console.log('wrong name', err)
-    // })
   },
 
   deleteMovie: (req, res) => {

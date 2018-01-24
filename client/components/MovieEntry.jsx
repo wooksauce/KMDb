@@ -15,6 +15,7 @@ export default class MovieEntry extends Component {
     this.handleSave = this.handleSave.bind(this);
     this.handleMyRating = this.handleMyRating.bind(this);
     this.handleMyComment = this.handleMyComment.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleOpenModal (resultSrc) {
@@ -48,8 +49,12 @@ export default class MovieEntry extends Component {
     this.handleCloseModal();
   }
 
+  handleDelete(movieId) {
+    axios.delete(`api/deleteMovie/${movieId}`)
+  }
+
   render() {
-    const { title, poster, posterUrl, year, genre, userRating, userComment } = this.props.movie;
+    const { title, poster, posterUrl, year, genre, userRating, userComment, id } = this.props.movie;
     const imdb = this.props.imdb;
     const resultSource = imdb ? 'imdb' : 'udb'
     let posterToDisplay
@@ -81,8 +86,6 @@ export default class MovieEntry extends Component {
                 max="10"
                 onChange={(e) => this.handleMyRating(e.target.value)}
                 required
-                // onChange={(e) => this.handleSearchTyping(e)}
-                // onKeyPress={(e) => this.keyPressEnter(e)}
               />
             </div>
             <div>
@@ -95,7 +98,13 @@ export default class MovieEntry extends Component {
               </textarea>
             </div>
             <div>
-              <button type="button" className="userInfoSaveButton" onClick={this.handleSave}>Save</button>
+              <button
+                type="button"
+                className="userInfoSaveButton"
+                onClick={this.handleSave}
+              >
+              Save
+              </button>
             </div>
           </form>
           <button onClick={this.handleCloseModal}>Close Modal</button>
@@ -112,6 +121,12 @@ export default class MovieEntry extends Component {
               <div className={resultSource + "Info myRating"}> {userRating} </div>
               <div className={resultSource + "Info comments"}> {userComment} </div>
             </div>
+            <button
+              className={resultSource + "DelButton"}
+              onClick={() => this.handleDelete(id)}
+            >
+            x
+            </button>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ class Search extends Component {
           <input
             className="movieTitle"
             type="text"
-            placeholder="Movie Title"
+            placeholder="Find Movies!"
             onChange={(e) => this.handleSearchTyping(e)}
             onKeyPress={(e) => this.keyPressEnter(e)}
           />

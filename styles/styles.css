@@ -15,7 +15,7 @@
 
 .topHeader {
   background: rgb(243, 243, 243);
-  padding: 2%;
+  padding: 1%;
   display: grid;
   grid-area: topHeader;
   grid-template-columns: 20% 30% 30% 20%;
@@ -48,14 +48,14 @@
 
 .searchContainer {
   background-color: rgb(243, 243, 243);
-  padding: 2%;
+  padding: 1% 0 2% 0;
   width: 100%;
   grid-area: searchCon;
 }
 
 .posterArea {
-  height: 100%;
-  background-color: rgb(255, 255, 255);
+  height: 360px;
+  background-color: rgb(15, 15, 15);
   grid-area: posterArea;
   position: relative;
 }
@@ -144,3 +144,25 @@ textarea {
   display: none;
 }
 
+.searchForm, .searchButton {
+  display: inline-block;
+  padding: 1px;
+}
+
+.searchForm {
+  padding: 0 5px;
+}
+
+.movieTitle {
+  height: 25px;
+  width: 200px;
+  vertical-align: middle;
+  padding: 0 5px;
+}
+.searchButton {
+  cursor: pointer;
+  height: 25px;
+  width: 50px;
+  border-radius: 6px;
+  vertical-align: middle;
+}

@@ -112,7 +112,8 @@ export default class MovieEntry extends Component {
           <img className={resultSource + "MovieEntryPoster"} src={posterToDisplay} width='140'/>
           <div className={resultSource + "MovieInfoContainer"}>
             <div className={resultSource + "ImdbInfo"}>
-              <div className={resultSource + "Info title"}> {title} </div>
+              <span className={resultSource + "MovieEntryTitle"}> Title: </span>
+              <span className={resultSource + "Info title"}> {title} </span>
               <div className={resultSource + "Info year"}> {year} </div>
               <div className={resultSource + "Info genre"}> {genre} </div>
               {/* <div className={resultSource + "Info rating"}> {imdbRating} </div> */}

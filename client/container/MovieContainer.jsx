@@ -7,6 +7,7 @@ import Search from '../components/Search';
 import UDbSearchResults from '../components/UDbMoviesSearched';
 import IMDbSearchResults from '../components/IMDbMoviesSearched';
 import Carousel from '../components/MovieCarousel';
+import UserMovies from '../components/UserMovies';
 
 class MovieContainer extends Component {
   constructor(props) {
@@ -26,6 +27,9 @@ class MovieContainer extends Component {
         </div>
         <div className="posterArea">
           <Carousel carousel={this.props.carousel} />
+        </div>
+        <div className="userMoviesContainer">
+          <UserMovies movies={this.props.movies}/>
         </div>
         <div className="searchResultsArea">
           <UDbSearchResults udbResults={this.props.udbResults} />

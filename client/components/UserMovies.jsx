@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import MovieArchiveEntry from '../components/MovieArchiveEntry'
 
 class UserMovies extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   userMovies: this.props.movies
-    // }
   }
 
   render() {
@@ -29,9 +27,10 @@ const makeMovieEntry = (movies = []) => {
   if (movies.length) {
     return movies.map((movie) => {
       return (
-        <div key={movie.id}>
-          {movie.title}
-        </div>
+        <MovieArchiveEntry
+          key={movie.id}
+          movie={movie}
+        />
       )
     })
   }

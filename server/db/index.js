@@ -27,7 +27,7 @@ const Movie = db.define('Movie', {
     allowNull: true
   },
   userComment: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   }
 }, {

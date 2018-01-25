@@ -71,7 +71,7 @@ module.exports = {
         res.status(200).send(data);
       })
       .catch(err => {
-        res.status(404).send("an error occured", err);
+        res.status(404).send(err);
       })
   },
 

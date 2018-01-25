@@ -166,3 +166,8 @@ textarea {
   border-radius: 6px;
   vertical-align: middle;
 }
+
+#userComment {
+  width: 400px;
+  height: 240px;
+}

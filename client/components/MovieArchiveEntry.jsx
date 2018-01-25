@@ -12,24 +12,31 @@ class MovieArchiveEntry extends Component{
       return null;
     }
     return (
-      <div className="userArchEntryContainer">
-        <div className="userArchEntry posterContainer">
-          <img className="userArchPoster" src={posterUrl} width="180px" />
+      <div className="archEntryContainer">
+        <div className="archEntry posterContainer">
+          <img className="userArchPoster" src={posterUrl} height="240px" />
         </div>
-        <div className="userArchEntry titleContainer">
-          <span className="userArchText titleText">
-          </span>
-          <span className="userArchText title">
-            <p> {title} </p>
-          </span>
-        </div>
-        <div className="userArchEntry yearContainer">
-        </div>
-        <div className="userArchEntry genreContainer">
-        </div>
-        <div className="userArchEntry userRatingContainer">
-        </div>
-        <div className="userArchEntry userCommentContainer">
+        <div className="archEntry fieldContainer">
+          <div className="archEntry titleContainer">
+            <p className="field archText">Title:&nbsp;</p>
+            <p className="field archTitle archValue"> {title} </p>
+          </div>
+          <div className="archEntry yearContainer">
+            <p className="field archText">Year:&nbsp;</p>
+            <p className="field archYear archValue"> {year} </p>
+          </div>
+          <div className="archEntry genreContainer">
+            <p className="field archText">Genre:&nbsp;</p>
+            <p className="field archGenre archValue"> {genre} </p>
+          </div>
+          <div className="archEntry userRatingContainer">
+            <p className="field archText">My Rating:&nbsp;</p>
+            <p className="field archUserRating archValue"> {userRating} </p>
+          </div>
+          <div className="archEntry userCommentContainer">
+            <p className="field archText">My Comment:&nbsp;</p>
+            <p className="field archUserComment archValue"> {userComment} </p>
+          </div>
         </div>
       </div>
     )

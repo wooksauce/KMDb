@@ -6,6 +6,7 @@ class MovieArchiveEntry extends Component{
   }
 
   render() {
+    console.log('movie here', this.props.movie)
     const { title, posterUrl, year, genre, imdbRating, userRating, userComment } = this.props.movie
     if (!title) {
       return null;
@@ -13,13 +14,13 @@ class MovieArchiveEntry extends Component{
     return (
       <div className="userArchEntryContainer">
         <div className="userArchEntry posterContainer">
-          <img className="userArchPoster" />
+          <img className="userArchPoster" src={posterUrl} />
         </div>
         <div className="userArchEntry titleContainer">
           <span className="userArchText titleText">
           </span>
           <span className="userArchText title">
-            <p> {movie.title} </p>
+            <p> {title} </p>
           </span>
         </div>
         <div className="userArchEntry yearContainer">

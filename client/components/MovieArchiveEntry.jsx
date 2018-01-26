@@ -14,7 +14,7 @@ class MovieArchiveEntry extends Component{
     return (
       <div className="archEntryContainer">
         <div className="archEntry posterContainer">
-          <img className="userArchPoster" src={posterUrl} height="240px" />
+          <img className="userArchPoster" src={posterUrl} height="170px" />
         </div>
         <div className="archEntry fieldContainer">
           <div className="archEntry titleContainer">

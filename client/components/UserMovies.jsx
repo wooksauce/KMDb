@@ -25,11 +25,12 @@ class UserMovies extends Component {
 
 const makeMovieEntry = (movies = []) => {
   if (movies.length) {
-    return movies.map((movie) => {
+    return movies.map((movie, idx) => {
       return (
         <MovieArchiveEntry
           key={movie.id}
           movie={movie}
+          nth={idx + 1}
         />
       )
     })

@@ -11,6 +11,8 @@ class MovieArchiveEntry extends Component{
     if (!title) {
       return null;
     }
+    const nth = this.props.nth;
+    console.log('nth',nth)
     return (
       <div className="archEntryContainer">
         <div className="archEntry posterContainer">

@@ -5,6 +5,14 @@ class MovieArchiveEntry extends Component{
     super(props)
   }
 
+  handleExpand(n) {
+    //change nth-child's style here
+  }
+
+  handleCollapse () {
+
+  }
+
   render() {
     console.log('movie here', this.props.movie)
     const { title, posterUrl, year, genre, imdbRating, userRating, userComment } = this.props.movie
@@ -12,9 +20,9 @@ class MovieArchiveEntry extends Component{
       return null;
     }
     const nth = this.props.nth;
-    console.log('nth',nth)
+    // console.log('nth',nth)
     return (
-      <div className="archEntryContainer">
+      <div className="archEntryContainer nth">
         <div className="archEntry posterContainer">
           <img className="userArchPoster" src={posterUrl} height="170px" />
         </div>

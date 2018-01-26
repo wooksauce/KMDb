@@ -34,8 +34,10 @@ class MovieArchiveEntry extends Component{
             <p className="field archUserRating archValue"> {userRating} </p>
           </div>
           <div className="archEntry userCommentContainer">
-            <p className="field archText">My Comment:&nbsp;</p>
-            <p className="field archUserComment archValue"> {userComment} </p>
+            <p className="field archUserComment archValue">
+              <span className="field archText">My Comment:&nbsp;</span>
+              {userComment}
+            </p>
           </div>
         </div>
       </div>

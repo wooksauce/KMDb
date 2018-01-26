@@ -184,17 +184,19 @@ textarea {
   grid-area: posterContainer;
   position: absolute;
   left: 15px;
-  top: 50%;
+  top: 50%; /*<-------??? */
   transform: translateY(-50%)
 }
 
 .fieldContainer{
   grid-area: fieldContainer;
   position: absolute;
-  top: 20;
   line-height: 1.2em;
-  font-size: 15px;
+  font-size: 14px;
   height: 80%;
+  width: 93%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .archEntryContainer {
@@ -213,27 +215,25 @@ textarea {
 }
 
 .userCommentContainer{
-    /* hide text if it more than N lines  */
-    overflow: hidden;
-    /* for set '...' in absolute position */
-    position: relative; 
-    /* use this value to count block height */
-    line-height: 1.2em;
-    /* max-height = line-height (1.2) * lines max number (3) */
-    max-height: 3.6em; 
-    /* fix problem when last visible word doesn't adjoin right side  */
-    text-align: justify;
-    /* place for '...' */
-    margin-right: -1em;
-    padding-right: 1em;
+    overflow: hidden; /* <-------this */
+    position: relative;
+    max-height: 7em; /* <------this */
+    text-align: left;
 }
-
+/*
 .userCommentContainer:before {
-  /* points in the end */
   content: '...';
-  /* absolute position */
   position: absolute;
-  /* set position to right bottom corner of block */
   right: 0;
   bottom: 0;
 }
+
+.userCommentContainer:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+} */

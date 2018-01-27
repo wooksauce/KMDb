@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
+import $ from 'jQuery';
 
 class MovieArchiveEntry extends Component{
   constructor(props) {
     super(props)
+    this.state = {
+      expanded: false,
+    }
+    this.handleExpand = this.handleExpand.bind(this);
   }
 
-  handleExpand(n) {
-    //change nth-child's style here
-  }
-
-  handleCollapse () {
-
+  handleExpand(e) {
+    $(e.target).closest(".archEntryContainer").css({
+      'height': 'auto',
+    })
+    $(e.target).closest(".archEntryContainer").find(".userCommentContainer").css({
+      'max-height': '100%',
+    })
+    // console.log('expanded', this.state.expanded)
   }
 
   render() {
@@ -22,7 +29,7 @@ class MovieArchiveEntry extends Component{
     const nth = this.props.nth;
     // console.log('nth',nth)
     return (
-      <div className="archEntryContainer nth">
+      <div className="archEntryContainer nth" onClick={(e) => this.handleExpand(e)}>
         <div className="archEntry posterContainer">
           <img className="userArchPoster" src={posterUrl} height="170px" />
         </div>

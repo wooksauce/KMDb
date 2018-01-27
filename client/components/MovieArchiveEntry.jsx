@@ -10,14 +10,24 @@ class MovieArchiveEntry extends Component{
     this.handleExpand = this.handleExpand.bind(this);
   }
 
-  handleExpand(e) {
-    $(e.target).closest(".archEntryContainer").css({
-      'height': 'auto',
-    })
-    $(e.target).closest(".archEntryContainer").find(".userCommentContainer").css({
-      'max-height': '100%',
-    })
-    // console.log('expanded', this.state.expanded)
+  handleExpand(el) {
+    if (!this.state.expanded) {
+      $(el).closest(".archEntryContainer").css({
+        'height': 'auto',
+      });
+      $(el).closest(".archEntryContainer").find(".userCommentContainer").css({
+        'max-height': '100%',
+      });
+      this.setState({expanded: true});
+    } else {
+      $(el).closest(".archEntryContainer").css({
+        'height': '200px',
+      });
+      $(el).closest(".archEntryContainer").find(".userCommentContainer").css({
+        'max-height': '7em',
+      });
+      this.setState({expanded: false});
+    }
   }
 
   render() {
@@ -29,7 +39,7 @@ class MovieArchiveEntry extends Component{
     const nth = this.props.nth;
     // console.log('nth',nth)
     return (
-      <div className="archEntryContainer nth" onClick={(e) => this.handleExpand(e)}>
+      <div className="archEntryContainer nth" onClick={(e) => this.handleExpand(e.target)}>
         <div className="archEntry posterContainer">
           <img className="userArchPoster" src={posterUrl} height="170px" />
         </div>

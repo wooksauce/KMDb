@@ -194,7 +194,7 @@ textarea {
   position: relative;
   line-height: 1.2em;
   font-size: 14px;
-  width: 93%;
+  width: 95%;
   padding: 15 0;
   /* height: 80%; */
   /* top: 50%;
@@ -207,11 +207,11 @@ textarea {
   max-width: 60%;
   position: relative;
   height: 200px;
-  -moz-transition: height 500ms;
+  /* -moz-transition: height 500ms;
   -ms-transition: height 500ms;
   -o-transition: height 500ms;
   -webkit-transition: height 500ms;
-  transition: max-height 500ms;
+  transition: max-height 500ms; */
   margin: 30 30 30 0;
   background: rgba(15, 15, 15, 0.7);
   display: grid;
@@ -227,6 +227,22 @@ textarea {
     max-height: 7em; /* <------this */
     text-align: left;
 }
+
+.archEditButton{
+  margin: 5px;
+  position: absolute;
+  top: 10;
+}
+
+.archEditButton.fa-edit {
+  right: 20;
+}
+
+.archEditButton.fa-trash-alt {
+  right: 0;
+}
+
+
 /*
 .userCommentContainer:before {
   content: '...';

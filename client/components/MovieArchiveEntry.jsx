@@ -36,8 +36,6 @@ class MovieArchiveEntry extends Component{
     if (!title) {
       return null;
     }
-    const nth = this.props.nth;
-    // console.log('nth',nth)
     return (
       <div className="archEntryContainer nth" onClick={(e) => this.handleExpand(e.target)}>
         <div className="archEntry posterContainer">
@@ -65,6 +63,10 @@ class MovieArchiveEntry extends Component{
               <span className="field archText">My Comment:&nbsp;</span>
               {userComment}
             </p>
+          </div>
+          <div className="archButtonContainer">
+            <span className="far fa-edit archEditButton"></span>
+            <span className="far fa-trash-alt archEditButton"></span>
           </div>
         </div>
       </div>

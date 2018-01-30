@@ -207,13 +207,18 @@ textarea {
   max-width: 60%;
   position: relative;
   height: 200px;
+  -moz-transition: height 500ms;
+  -ms-transition: height 500ms;
+  -o-transition: height 500ms;
+  -webkit-transition: height 500ms;
+  transition: max-height 500ms;
   margin: 30 30 30 0;
   background: rgba(15, 15, 15, 0.7);
   display: grid;
   grid-template-columns: 150px 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-  "posterContainer fieldContainer"
+  "posterContainer fieldContainer";
 }
 
 .userCommentContainer{

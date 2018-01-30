@@ -20,17 +20,20 @@ class MovieContainer extends Component {
   }
 
   render() {
+    const search = this.props.search;
     return(
       <div className="movieContainer">
         <div className="searchContainer">
-          <Search search={this.props.search} />
+          <Search search={search} />
         </div>
         <div className="posterArea">
           <Carousel carousel={this.props.carousel} />
         </div>
-        <div className="userMoviesContainer">
-          <UserMovies movies={this.props.movies}/>
-        </div>
+        {!search &&
+          <div className="userMoviesContainer">
+            <UserMovies movies={this.props.movies}/>
+          </div>
+        }
         <div className="searchResultsArea">
           <UDbSearchResults udbResults={this.props.udbResults} />
           <IMDbSearchResults imdbResults={this.props.imdbResults} />

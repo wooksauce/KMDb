@@ -33,9 +33,8 @@ class MovieArchiveEntry extends Component{
   }
 
   handleDelete(e, movieId) {
-    console.log('i have e', e, movieId)
     if (!e) var e = window.event;
-    e.cancelBubble = true;
+    // e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
     axios.delete(`api/deleteMovie/${movieId}`)
   }
@@ -47,7 +46,7 @@ class MovieArchiveEntry extends Component{
       return null;
     }
     return (
-      <div className="archEntryContainer nth" onClick={(e) => this.handleExpand(e.target)}>
+      <div className="archEntryContainer nth" onClick={(e)=>this.handleExpand(e.target)}>
         <div className="archEntry posterContainer">
           <img className="userArchPoster" src={posterUrl} height="170px" />
         </div>
@@ -74,9 +73,11 @@ class MovieArchiveEntry extends Component{
               {userComment}
             </p>
           </div>
-          <div className="archButtonContainer">
+          <div className="archButtonContainer" >
             <span className="far fa-edit archEditButton"></span>
-            <span className="far fa-trash-alt archEditButton" onClick={(e) => this.handleDelete(e, id)}></span>
+            <div className="archEditButtonContainer" onClick={(e)=>this.handleDelete(e, id)}>
+              <span className="far fa-trash-alt archEditButton"></span>
+            </div>
           </div>
         </div>
       </div>

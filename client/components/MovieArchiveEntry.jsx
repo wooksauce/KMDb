@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 
 class MovieArchiveEntry extends Component{
   constructor(props) {
@@ -8,6 +9,7 @@ class MovieArchiveEntry extends Component{
       expanded: false,
     }
     this.handleExpand = this.handleExpand.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleExpand(el) {
@@ -30,9 +32,17 @@ class MovieArchiveEntry extends Component{
     }
   }
 
+  handleDelete(e, movieId) {
+    console.log('i have e', e, movieId)
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
+    axios.delete(`api/deleteMovie/${movieId}`)
+  }
+
   render() {
     console.log('movie here', this.props.movie)
-    const { title, posterUrl, year, genre, imdbRating, userRating, userComment } = this.props.movie
+    const { title, posterUrl, year, genre, imdbRating, userRating, userComment, id } = this.props.movie
     if (!title) {
       return null;
     }
@@ -66,7 +76,7 @@ class MovieArchiveEntry extends Component{
           </div>
           <div className="archButtonContainer">
             <span className="far fa-edit archEditButton"></span>
-            <span className="far fa-trash-alt archEditButton"></span>
+            <span className="far fa-trash-alt archEditButton" onClick={(e) => this.handleDelete(e, id)}></span>
           </div>
         </div>
       </div>

@@ -46,7 +46,6 @@ export const moviesFetchIMDbSearch = (searchStr) => {
   return (dispatch) => {
     axios.get('/api/searchIMDbMovies/' + searchStr)
       .then(({ data }) => {
-        console.log('im in search imdb action');
         dispatch(moviesIMDbSearchResult(data.results));
       })
       .catch((err) => {

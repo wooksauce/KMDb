@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { moviesFetchData } from '../actions/moviesActions'
 
 class MovieArchiveEntry extends Component{
   constructor(props) {
@@ -36,11 +38,16 @@ class MovieArchiveEntry extends Component{
     if (!e) var e = window.event;
     // e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
-    axios.delete(`api/deleteMovie/${movieId}`)
+    let t = this;
+    if (confirm('You sure?')) {
+      axios.delete(`api/deleteMovie/${movieId}`)
+        .then(() => {
+          this.props.fetchAllMovies();
+        })
+    }
   }
 
   render() {
-    console.log('movie here', this.props.movie)
     const { title, posterUrl, year, genre, imdbRating, userRating, userComment, id } = this.props.movie
     if (!title) {
       return null;
@@ -85,4 +92,12 @@ class MovieArchiveEntry extends Component{
   }
 }
 
-export default MovieArchiveEntry;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchAllMovies: () => {
+      dispatch(moviesFetchData());
+    },
+  }
+}
+
+export default connect(null, mapDispatchToProps) (MovieArchiveEntry);

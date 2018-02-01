@@ -8,13 +8,10 @@ class UserMovies extends Component {
 
   render() {
     const userMovies = this.props.movies;
-    console.log('archive', userMovies)
     if (!userMovies || !userMovies.length) {
-      console.log('why am i here')
       return null;
     }
     const archiveMovies = makeMovieEntry(userMovies);
-    console.log('im here')
     return (
       <div>
         {archiveMovies}
@@ -25,12 +22,11 @@ class UserMovies extends Component {
 
 const makeMovieEntry = (movies = []) => {
   if (movies.length) {
-    return movies.map((movie, idx) => {
+    return movies.map((movie) => {
       return (
         <MovieArchiveEntry
           key={movie.id}
           movie={movie}
-          nth={idx + 1}
         />
       )
     })

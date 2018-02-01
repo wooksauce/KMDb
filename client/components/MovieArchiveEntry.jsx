@@ -39,9 +39,7 @@ class MovieArchiveEntry extends Component{
   }
 
   handleEdit(e) {
-    this.setState({
-      showEditModal: true
-    })
+    this.setState({showEditModal: true})
   }
 
   handleCloseModal () {
@@ -96,7 +94,7 @@ class MovieArchiveEntry extends Component{
             </p>
           </div>
           <div className="archButtonContainer" >
-            <div className="archEditButtonContainer" onClick={(e)=>this.handleEdit(e, userRating, userComment)}>
+            <div className="archEditButtonContainer" onClick={(e)=>this.handleEdit(e)}>
               <span className="far fa-edit archEditButton"></span>
             </div>
             <ArchEditModal

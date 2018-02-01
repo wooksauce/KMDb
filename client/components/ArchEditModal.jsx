@@ -13,7 +13,13 @@ class ArchEditModal extends Component {
         style={
           {
           content:{
-            width:'400px',
+            border: '0',
+            borderRadius: '4px',
+            height: '50%',  // set height
+            top: '50%', // start from center
+            left: '50%',
+            transform: 'translate(-50%,-50%)', // adjust top "up" based on height
+            width: '50%',
           }
         }
         }
@@ -37,7 +43,7 @@ class ArchEditModal extends Component {
               required
             />
           </div>
-          <div>
+          <div className="userComment">
             <label htmlFor="userComment"></label>
             <textarea
               id="userComment"

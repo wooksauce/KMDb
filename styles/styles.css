@@ -137,6 +137,7 @@
 
 textarea {
   resize: none;
+  overflow-y: scroll
 }
 
 .imdbDelbutton {
@@ -166,9 +167,17 @@ textarea {
   vertical-align: middle;
 }
 
+.entryModalTitle, #userMovieRating {
+  left: 15%;
+}
+
 #userComment {
-  width: 400px;
-  height: 240px;
+  width: 70%;
+  height: 60%;
+  display: block;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .archEntry .field {

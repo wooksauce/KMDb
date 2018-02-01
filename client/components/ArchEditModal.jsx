@@ -13,13 +13,14 @@ class ArchEditModal extends Component {
         style={
           {
           content:{
+            background: 'white',
             border: '0',
             borderRadius: '4px',
-            height: '50%',  // set height
-            top: '50%', // start from center
+            width: '50%',
+            height: '40%',
+            top: '50%',
             left: '50%',
             transform: 'translate(-50%,-50%)', // adjust top "up" based on height
-            width: '50%',
           }
         }
         }
@@ -29,8 +30,9 @@ class ArchEditModal extends Component {
         appElement={document.getElementById('app')}
       >
         <p className="entryModalTitle">Modal Title Goes Here</p>
+        <br />
         <form>
-          <div>
+          <div className="modalMovieRating">
             <label htmlFor="userMovieRating"> Your Rating: </label>
             <input
               id="userMovieRating"
@@ -43,26 +45,29 @@ class ArchEditModal extends Component {
               required
             />
           </div>
-          <div className="userComment">
-            <label htmlFor="userComment"></label>
+          <div className="modalUserComment">
+            <label className="modalCommentText" htmlFor="userComment"> Your Comment: </label>
             <textarea
               id="userComment"
               defaultValue={this.props.userComment}
-              onChange={(e) => this.handleMyComment(e.target.value)}
+              // onChange={(e) => this.handleMyComment(e.target.value)}
             >
             </textarea>
           </div>
-          <div>
+          <div className="modalSaveButton">
             <button
+              className="modalButton"
               type="button"
-              className="userInfoSaveButton"
+              // className="modalSaveButton"
               // onClick={this.handleSave}
             >
             Save
             </button>
           </div>
         </form>
-        <button onClick={this.handleCloseModal}>Close Modal</button>
+        <div className="modalCloseButton">
+          <button className="modalButton" onClick={this.props.handleCloseModal}>Close</button>
+        </div>
       </Modal>
     )
   }

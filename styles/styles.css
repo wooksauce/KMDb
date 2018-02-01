@@ -167,17 +167,30 @@ textarea {
   vertical-align: middle;
 }
 
-.entryModalTitle, #userMovieRating {
-  left: 15%;
+.entryModalTitle {
+  /* color:#e2e2e2; */
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.modalMovieRating, .modalCommentText {
+  margin: 5px 5%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
 }
 
 #userComment {
-  width: 70%;
-  height: 60%;
+  width: 90%;
+  height: 55%;
   display: block;
   align-self: center;
   margin-left: auto;
   margin-right: auto;
+  font-size: 12px;
+  border-width: 2;
+  border-color: #8e8fa7;
+  border-radius: 3px;
+  padding: 2 5;
 }
 
 .archEntry .field {
@@ -251,10 +264,21 @@ textarea {
   right: 0;
 }
 
-.modal {
+.modalSaveButton, .modalCloseButton {
+  text-align: center;
+  margin: 10px;
+}
+
+.modalButton {
+  padding: 1 4 3 4px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+/* .modal {
   width: 500px;
   height: 500px;
-}
+} */
 /*
 .userCommentContainer:before {
   content: '...';

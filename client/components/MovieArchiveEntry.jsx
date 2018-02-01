@@ -3,15 +3,19 @@ import $ from 'jquery';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { moviesFetchData } from '../actions/moviesActions'
+import ArchEditModal from './ArchEditModal'
 
 class MovieArchiveEntry extends Component{
   constructor(props) {
     super(props)
     this.state = {
       expanded: false,
+      showEditModal: false,
     }
     this.handleExpand = this.handleExpand.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   handleExpand(el) {
@@ -34,6 +38,16 @@ class MovieArchiveEntry extends Component{
     }
   }
 
+  handleEdit(e) {
+    this.setState({
+      showEditModal: true
+    })
+  }
+
+  handleCloseModal () {
+    this.setState({showEditModal: false});
+  }
+
   handleDelete(e, movieId) {
     if (!e) var e = window.event;
     // e.cancelBubble = true;
@@ -46,6 +60,7 @@ class MovieArchiveEntry extends Component{
         })
     }
   }
+
 
   render() {
     const { title, posterUrl, year, genre, imdbRating, userRating, userComment, id } = this.props.movie
@@ -81,9 +96,17 @@ class MovieArchiveEntry extends Component{
             </p>
           </div>
           <div className="archButtonContainer" >
-            <span className="far fa-edit archEditButton"></span>
-            <div className="archEditButtonContainer" onClick={(e)=>this.handleDelete(e, id)}>
-              <span className="far fa-trash-alt archEditButton"></span>
+            <div className="archEditButtonContainer" onClick={(e)=>this.handleEdit(e, userRating, userComment)}>
+              <span className="far fa-edit archEditButton"></span>
+            </div>
+            <ArchEditModal
+              showModal={this.state.showEditModal}
+              userRating={userRating}
+              userComment={userComment}
+              handleCloseModal={this.handleCloseModal}
+            />
+            <div className="archDelButtonContainer" onClick={(e)=>this.handleDelete(e, id)}>
+              <span className="far fa-trash-alt archDelButton"></span>
             </div>
           </div>
         </div>

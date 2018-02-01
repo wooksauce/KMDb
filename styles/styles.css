@@ -228,17 +228,17 @@ textarea {
     text-align: left;
 }
 
-.archEditButton{
+.archDelButton, .archEditButton{
   margin: 5px;
   position: absolute;
   top: 10;
 }
 
-.archEditButton.fa-edit {
+.archEditButton {
   right: 20;
 }
 
-.archEditButton.fa-trash-alt {
+.archDelButton {
   right: 0;
 }
 

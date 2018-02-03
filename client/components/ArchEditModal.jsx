@@ -16,6 +16,8 @@ class ArchEditModal extends Component {
             background: 'white',
             border: '0',
             borderRadius: '4px',
+            minHeight: '200px',
+            maxHeight: '280px',
             width: '50%',
             height: '40%',
             top: '50%',

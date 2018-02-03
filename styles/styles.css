@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.appGrid {
+/* .appGrid {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: grid;
   grid-template-columns: 1fr;
@@ -33,7 +33,7 @@
   justify-self: center;
   align-self: center;
   font-size: 1.8em;
-}
+} */
 
 .movieContainer {
   display: grid;
@@ -181,7 +181,7 @@ textarea {
 
 #userComment {
   width: 90%;
-  height: 55%;
+  height: 45%;
   display: block;
   align-self: center;
   margin-left: auto;

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Search from '../components/Search';
 import MovieContainer from '../container/MovieContainer';
 import axios from 'axios';
+import classNames from 'classnames/bind'
+import styles from './app.scss'
+const cx = classNames.bind(styles);
 
 class App extends Component {
   constructor() {
@@ -10,12 +13,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="basePage appGrid">
-        <div className="topHeader">
-          <a href="/" className="siteLogo">
+      <div className={cx('appGrid')}>
+        <div className={cx('topHeader')}>
+          <a href="/" className={cx('siteLogo')}>
             <img src='https://image.ibb.co/jprur5/KMDb.png' width="130" />
           </a>
-          <h1 className="mainTitle">Kiwook's Movie Database</h1>
+          <h1 className={cx('mainTitle')}>Kiwook's Movie Database</h1>
         </div>
         <MovieContainer />
       </div>

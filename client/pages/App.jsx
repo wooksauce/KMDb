@@ -3,7 +3,7 @@ import Search from '../components/Search';
 import MovieContainer from '../container/MovieContainer';
 import axios from 'axios';
 import classNames from 'classnames/bind'
-import styles from './app.scss'
+import styles from './scss/app.scss'
 const cx = classNames.bind(styles);
 
 class App extends Component {

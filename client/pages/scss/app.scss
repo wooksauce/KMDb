@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.appGrid {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "topHeader"
+  "movieCon"
+}
+
+.topHeader {
+  background: rgb(243, 243, 243);
+  padding: 1%;
+  display: grid;
+  grid-area: topHeader;
+  grid-template-columns: 20% 30% 30% 20%;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "siteLogo mainTitle mainTitle ."
+}
+
+.siteLogo {
+  grid-area: siteLogo;
+}
+
+.mainTitle {
+  grid-area: mainTitle;
+  justify-self: center;
+  align-self: center;
+  font-size: 1.8em;
+}

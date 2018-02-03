@@ -8,6 +8,10 @@ import UDbSearchResults from '../components/UDbMoviesSearched';
 import IMDbSearchResults from '../components/IMDbMoviesSearched';
 import Carousel from '../components/MovieCarousel';
 import UserMovies from '../components/UserMovies';
+import classNames from 'classnames/bind';
+import styles from './scss/movieContainer.scss'
+
+const cx = classNames.bind(styles);
 
 class MovieContainer extends Component {
   constructor(props) {
@@ -22,19 +26,19 @@ class MovieContainer extends Component {
   render() {
     const search = this.props.search;
     return(
-      <div className="movieContainer">
-        <div className="searchContainer">
+      <div className={cx('movieContainer')}>
+        <div className={cx('searchContainer')}>
           <Search search={search} />
         </div>
-        <div className="posterArea">
+        <div className={cx('posterArea')}>
           <Carousel carousel={this.props.carousel} />
         </div>
         {!search &&
-          <div className="userMoviesContainer">
+          <div className={cx('userMoviesContainer')}>
             <UserMovies movies={this.props.movies}/>
           </div>
         }
-        <div className="searchResultsArea">
+        <div className={cx('searchResultsArea')}>
           <UDbSearchResults udbResults={this.props.udbResults} />
           <IMDbSearchResults imdbResults={this.props.imdbResults} />
         </div>

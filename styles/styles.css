@@ -35,7 +35,7 @@
   font-size: 1.8em;
 } */
 
-.movieContainer {
+/* .movieContainer {
   display: grid;
   grid-area: movieCon;
   grid-template-columns: 1fr;
@@ -58,9 +58,9 @@
   background-color: rgb(15, 15, 15);
   grid-area: posterArea;
   position: relative;
-}
+} */
 
-.searchResultsArea {
+/* .searchResultsArea {
   width: 100%;
   grid-area: searchResultsArea;
   display: grid;
@@ -68,7 +68,7 @@
   grid-template-rows: auto;
   grid-template-areas:
   "imdbResCon udbResCon"
-}
+} */
 
 .searchBar {
   text-align: center;

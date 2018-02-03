@@ -1,0 +1,27 @@
+.searchBar {
+  text-align: center;
+}
+
+.searchForm, .searchButton {
+  display: inline-block;
+  padding: 1px;
+}
+
+.searchForm {
+  padding: 0 5px;
+}
+
+.searchMovieTitle {
+  height: 25px;
+  width: 200px;
+  vertical-align: middle;
+  padding: 0 5px;
+}
+
+.searchButton {
+  cursor: pointer;
+  height: 25px;
+  width: 50px;
+  border-radius: 6px;
+  vertical-align: middle;
+}

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { moviesIMDbSearchTitle, moviesFetchUDbSearch, moviesFetchIMDbSearch } from '../actions/moviesActions'
+import classNames from 'classnames/bind';
+import styles from './scss/search.scss'
+
+const cx = classNames.bind(styles);
 
 class Search extends Component {
   constructor(props) {
@@ -26,17 +29,17 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="searchBar">
-        <form className="searchForm">
+      <div className={cx('searchBar')}>
+        <form className={cx('searchForm')}>
           <input
-            className="movieTitle"
+            className={cx('searchMovieTitle')}
             type="text"
             placeholder="Find Movies!"
             onChange={(e) => this.handleSearchTyping(e)}
             onKeyPress={(e) => this.keyPressEnter(e)}
           />
         </form>
-        <button className="searchButton" onClick={() => this.searchForTitle()}> Search </button>
+        <button className={cx('searchButton')} onClick={() => this.searchForTitle()}> Search </button>
       </div>
     )
   }

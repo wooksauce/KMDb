@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import MovieEntry from './MovieEntry';
+import classNames from 'classnames/bind';
+import styles from './scss/imdbMoviesSearched.scss';
+
+const cx = classNames.bind(this);
 
 export default class ImdbMoviesSearched extends Component {
   constructor(props) {
@@ -13,9 +17,9 @@ export default class ImdbMoviesSearched extends Component {
     }
     const imdbMovies = makeMovieEntry(imdbResults);
     return(
-      <div className="imdbResultsContainer searchList">
-        <div className="imdbResultsTitle">
-          <p className="imdbResultsTitleText"> From IMDb </p>
+      <div className={cx('imdbResultsContainer', 'searchList')}>
+        <div className={cx('imdbResultsTitle')}>
+          <p className={cx('imdbResultsTitleText')}> From IMDb </p>
         </div>
         {imdbMovies}
       </div>
@@ -26,6 +30,11 @@ export default class ImdbMoviesSearched extends Component {
 //same as the one in UDbMoviesSearched. Should I have this in container level? or import it?
 const makeMovieEntry = (movies = []) => {
   if (movies.length) {
-    return movies.map((movie) => <MovieEntry movie={movie} imdb={true} key={movie.imdbid} />)
+    return movies.map((movie) =>
+      <MovieEntry
+        movie={movie}
+        imdb={true}
+        key={movie.imdbid}
+      />)
   }
 }

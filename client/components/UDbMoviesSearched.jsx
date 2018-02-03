@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import MovieEntry from './MovieEntry';
+import classNames from 'classnames/bind';
+import styles from './scss/udbMoviesSearched.scss';
+
+const cx = classNames.bind(this);
 
 export default class UDbMoviesSearched extends Component {
   constructor(props) {
@@ -13,9 +17,9 @@ export default class UDbMoviesSearched extends Component {
     }
     const udbMovies = makeMovieEntry(udbResults);
     return (
-      <div className="udbResultsContainer searchList">
-        <div className="udbResultsTitle">
-          <p className="udbResultsTitleText"> From UDb </p>
+      <div className={cx('udbResultsContainer', 'searchList')}>
+        <div className={cx('udbResultsTitle')}>
+          <p className={cx('udbResultsTitleText')}> From UDb </p>
         </div>
         {udbMovies}
       </div>

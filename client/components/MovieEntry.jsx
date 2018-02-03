@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
+import classNames from 'classnames/bind';
+import styles from './scss/movieEntry.scss';
+
+const cx = classNames.bind(styles);
 
 export default class MovieEntry extends Component {
   constructor(props) {
@@ -18,8 +22,8 @@ export default class MovieEntry extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleOpenModal (resultSrc) {
-    if (resultSrc === 'imdb') {
+  handleOpenModal (bool) {
+    if (bool) {
       this.setState({showModal: true});
     }
   }
@@ -55,8 +59,9 @@ export default class MovieEntry extends Component {
 
   render() {
     const { title, poster, posterUrl, year, genre, userRating, userComment, id } = this.props.movie;
-    const imdb = this.props.imdb;
-    const resultSource = imdb ? 'imdb' : 'udb'
+    // const imdb = this.props.imdb;
+    // const resultSource = imdb ? 'imdb' : 'udb'
+    const fromImdb = this.props.imdb;;
     let posterToDisplay
     if (posterUrl) {
       posterToDisplay = posterUrl;
@@ -66,10 +71,10 @@ export default class MovieEntry extends Component {
       posterToDisplay = 'https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF';
     }
     return(
-      <div className={resultSource + "MovieEntry"}>
-        <div className={resultSource + "MovieEntryContainer"} onClick={() => this.handleOpenModal(resultSource)}>
+      <div className={cx({fromImdb: fromImdb}, 'movieEntry')}>
+        <div className={cx({fromImdb: fromImdb}, 'MovieEntryContainer')} onClick={() => this.handleOpenModal(fromImdb)}>
         <Modal
-           isOpen={this.state.showModal}
+           isOpen={this.state.showModal}r
            contentLabel="onRequestClose Example"
            onRequestClose={this.handleCloseModal}
            appElement={document.getElementById('app')}
@@ -109,21 +114,21 @@ export default class MovieEntry extends Component {
           </form>
           <button onClick={this.handleCloseModal}>Close Modal</button>
         </Modal>
-          <img className={resultSource + "MovieEntryPoster"} src={posterToDisplay} width='140'/>
-          <div className={resultSource + "MovieInfoContainer"}>
-            <div className={resultSource + "ImdbInfo"}>
-              <span className={resultSource + "MovieEntryTitle"}> Title: </span>
-              <span className={resultSource + "Info title"}> {title} </span>
-              <div className={resultSource + "Info year"}> {year} </div>
-              <div className={resultSource + "Info genre"}> {genre} </div>
+          <img className={cx({fromImdb: fromImdb}, 'movieEntryPoster')} src={posterToDisplay} width='140'/>
+          <div className={cx({fromImdb: fromImdb}, 'movieInfoContainer')}>
+            <div className={cx({fromImdb: fromImdb}, 'imdbInfo')}>
+              <span className={cx({fromImdb: fromImdb}, 'movieEntryTitle')}> Title: </span>
+              <span className={cx({fromImdb: fromImdb}, 'info', 'title')}> {title} </span>
+              <div className={cx({fromImdb: fromImdb}, 'info', 'year')}> {year} </div>
+              <div className={cx({fromImdb: fromImdb}, 'info', 'genre')}> {genre} </div>
               {/* <div className={resultSource + "Info rating"}> {imdbRating} </div> */}
             </div>
-            <div className={resultSource + "MyInfo"}>
-              <div className={resultSource + "Info myRating"}> {userRating} </div>
-              <div className={resultSource + "Info comments"}> {userComment} </div>
+            <div className={cx({fromImdb: fromImdb}, 'userInfo')}>
+              <div className={cx({fromImdb: fromImdb}, 'info', 'userRating')}> {userRating} </div>
+              <div className={cx({fromImdb: fromImdb}, 'info', 'userComments')}> {userComment} </div>
             </div>
             <button
-              className={resultSource + "DelButton"}
+              className={cx({fromImdb: fromImdb}, 'delButton')}
               onClick={() => this.handleDelete(id)}
             >
             x

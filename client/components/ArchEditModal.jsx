@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import classNames from 'classnames/bind';
+import styles from './scss/archEditModal.scss';
+
+const cx = classNames.bind(this);
 
 class ArchEditModal extends Component {
   constructor(props) {
@@ -34,10 +38,10 @@ class ArchEditModal extends Component {
         <p className="entryModalTitle">Modal Title Goes Here</p>
         <br />
         <form>
-          <div className="modalMovieRating">
+          <div className={cx('modalMovieRating')}>
             <label htmlFor="userMovieRating"> Your Rating: </label>
             <input
-              id="userMovieRating"
+              id={cx('userMovieRating')}
               type="number"
               step="0.1"
               min="1"
@@ -47,8 +51,8 @@ class ArchEditModal extends Component {
               required
             />
           </div>
-          <div className="modalUserComment">
-            <label className="modalCommentText" htmlFor="userComment"> Your Comment: </label>
+          <div className={cx('modalUserComment')}>
+            <label className={cx('modalCommentText')} htmlFor="userComment"> Your Comment: </label>
             <textarea
               id="userComment"
               defaultValue={this.props.userComment}
@@ -56,9 +60,9 @@ class ArchEditModal extends Component {
             >
             </textarea>
           </div>
-          <div className="modalSaveButton">
+          <div className={cx('modalSaveButton')}>
             <button
-              className="modalButton"
+              className={cx('modalButton')}
               type="button"
               // className="modalSaveButton"
               // onClick={this.handleSave}
@@ -67,8 +71,8 @@ class ArchEditModal extends Component {
             </button>
           </div>
         </form>
-        <div className="modalCloseButton">
-          <button className="modalButton" onClick={this.props.handleCloseModal}>Close</button>
+        <div className={cx('modalCloseButton')}>
+          <button className={cx('modalButton')} onClick={this.props.handleCloseModal}>Close</button>
         </div>
       </Modal>
     )

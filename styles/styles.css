@@ -70,25 +70,18 @@
   "imdbResCon udbResCon"
 } */
 
-.searchBar {
+/* .searchBar {
   text-align: center;
-}
+} */
 
-.carouselContainer {
+/* .carouselContainer {
   height: 100%;
   grid-area: carouselCon;
   justify-self: center;
-}
-
-.imdbResultsContainer {
-  grid-area: imdbResCon;
-}
-
-.udbResultsContainer {
-  grid-area: udbResCon;
-}
+} */
 
 
+/* 
 .carouselImgContainer {
   height: 300px;
   width: 200px;
@@ -133,42 +126,110 @@
 .prev, .arrowLeft {
   left: 0;
   display: inline-block;
-}
+} */
 
-textarea {
-  resize: none;
-  overflow-y: scroll
-}
-
-.imdbDelbutton {
-  display: none;
-}
-
-.searchForm, .searchButton {
+/* .searchForm, .searchButton {
   display: inline-block;
   padding: 1px;
 }
 
 .searchForm {
   padding: 0 5px;
+} */
+
+/* .archEntry .field {
+  display: inline-block;
 }
 
-.movieTitle {
+.posterContainer, .fieldContainer {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.posterContainer {
+  grid-area: posterContainer;
+  position: relative;
+  left: 15px;
+  padding: 15 0;
+}
+
+.fieldContainer{
+  grid-area: fieldContainer;
+  position: relative;
+  line-height: 1.2em;
+  font-size: 14px;
+  width: 95%;
+  padding: 15 0;
+}
+
+.archEntryContainer {
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 60%;
+  position: relative;
+  height: 200px;
+  margin: 30 30 30 0;
+  background: rgba(15, 15, 15, 0.7);
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "posterContainer fieldContainer";
+}
+
+.userCommentContainer{
+    overflow: hidden;
+    position: relative;
+    max-height: 7em;
+    text-align: left;
+}
+
+.archDelButton, .archEditButton{
+  margin: 5px;
+  position: absolute;
+  top: 10;
+}
+
+.archEditButton {
+  right: 20;
+}
+
+.archDelButton {
+  right: 0;
+} */
+
+/* .searchMovieTitle {
   height: 25px;
   width: 200px;
   vertical-align: middle;
   padding: 0 5px;
-}
-.searchButton {
+} */
+/* .searchButton {
   cursor: pointer;
   height: 25px;
   width: 50px;
   border-radius: 6px;
   vertical-align: middle;
-}
+} */
 
+/* .imdbResultsContainer {
+  grid-area: imdbResCon;
+} */
+
+/* .udbResultsContainer {
+  grid-area: udbResCon;
+} */
+
+/* textarea {
+  resize: none;
+  overflow-y: scroll
+} */
+
+/* .delbutton {
+  display: none;
+} */
+/* 
 .entryModalTitle {
-  /* color:#e2e2e2; */
   text-align: center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -193,76 +254,6 @@ textarea {
   padding: 2 5;
 }
 
-.archEntry .field {
-  display: inline-block;
-}
-
-.posterContainer, .fieldContainer {
-  display: inline-block;
-  vertical-align: text-top;
-}
-
-.posterContainer {
-  grid-area: posterContainer;
-  position: relative;
-  left: 15px;
-  padding: 15 0;
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
-}
-
-.fieldContainer{
-  grid-area: fieldContainer;
-  position: relative;
-  line-height: 1.2em;
-  font-size: 14px;
-  width: 95%;
-  padding: 15 0;
-  /* height: 80%; */
-  /* top: 50%;
-  transform: translateY(-50%); */
-}
-
-.archEntryContainer {
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 60%;
-  position: relative;
-  height: 200px;
-  /* -moz-transition: height 500ms;
-  -ms-transition: height 500ms;
-  -o-transition: height 500ms;
-  -webkit-transition: height 500ms;
-  transition: max-height 500ms; */
-  margin: 30 30 30 0;
-  background: rgba(15, 15, 15, 0.7);
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-  "posterContainer fieldContainer";
-}
-
-.userCommentContainer{
-    overflow: hidden; /* <-------this */
-    position: relative;
-    max-height: 7em; /* <------this */
-    text-align: left;
-}
-
-.archDelButton, .archEditButton{
-  margin: 5px;
-  position: absolute;
-  top: 10;
-}
-
-.archEditButton {
-  right: 20;
-}
-
-.archDelButton {
-  right: 0;
-}
 
 .modalSaveButton, .modalCloseButton {
   text-align: center;
@@ -273,7 +264,7 @@ textarea {
   padding: 1 4 3 4px;
   font-size: 12px;
   border-radius: 4px;
-}
+} */
 
 /* .modal {
   width: 500px;

@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import classNames from 'classnames/bind';
+import styles from './scss/movieCarousel.scss'
+
+const cx = classNames.bind(styles);
 
 class MovieCarousel extends Component {
   constructor(props) {
@@ -36,17 +40,17 @@ class MovieCarousel extends Component {
       'backgroundImage': `url(${slide.posterUrl})`,
     }
     return(
-      <div className="carouselContainer">
-        <div className="carouselImgContainer">
+      <div className={cx('carouselContainer')}>
+        <div className={cx('carouselImgContainer')}>
           <div
-            className="carouselImg"
+            className={cx('carouselImg')}
             style={imgStyles}
           />
-          <div className="prev" onClick={()=>this.clickPrev()}>
-            <span className="arrows arrowLeft">&#8249;</span>
+          <div className={cx('prev')} onClick={()=>this.clickPrev()}>
+            <span className={cx('arrowLeft', 'arrows')}>&#8249;</span>
           </div>
-          <div className="next" onClick={()=>this.clickNext()}>
-            <span className="arrows arrowRight">&#8250;</span>
+          <div className={cx('next')} onClick={()=>this.clickNext()}>
+            <span className={cx('arrowRight', 'arrows')}>&#8250;</span>
           </div>
         </div>
       </div>

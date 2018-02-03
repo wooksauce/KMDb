@@ -1,0 +1,41 @@
+textarea {
+  resize: none;
+  overflow-y: scroll
+}
+
+.entryModalTitle {
+  /* color:#e2e2e2; */
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.modalMovieRating, .modalCommentText {
+  margin: 5px 5%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+#userComment {
+  width: 90%;
+  height: 45%;
+  display: block;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  border-width: 2;
+  border-color: #8e8fa7;
+  border-radius: 3px;
+  padding: 2 5;
+}
+
+.modalSaveButton, .modalCloseButton {
+  text-align: center;
+  margin: 10px;
+}
+
+.modalButton {
+  padding: 1 4 3 4px;
+  font-size: 12px;
+  border-radius: 4px;
+}

@@ -30,12 +30,16 @@
   position: relative;
   height: 200px;
   margin: 30 30 30 0;
-  background: rgba(15, 15, 15, 0.7);
+  border-radius: 5px;
+  background: white;
   display: grid;
   grid-template-columns: 150px 1fr;
   grid-template-rows: auto;
   grid-template-areas:
   "posterContainer fieldContainer";
+  &:hover {
+    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .userCommentContainer{
@@ -51,10 +55,26 @@
   top: 10;
 }
 
+.archEditButtonContainer, .archDelButtonContainer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .archEditButton {
   right: 20;
 }
 
 .archDelButton {
   right: 0;
+}
+
+div svg:hover {
+  fill: rgb(101, 101, 101);
+}
+
+.fa-trash-alt, .fa-edit {
+  path {
+    fill:inherit
+  }
 }

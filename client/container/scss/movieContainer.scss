@@ -6,33 +6,37 @@
   grid-template-areas:
   "searchCon"
   "posterArea"
-  "searchResultsArea"
+  "contentsArea"
 }
 
 .searchContainer {
+  grid-area: searchCon;
   background-color: rgb(243, 243, 243);
   padding: 1% 0 2% 0;
   width: 100%;
-  grid-area: searchCon;
 }
 
 .posterArea {
-  height: 360px;
-  background-color: rgb(15, 15, 15);
   grid-area: posterArea;
+  height: 310px;
+  background-color: rgb(15, 15, 15);
   position: relative;
+}
+
+.contentsArea {
+  grid-area: contentsArea;
+  background: #f3f3f3;
 }
 
 .searchResultsArea {
   width: 100%;
-  grid-area: searchResultsArea;
   display: grid;
-  grid-template-columns: "1fr 1fr";
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
   "imdbResCon udbResCon"
 }
 
-.userMoviesContainer {
-  background: #f3f3f3
-}
+// .userMoviesContainer {
+//   background: #f3f3f3
+// }

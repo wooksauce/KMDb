@@ -20,10 +20,16 @@ class MovieArchiveEntry extends Component{
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    // this.handleUserRating = this.handleUserRating.bind(this);
+    // this.handleUserComment = this.handleUserComment.bind(this);
   }
 
   handleExpand(el) {
     if (!this.state.expanded) {
+      $(el).closest(".archEntryContainer").find(".fieldContainer").css({
+        'height': 'auto',
+        'padding': '16 0',
+      });
       $(el).closest(".archEntryContainer").css({
         'height': 'auto',
       });
@@ -32,11 +38,9 @@ class MovieArchiveEntry extends Component{
       });
       this.setState({expanded: true});
     } else {
-      $(el).closest(".archEntryContainer").css({
-        'height': '200px',
-      });
-      $(el).closest(".archEntryContainer").find(".userCommentContainer").css({
-        'max-height': '7em',
+      $(el).closest(".archEntryContainer").find(".fieldContainer").css({
+        'height': '145px',
+        'padding': '16 0 0',
       });
       this.setState({expanded: false});
     }
@@ -46,7 +50,7 @@ class MovieArchiveEntry extends Component{
     this.setState({showEditModal: true})
   }
 
-  handleCloseModal () {
+  handleCloseModal() {
     this.setState({showEditModal: false});
   }
 
@@ -72,7 +76,7 @@ class MovieArchiveEntry extends Component{
     return (
       <div className={cx('archEntryContainer')} onClick={(e)=>this.handleExpand(e.target)}>
         <div className={cx('archEntry', 'posterContainer')}>
-          <img className={cx('archPoster')} src={posterUrl} height="170px" />
+          <img className={cx('archPoster')} src={posterUrl} />
         </div>
         <div className={cx('archEntry', 'fieldContainer')}>
           <div className={cx('archEntry', 'titleContainer')}>
@@ -105,7 +109,10 @@ class MovieArchiveEntry extends Component{
               showModal={this.state.showEditModal}
               userRating={userRating}
               userComment={userComment}
+              movieId={id}
               handleCloseModal={this.handleCloseModal}
+              handleUserRating={this.props.handleUserRating}
+              handleUserComment={this.props.handleUserComment}
             />
             <div className={cx('archDelButtonContainer')} onClick={(e)=>this.handleDelete(e, id)}>
               <span className="far fa-trash-alt archDelButton"></span>

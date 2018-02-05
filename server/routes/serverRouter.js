@@ -13,5 +13,6 @@ router.post('/saveMovie/', control.saveMovie);
 
 router.delete('/deleteMovie/:id', control.deleteMovie);
 
+router.put('/updateMovie/:id', control.updateMovie);
 
 module.exports = router;

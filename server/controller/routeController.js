@@ -82,5 +82,20 @@ module.exports = {
     .catch(err => {
       res.sendStatus(404).send("an error occured", err);
     })
+  },
+
+  updateMovie: (req, res) => {
+    Movie.update({
+      userRating: req.body.userRating,
+      userComment: req.body.userComment,
+    }, {
+      where: {id: req.params.id}
+    })
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch(err => {
+      res.status(404).send(err);
+    })
   }
 }

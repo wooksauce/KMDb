@@ -17,8 +17,8 @@ export default class MovieEntry extends Component {
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleSave = this.handleSave.bind(this);
-    this.handleMyRating = this.handleMyRating.bind(this);
-    this.handleMyComment = this.handleMyComment.bind(this);
+    this.handleUserRating = this.handleUserRating.bind(this);
+    this.handleUserComment = this.handleUserComment.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -32,12 +32,12 @@ export default class MovieEntry extends Component {
     this.setState({showModal: false});
   }
 
-  handleMyRating(num) {
-    this.setState({myRating: num})
+  handleUserRating(num) {
+    this.setState({userRating: num})
   }
 
-  handleMyComment(text) {
-    this.setState({myComment: text})
+  handleUserComment(text) {
+    this.setState({userComment: text})
   }
 
   handleSave() {
@@ -47,8 +47,8 @@ export default class MovieEntry extends Component {
       posterUrl: poster,
       year: year,
       genre: genre,
-      userRating: this.state.myRating,
-      userComment: this.state.myComment,
+      userRating: this.state.userRating,
+      userComment: this.state.userComment,
     })
     this.handleCloseModal();
   }
@@ -89,7 +89,7 @@ export default class MovieEntry extends Component {
                 step="0.1"
                 min="1"
                 max="10"
-                onChange={(e) => this.handleMyRating(e.target.value)}
+                onChange={(e) => this.handleUserRating(e.target.value)}
                 required
               />
             </div>
@@ -98,7 +98,7 @@ export default class MovieEntry extends Component {
               <textarea
                 id="userComment"
                 placeholder="write whatever you wanna say about the movie"
-                onChange={(e) => this.handleMyComment(e.target.value)}
+                onChange={(e) => this.handleUserComment(e.target.value)}
               >
               </textarea>
             </div>

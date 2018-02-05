@@ -23,8 +23,17 @@ class MovieContainer extends Component {
     this.props.fetchCarouselData();
   }
 
+  handleUserRating(num) {
+    this.setState({userRating: num})
+  }
+
+  handleUserComment(text) {
+    this.setState({userComment: text})
+  }
+
   render() {
     const search = this.props.search;
+    const { imdbResults, udbResults } = this.props;
     return(
       <div className={cx('movieContainer')}>
         <div className={cx('searchContainer')}>
@@ -33,14 +42,20 @@ class MovieContainer extends Component {
         <div className={cx('posterArea')}>
           <Carousel carousel={this.props.carousel} />
         </div>
-        {!search &&
-          <div className={cx('userMoviesContainer')}>
-            <UserMovies movies={this.props.movies}/>
+        <div className={cx('contentsArea')}>
+          {(!imdbResults.length && !udbResults.length) &&
+            <div className={cx('userMoviesContainer')}>
+              <UserMovies
+                movies={this.props.movies}
+                handleUserRating={this.handleUserRating}
+                handleUserComment={this.handleUserComment}
+              />
+            </div>
+          }
+          <div className={cx('searchResultsArea')}>
+            <UDbSearchResults udbResults={this.props.udbResults} />
+            <IMDbSearchResults imdbResults={this.props.imdbResults} />
           </div>
-        }
-        <div className={cx('searchResultsArea')}>
-          <UDbSearchResults udbResults={this.props.udbResults} />
-          <IMDbSearchResults imdbResults={this.props.imdbResults} />
         </div>
       </div>
     )

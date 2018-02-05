@@ -2,13 +2,27 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import classNames from 'classnames/bind';
 import styles from './scss/archEditModal.scss';
+import axios from 'axios';
 
 const cx = classNames.bind(this);
 
 class ArchEditModal extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      userRating: this.props.userRating,
+      userComment: this.props.userComment,
+    }
+    this.handleSave = this.handleSave.bind(this);
+  }
 
+  handleSave(id) {
+    console.log('im here', this.state.userRating)
+    axios.put(`/api/updateMovie/${id}`, {
+      userRating: this.state.userRating,
+      userComment: this.state.userComment,
+    })
+    this.props.handleCloseModal();
   }
 
   render() {
@@ -46,8 +60,8 @@ class ArchEditModal extends Component {
               step="0.1"
               min="1"
               max="10"
-              defaultValue={this.props.userRating}
-              // onChange={(e) => this.handleMyRating(e.target.value)}
+              defaultValue={this.state.userRating}
+              onChange={(e) => this.props.handleUserRating.bind(this, e.target.value)}
               required
             />
           </div>
@@ -55,13 +69,14 @@ class ArchEditModal extends Component {
             <label className={cx('modalCommentText')} htmlFor="userComment"> Your Comment: </label>
             <textarea
               id="userComment"
-              defaultValue={this.props.userComment}
+              defaultValue={this.state.userComment}
               // onChange={(e) => this.handleMyComment(e.target.value)}
             >
             </textarea>
           </div>
           <div className={cx('modalSaveButton')}>
             <button
+              onClick={() => {this.handleSave(this.props.movieId)}}
               className={cx('modalButton')}
               type="button"
               // className="modalSaveButton"

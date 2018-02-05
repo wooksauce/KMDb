@@ -5,8 +5,8 @@
 }
 
 .carouselImgContainer {
-  height: 300px;
-  width: 200px;
+  height: 270px;
+  width: 180px;
   position: relative;
   left: 50%;
   top: 50%;
@@ -14,6 +14,8 @@
 }
 
 .carouselImg {
+  margin: -2px;
+  border: 2px solid #d0af02;
   width: 100%;
   height: 100%;
   background-size: cover;

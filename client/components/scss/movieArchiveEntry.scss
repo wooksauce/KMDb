@@ -1,5 +1,26 @@
+.archEntryContainer {
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 60%;
+  position: relative;
+  height: auto;
+  padding: 0 0 10;
+  margin: 20 20 20 0;
+  border-radius: 5px;
+  background: white;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: 175px auto;
+  grid-template-areas:
+  "posterContainer fieldContainer"
+  "commentContainer commentContainer";
+  &:hover {
+    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.15);
+  }
+}
 .archEntry .field {
   display: inline-block;
+  width: auto;
 }
 
 .posterContainer, .fieldContainer {
@@ -24,35 +45,22 @@
   line-height: 1.2em;
   font-size: 14px;
   width: 95%;
-  padding: 16 0 0;
+  padding: 12 0 0;
   height: 145px;
   overflow: hidden;
 }
 
-.archEntryContainer {
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 60%;
-  position: relative;
-  height: 180px;
-  margin: 20 20 20 0;
-  border-radius: 5px;
-  background: white;
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-  "posterContainer fieldContainer";
-  &:hover {
-    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.15);
-  }
+.commentContainer {
+  grid-area: commentContainer;
 }
 
 .userCommentContainer{
-    overflow: hidden;
-    position: relative;
-    max-height: 5.8em;
-    text-align: left;
+  overflow: hidden;
+  position: relative;
+  max-height: 2.4em;
+  text-align: left;
+  font-size: 14px;
+  padding: 0 12;
 }
 
 .archDelButton, .archEditButton{
@@ -86,6 +94,20 @@ div svg:hover {
 }
 
 .archTitle {
-  padding-right: 50px;
+  padding: 3 10;
   vertical-align: top;
+}
+
+.archText {
+  font-weight: 600;
+}
+
+.archValue {
+  color: rgb(40, 40, 40)
+}
+
+.titleContainer {
+  border: 2px solid #e4bf00;
+  display: inline-block;
+  margin: 0 50 6 0;
 }

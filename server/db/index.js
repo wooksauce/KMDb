@@ -14,7 +14,15 @@ const Movie = db.define('Movie', {
     type: Sequelize.INTEGER,
     allowNull: true
   },
-  genre: {
+  genres: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  director: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  actors: {
     type: Sequelize.STRING,
     allowNull: true
   },

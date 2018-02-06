@@ -24,21 +24,13 @@ class MovieArchiveEntry extends Component{
 
   handleExpand(el) {
     if (!this.state.expanded) {
-      $(el).closest(".archEntryContainer").find(".fieldContainer").css({
-        'height': 'auto',
-        'padding': '16 0',
-      });
-      $(el).closest(".archEntryContainer").css({
-        'height': 'auto',
-      });
       $(el).closest(".archEntryContainer").find(".userCommentContainer").css({
         'max-height': '100%',
       });
       this.setState({expanded: true});
     } else {
-      $(el).closest(".archEntryContainer").find(".fieldContainer").css({
-        'height': '145px',
-        'padding': '16 0 0',
+      $(el).closest(".archEntryContainer").find(".userCommentContainer").css({
+        'max-height': '2.4em',
       });
       this.setState({expanded: false});
     }
@@ -67,7 +59,7 @@ class MovieArchiveEntry extends Component{
 
 
   render() {
-    const { title, posterUrl, year, genre, imdbRating, userRating, userComment, id } = this.props.movie
+    const { title, posterUrl, year, genres, director, actors, userRating, userComment, id } = this.props.movie
     if (!title) {
       return null;
     }
@@ -78,7 +70,7 @@ class MovieArchiveEntry extends Component{
         </div>
         <div className={cx('archEntry', 'fieldContainer')}>
           <div className={cx('archEntry', 'titleContainer')}>
-            <p className={cx('field', 'archText')}>Title:&nbsp;</p>
+            {/* <p className={cx('field', 'archText')}>Title:&nbsp;</p> */}
             <p className={cx('field', 'archTitle', 'archValue')}> {title} </p>
           </div>
           <div className={cx('archEntry', 'yearContainer')}>
@@ -86,18 +78,20 @@ class MovieArchiveEntry extends Component{
             <p className={cx('field', 'archYear', 'archValue')}> {year} </p>
           </div>
           <div className={cx('archEntry', 'genreContainer')}>
-            <p className={cx('field', 'archText')}>Genre:&nbsp;</p>
-            <p className={cx('field', 'archGenre', 'archValue')}> {genre} </p>
+            <p className={cx('field', 'archText')}>Genres:&nbsp;</p>
+            <p className={cx('field', 'archGenre', 'archValue')}> {genres} </p>
+          </div>
+          <div className={cx('archEntry', 'directorContainer')}>
+            <p className={cx('field', 'archText')}>Director:&nbsp;</p>
+            <p className={cx('field', 'archDirector', 'archValue')}> {director} </p>
+          </div>
+          <div className={cx('archEntry', 'actorsContainer')}>
+            <p className={cx('field', 'archText')}>Actors:&nbsp;</p>
+            <p className={cx('field', 'archActors', 'archValue')}> {actors} </p>
           </div>
           <div className={cx('archEntry', 'userRatingContainer')}>
-            <p className={cx('field', 'archText')}>My Rating:&nbsp;</p>
+            <p className={cx('field', 'archText')}>User Rating:&nbsp;</p>
             <p className={cx('field', 'archUserRating', 'archValue')}> {userRating} </p>
-          </div>
-          <div className={cx('archEntry', 'userCommentContainer')}>
-            <p className={cx('field', 'archUserComment', 'archValue')}>
-              <span className={cx('field', 'archText')}>My Comment:&nbsp;</span>
-              {userComment}
-            </p>
           </div>
           <div className={cx('archButtonContainer')} >
             <div className={cx('archEditButtonContainer')} onClick={(e)=>this.handleEdit(e)}>
@@ -116,6 +110,14 @@ class MovieArchiveEntry extends Component{
             <div className={cx('archDelButtonContainer')} onClick={(e)=>this.handleDelete(e, id)}>
               <span className="far fa-trash-alt archDelButton"></span>
             </div>
+          </div>
+        </div>
+        <div className={cx('commentContainer')}>
+          <div className={cx('archEntry', 'userCommentContainer')}>
+            <p className={cx('field', 'archUserComment', 'archValue')}>
+              <span className={cx('field', 'archText')}>User Comment:&nbsp;</span>
+              {userComment}
+            </p>
           </div>
         </div>
       </div>

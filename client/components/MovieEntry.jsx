@@ -41,15 +41,24 @@ export default class MovieEntry extends Component {
   }
 
   handleSave() {
-    const { title, poster, year, genre } = this.props.movie;
-    axios.post('/api/saveMovie', {
-      title: title,
-      posterUrl: poster,
-      year: year,
-      genre: genre,
-      userRating: this.state.userRating,
-      userComment: this.state.userComment,
-    })
+    const { title, poster, year, imdbid } = this.props.movie;
+    axios.get(`/api/getMovie/${imdbid}`)
+      .then(({ data }) => {
+        console.log('im here man', data)
+        axios.post('/api/saveMovie', {
+          title: data.title,
+          posterUrl: data.poster,
+          year: data.year,
+          genres: data.genres,
+          director: data.director,
+          actors: data.actors,
+          userRating: this.state.userRating,
+          userComment: this.state.userComment,
+        })
+      })
+      .catch(err => {
+        console.log('an error occured while saving the movie', err);
+      })
     this.handleCloseModal();
   }
 
@@ -58,7 +67,7 @@ export default class MovieEntry extends Component {
   }
 
   render() {
-    const { title, poster, posterUrl, year, genre, userRating, userComment, id } = this.props.movie;
+    const { title, poster, posterUrl, year, userRating, userComment, id, imdbid } = this.props.movie;
     // const imdb = this.props.imdb;
     // const resultSource = imdb ? 'imdb' : 'udb'
     const fromImdb = this.props.imdb;;
@@ -120,7 +129,7 @@ export default class MovieEntry extends Component {
               <span className={cx({fromImdb: fromImdb}, 'movieEntryTitle')}> Title: </span>
               <span className={cx({fromImdb: fromImdb}, 'info', 'title')}> {title} </span>
               <div className={cx({fromImdb: fromImdb}, 'info', 'year')}> {year} </div>
-              <div className={cx({fromImdb: fromImdb}, 'info', 'genre')}> {genre} </div>
+              <div className={cx({fromImdb: fromImdb}, 'info', 'genre')}> genre </div>
               {/* <div className={resultSource + "Info rating"}> {imdbRating} </div> */}
             </div>
             <div className={cx({fromImdb: fromImdb}, 'userInfo')}>

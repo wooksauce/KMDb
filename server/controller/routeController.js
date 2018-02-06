@@ -4,13 +4,26 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 module.exports = {
+  getMovie: (req, res) => {
+    imdb.getById(req.params.imdbid, {
+      apiKey: process.env.IMDB_API_KEY,
+      timeout: 30000
+    })
+    .then(movie => {
+      res.status(200).send(movie);
+    })
+    .catch(err => {
+      res.status(404).send("an error occured getting a movie by imdbid", err);
+    })
+  },
+
   getMovies: (req, res) => {
     Movie.findAll({order: [['userRating', 'DESC']]})
     .then(movies => {
       res.status(200).send(movies);
     })
     .catch(err => {
-      res.status(404).send("an error occured", err);
+      res.status(404).send("an error occured while fetching movies", err);
     })
   },
 
@@ -19,9 +32,10 @@ module.exports = {
       title: req.params.search}, {
         apiKey: process.env.IMDB_API_KEY
       }).then((movies) => {
+        console.log('movies', movies)
         res.status(200).send(movies);
       }).catch((err) => {
-        res.status(404).send(err);
+        res.status(404).send("an error occured while searcing for a movie", err);
       })
   },
 
@@ -54,20 +68,21 @@ module.exports = {
   },
 
   saveMovie: (req, res) => {
-    const { title, posterUrl, year, genre, userRating, userComment } = req.body;
+    const { title, posterUrl, year, genres, userRating, userComment, director, actors } = req.body;
     const movieInfo = {
       title: title,
       posterUrl: posterUrl,
       year: year,
-      genre: genre,
-      // rating: imdbRating,
+      genres: genres,
+      director: director,
+      actors: actors,
       userRating: userRating,
       userComment: userComment,
     };
 
     Movie.create(movieInfo)
-      .then(data => {
-        res.status(200).send(data);
+      .then(movie => {
+        res.status(200).send(movie);
       })
       .catch(err => {
         res.status(404).send(err);

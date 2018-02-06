@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const control = require('../controller/routeController');
 
+router.get('/getMovie/:imdbid', control.getMovie);
+
 router.get('/getMovies', control.getMovies);
 
 router.get('/searchIMDbMovies/:search', control.searchIMDbMovies);

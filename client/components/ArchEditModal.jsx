@@ -14,6 +14,8 @@ class ArchEditModal extends Component {
       userComment: this.props.userComment,
     }
     this.handleSave = this.handleSave.bind(this);
+    this.handleUserRating = this.props.handleUserRating.bind(this);
+    this.handleUserComment = this.props.handleUserComment.bind(this);
   }
 
   handleSave(id) {
@@ -22,6 +24,12 @@ class ArchEditModal extends Component {
       userRating: this.state.userRating,
       userComment: this.state.userComment,
     })
+      .then(() => {
+        this.props.fetchAllMovies();
+      })
+      .catch(err => {
+        console.log('error saving', err);
+      })
     this.props.handleCloseModal();
   }
 
@@ -40,7 +48,7 @@ class ArchEditModal extends Component {
             height: '40%',
             top: '50%',
             left: '50%',
-            transform: 'translate(-50%,-50%)', // adjust top "up" based on height
+            transform: 'translate(-50%,-50%)',
           }
         }
         }
@@ -61,7 +69,8 @@ class ArchEditModal extends Component {
               min="1"
               max="10"
               defaultValue={this.state.userRating}
-              onChange={(e) => this.props.handleUserRating.bind(this, e.target.value)}
+              onChange={(e) => this.handleUserRating(e.target.value)}
+              // onChange = {() => console.log('onchange', this.props.handleUserRating)}
               required
             />
           </div>
@@ -70,6 +79,7 @@ class ArchEditModal extends Component {
             <textarea
               id="userComment"
               defaultValue={this.state.userComment}
+              onChange={(e) => this.handleUserComment(e.target.value)}
               // onChange={(e) => this.handleMyComment(e.target.value)}
             >
             </textarea>
@@ -79,7 +89,6 @@ class ArchEditModal extends Component {
               onClick={() => {this.handleSave(this.props.movieId)}}
               className={cx('modalButton')}
               type="button"
-              // className="modalSaveButton"
               // onClick={this.handleSave}
             >
             Save

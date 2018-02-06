@@ -20,8 +20,6 @@ class MovieArchiveEntry extends Component{
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    // this.handleUserRating = this.handleUserRating.bind(this);
-    // this.handleUserComment = this.handleUserComment.bind(this);
   }
 
   handleExpand(el) {
@@ -113,6 +111,7 @@ class MovieArchiveEntry extends Component{
               handleCloseModal={this.handleCloseModal}
               handleUserRating={this.props.handleUserRating}
               handleUserComment={this.props.handleUserComment}
+              fetchAllMovies={this.props.fetchAllMovies}
             />
             <div className={cx('archDelButtonContainer')} onClick={(e)=>this.handleDelete(e, id)}>
               <span className="far fa-trash-alt archDelButton"></span>

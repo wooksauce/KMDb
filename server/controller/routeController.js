@@ -5,7 +5,7 @@ const Op = Sequelize.Op;
 
 module.exports = {
   getMovies: (req, res) => {
-    Movie.findAll()
+    Movie.findAll({order: [['userRating', 'DESC']]})
     .then(movies => {
       res.status(200).send(movies);
     })

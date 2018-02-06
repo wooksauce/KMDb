@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import MovieArchiveEntry from '../components/MovieArchiveEntry'
+import classNames from 'classnames/bind';
+import styles from './scss/userMovies.scss';
+
+const cx = classNames.bind(this);
 
 class UserMovies extends Component {
   constructor(props) {
@@ -28,7 +32,7 @@ class UserMovies extends Component {
     }
     const archiveMovies = this.makeMovieEntry(userMovies);
     return (
-      <div>
+      <div className={cx('arch-movies-container')}>
         {archiveMovies}
       </div>
     )

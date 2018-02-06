@@ -24,6 +24,9 @@ class MovieArchiveEntry extends Component{
 
   handleExpand(el) {
     if (!this.state.expanded) {
+      $(el).closest(".archEntryContainer").css({
+        'height': 'auto'
+      })
       $(el).closest(".archEntryContainer").find(".userCommentContainer").css({
         'max-height': '100%',
       });
@@ -46,7 +49,6 @@ class MovieArchiveEntry extends Component{
 
   handleDelete(e, movieId) {
     if (!e) var e = window.event;
-    // e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
     let t = this;
     if (confirm('You sure?')) {
@@ -70,45 +72,46 @@ class MovieArchiveEntry extends Component{
         </div>
         <div className={cx('archEntry', 'fieldContainer')}>
           <div className={cx('archEntry', 'titleContainer')}>
-            {/* <p className={cx('field', 'archText')}>Title:&nbsp;</p> */}
             <p className={cx('field', 'archTitle', 'archValue')}> {title} </p>
           </div>
-          <div className={cx('archEntry', 'yearContainer')}>
-            <p className={cx('field', 'archText')}>Year:&nbsp;</p>
-            <p className={cx('field', 'archYear', 'archValue')}> {year} </p>
-          </div>
-          <div className={cx('archEntry', 'genreContainer')}>
-            <p className={cx('field', 'archText')}>Genres:&nbsp;</p>
-            <p className={cx('field', 'archGenre', 'archValue')}> {genres} </p>
-          </div>
-          <div className={cx('archEntry', 'directorContainer')}>
-            <p className={cx('field', 'archText')}>Director:&nbsp;</p>
-            <p className={cx('field', 'archDirector', 'archValue')}> {director} </p>
-          </div>
-          <div className={cx('archEntry', 'actorsContainer')}>
-            <p className={cx('field', 'archText')}>Actors:&nbsp;</p>
-            <p className={cx('field', 'archActors', 'archValue')}> {actors} </p>
-          </div>
-          <div className={cx('archEntry', 'userRatingContainer')}>
-            <p className={cx('field', 'archText')}>User Rating:&nbsp;</p>
-            <p className={cx('field', 'archUserRating', 'archValue')}> {userRating} </p>
-          </div>
-          <div className={cx('archButtonContainer')} >
-            <div className={cx('archEditButtonContainer')} onClick={(e)=>this.handleEdit(e)}>
-              <span className="far fa-edit archEditButton"></span>
+          <div className={cx('no-title-container')}>
+            <div className={cx('archEntry', 'userRatingContainer')}>
+              <p className={cx('field', 'archText')}>User Rating:&nbsp;</p>
+              <p className={cx('field', 'archUserRating', 'archValue')}> {userRating} </p>
             </div>
-            <ArchEditModal
-              showModal={this.state.showEditModal}
-              userRating={userRating}
-              userComment={userComment}
-              movieId={id}
-              handleCloseModal={this.handleCloseModal}
-              handleUserRating={this.props.handleUserRating}
-              handleUserComment={this.props.handleUserComment}
-              fetchAllMovies={this.props.fetchAllMovies}
-            />
-            <div className={cx('archDelButtonContainer')} onClick={(e)=>this.handleDelete(e, id)}>
-              <span className="far fa-trash-alt archDelButton"></span>
+            <div className={cx('archEntry', 'yearContainer')}>
+              <p className={cx('field', 'archText')}>Year:&nbsp;</p>
+              <p className={cx('field', 'archYear', 'archValue')}> {year} </p>
+            </div>
+            <div className={cx('archEntry', 'genreContainer')}>
+              <p className={cx('field', 'archText')}>Genres:&nbsp;</p>
+              <p className={cx('field', 'archGenre', 'archValue')}> {genres} </p>
+            </div>
+            <div className={cx('archEntry', 'directorContainer')}>
+              <p className={cx('field', 'archText')}>Director:&nbsp;</p>
+              <p className={cx('field', 'archDirector', 'archValue')}> {director} </p>
+            </div>
+            <div className={cx('archEntry', 'actorsContainer')}>
+              <p className={cx('field', 'archText')}>Actors:&nbsp;</p>
+              <p className={cx('field', 'archActors', 'archValue')}> {actors} </p>
+            </div>
+            <div className={cx('archButtonContainer')} >
+              <div className={cx('archEditButtonContainer')} onClick={(e)=>this.handleEdit(e)}>
+                <span className="far fa-edit archEditButton"></span>
+              </div>
+              <ArchEditModal
+                showModal={this.state.showEditModal}
+                userRating={userRating}
+                userComment={userComment}
+                movieId={id}
+                handleCloseModal={this.handleCloseModal}
+                handleUserRating={this.props.handleUserRating}
+                handleUserComment={this.props.handleUserComment}
+                fetchAllMovies={this.props.fetchAllMovies}
+              />
+              <div className={cx('archDelButtonContainer')} onClick={(e)=>this.handleDelete(e, id)}>
+                <span className="far fa-trash-alt archDelButton"></span>
+              </div>
             </div>
           </div>
         </div>

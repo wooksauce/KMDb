@@ -40,10 +40,18 @@ class MovieCarousel extends Component {
       'backgroundImage': `url(${slide.posterUrl})`,
     }
     return(
-      <div className={cx('carouselContainer')}>
-        <div className={cx('carouselImgContainer')}>
+      <div className={cx('main-poster-container')}>
+        <div className={cx('poster-one main-posters')}>
           <div
-            className={cx('carouselImg')}
+            className={cx('dummy1 poster-img')}
+            style={{
+              'backgroundImage': 'url(https://images-na.ssl-images-amazon.com/images/M/MV5BODRmZDVmNzUtZDA4ZC00NjhkLWI2M2UtN2M0ZDIzNDcxYThjL2ltYWdlXkEyXkFqcGdeQXVyNTk0MzMzODA@._V1_SX300.jpg)'
+            }}
+          />
+        </div>
+        <div className={cx('carouselImgContainer main-posters')}>
+          <div
+            className={cx('poster-img')}
             style={imgStyles}
           />
           <div className={cx('prev')} onClick={()=>this.clickPrev()}>
@@ -52,6 +60,14 @@ class MovieCarousel extends Component {
           <div className={cx('next')} onClick={()=>this.clickNext()}>
             <span className={cx('arrowRight', 'arrows')}>&#8250;</span>
           </div>
+        </div>
+        <div className={cx('poster-three main-posters')}>
+          <div
+            className={cx('dummy3 poster-img')}
+            style={{
+              'backgroundImage': 'url(https://images-na.ssl-images-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg)'
+            }}
+          />
         </div>
       </div>
     )

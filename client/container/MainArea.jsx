@@ -20,7 +20,7 @@ class MainArea extends Component {
         <div className={cx('main-area-text')}>
           <p className={cx('bold-message')}> KMDB </p>
           <p className={cx('regular-message')}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            This is your movie archive.
           </p>
         </div>
         <div className={cx('search-area')}>

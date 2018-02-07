@@ -18,7 +18,10 @@ class Header extends Component {
             src='https://image.ibb.co/jprur5/KMDb.png'
           />
         </a>
-        {/* <h1 className={cx('mainTitle')}>Kiwook's Movie Database</h1> */}
+      <div className={cx('header-tab-container')}>
+        <div className={cx('Sign-up header-tab')}> Dummy 1 </div>
+        <div className={cx('Log-in header-tab')}> Dummy 2 </div>
+      </div>
     </div>
     )
   }

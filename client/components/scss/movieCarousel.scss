@@ -1,19 +1,21 @@
-.carouselContainer {
+.main-poster-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
   height: 100%;
   grid-area: carouselCon;
   justify-self: center;
 }
 
-.carouselImgContainer {
+.main-posters {
   height: 240px;
   width: 160px;
   position: relative;
-  left: 50%;
   top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateY(-50%);
 }
 
-.carouselImg {
+.poster-img {
   margin: -2px;
   border: 2px solid #e4bf00;
   width: 100%;

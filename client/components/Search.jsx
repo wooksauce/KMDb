@@ -29,17 +29,17 @@ class Search extends Component {
 
   render() {
     return (
-      <div className={cx('searchBar')}>
-        <form className={cx('searchForm')}>
+      <div className={cx('search-bar')}>
+        <form className={cx('search-form')}>
           <input
-            className={cx('searchMovieTitle')}
+            className={cx('search-title-field')}
             type="text"
-            placeholder="Find Movies!"
+            placeholder="Find Movies or Users!"
             onChange={(e) => this.handleSearchTyping(e)}
             onKeyPress={(e) => this.keyPressEnter(e)}
           />
         </form>
-        <button className={cx('searchButton')} onClick={() => this.searchForTitle()}> Search </button>
+        <button className={cx('search-button')} onClick={() => this.searchForTitle()}> Search </button>
       </div>
     )
   }

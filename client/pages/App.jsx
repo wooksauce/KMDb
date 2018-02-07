@@ -14,12 +14,6 @@ class App extends Component {
   render() {
     return (
       <div className={cx('appGrid')}>
-        <div className={cx('topHeader')}>
-          <a href="/" className={cx('siteLogo')}>
-            <img src='https://image.ibb.co/jprur5/KMDb.png' width="130" />
-          </a>
-          <h1 className={cx('mainTitle')}>Kiwook's Movie Database</h1>
-        </div>
         <MovieContainer />
       </div>
     )

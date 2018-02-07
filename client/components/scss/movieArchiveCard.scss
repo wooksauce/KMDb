@@ -1,0 +1,123 @@
+.archEntryContainer {
+  align-self: flex-start;
+  width: 45%;
+  position: relative;
+  min-height: 215px;
+  padding: 0 0 10;
+  margin: 10px;
+  border-radius: 5px;
+  background: white;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: 185px auto;
+  grid-template-areas:
+  "posterContainer fieldContainer"
+  "commentContainer commentContainer";
+  &:hover {
+    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.15);
+  }
+}
+.archEntry .field {
+  display: inline-block;
+  width: auto;
+}
+
+.posterContainer, .fieldContainer {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.posterContainer {
+  grid-area: posterContainer;
+  position: relative;
+  left: 10px;
+  padding: 10 0;
+}
+
+.archPoster {
+  height: 170px;
+}
+
+.fieldContainer{
+  grid-area: fieldContainer;
+  position: relative;
+  line-height: 1.2em;
+  font-size: 13px;
+  width: 95%;
+  padding: 12 0 0;
+  height: 175px;
+  overflow: hidden;
+}
+
+.commentContainer {
+  grid-area: commentContainer;
+}
+
+.userCommentContainer{
+  overflow: hidden;
+  position: relative;
+  max-height: 2.3em;
+  text-align: left;
+  font-size: 13px;
+  padding: 0 12;
+}
+
+.archDelButton, .archEditButton{
+  margin: 5px;
+  position: absolute;
+  top: 10;
+}
+
+.archEditButtonContainer, .archDelButtonContainer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.archEditButton {
+  right: 20;
+}
+
+.archDelButton {
+  right: 0;
+}
+
+div svg:hover {
+  fill: rgb(101, 101, 101);
+}
+
+.fa-trash-alt, .fa-edit {
+  path {
+    fill:inherit
+  }
+}
+
+.archTitle {
+  padding: 3 8;
+  vertical-align: top;
+  text-align: center;
+  display: block;
+}
+
+.archText {
+  font-weight: 600;
+}
+
+.archValue {
+  color: rgb(40, 40, 40)
+}
+
+.titleContainer {
+  border: 2px solid #e4bf00;
+  display: inline-block;
+  margin: 0 50 0 0;
+}
+
+.userRatingContainer {
+  margin: 12 0 0 0;
+}
+
+.no-title-container {
+  height: 133;
+  overflow: scroll;
+}

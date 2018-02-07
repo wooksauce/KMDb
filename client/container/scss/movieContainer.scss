@@ -2,41 +2,21 @@
   display: grid;
   grid-area: movieCon;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: 60 360 270 auto;
   grid-template-areas:
-  "searchCon"
-  "posterArea"
-  "contentsArea"
+  "header-area"
+  "main-area"
+  "poster-area"
+  "movies-area"
 }
 
-.searchContainer {
-  grid-area: searchCon;
-  background-color: rgb(243, 243, 243);
-  padding: 1% 0 2% 0;
-  width: 100%;
-}
-
-.posterArea {
-  grid-area: posterArea;
-  height: 310px;
+.poster-area {
+  grid-area: poster-area;
+  height: 100%;
   background-color: rgb(15, 15, 15);
   position: relative;
 }
 
-.contentsArea {
-  grid-area: contentsArea;
-  background: #f3f3f3;
-}
-
-.searchResultsArea {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-  "imdbResCon udbResCon"
-}
-
-.userMoviesContainer {
-  margin: 20 0;
-}
+// .userMoviesContainer {
+//   margin: 20 0;
+// }

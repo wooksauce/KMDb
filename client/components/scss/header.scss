@@ -1,0 +1,26 @@
+.logo-img {
+  width: 100px;
+}
+
+.header-area {
+  grid-area: header-area;
+  background: rgb(250, 250, 250);
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "site-logo ."
+}
+
+.site-logo {
+  grid-area: site-logo;
+}
+
+.mainTitle {
+  font-family: Tahoma, Geneva, sans-serif;
+  grid-area: mainTitle;
+  justify-self: center;
+  align-self: center;
+  font-size: 1.8em;
+}

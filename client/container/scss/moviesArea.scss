@@ -1,0 +1,17 @@
+.movies-area {
+  grid-area: movies-area;
+  background: rgb(250, 250, 250);
+}
+
+.searchResultsArea {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "imdbResCon udbResCon"
+}
+
+.userMoviesContainer {
+  margin: 20 0;
+}

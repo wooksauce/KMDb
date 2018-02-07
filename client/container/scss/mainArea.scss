@@ -1,0 +1,28 @@
+.main-area-container {
+  grid-area: main-area;
+  background-color: rgb(250, 250, 250);
+  width: 100%;
+  height: 100%;
+}
+
+.main-area-text {
+  width: 50%;
+  margin: 4% 23% 2%;
+}
+
+.bold-message {
+  font-size: 70px;
+  font-weight: 600;
+  color: #e6b920;
+  display: block;
+  margin: 0 0 5;
+}
+
+.regular-message {
+  font-size: 35px;
+}
+
+.search-area {
+  width: 54%;
+  margin: 0 auto;
+}

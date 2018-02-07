@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MovieArchiveEntry from '../components/MovieArchiveEntry'
+import MovieArchiveCard from '../components/MovieArchiveCard'
 import classNames from 'classnames/bind';
 import styles from './scss/userMovies.scss';
 
@@ -14,7 +14,7 @@ class UserMovies extends Component {
     if (movies.length) {
       return movies.map((movie) => {
         return (
-          <MovieArchiveEntry
+          <MovieArchiveCard
             key={movie.id}
             movie={movie}
             handleUserRating={this.props.handleUserRating}
@@ -38,20 +38,5 @@ class UserMovies extends Component {
     )
   }
 }
-
-// const makeMovieEntry = (movies = []) => {
-//   if (movies.length) {
-//     return movies.map((movie) => {
-//       return (
-//         <MovieArchiveEntry
-//           key={movie.id}
-//           movie={movie}
-//           handleUserRating={this.props.handleUserRating}
-//           handleUserComment={this.props.handleUserComment}
-//         />
-//       )
-//     })
-//   }
-// }
 
 export default UserMovies;

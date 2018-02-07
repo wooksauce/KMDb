@@ -13,8 +13,9 @@
   grid-template-areas:
   "posterContainer fieldContainer"
   "commentContainer commentContainer";
+  box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.05);
   &:hover {
-    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.15);
+    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.2);
   }
 }
 .archEntry .field {
@@ -92,13 +93,6 @@ div svg:hover {
   }
 }
 
-.archTitle {
-  padding: 3 8;
-  vertical-align: top;
-  text-align: center;
-  display: block;
-}
-
 .archText {
   font-weight: 600;
 }
@@ -107,8 +101,16 @@ div svg:hover {
   color: rgb(40, 40, 40)
 }
 
+.archTitle {
+  // color: white;
+  padding: 3 8;
+  vertical-align: top;
+  text-align: center;
+  display: block;
+}
+
 .titleContainer {
-  border: 2px solid #e4bf00;
+  border: 2px solid #ffd030;
   display: inline-block;
   margin: 0 50 0 0;
 }

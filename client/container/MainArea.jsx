@@ -18,7 +18,8 @@ class MainArea extends Component {
     return (
       <div className={cx('main-area-container')}>
         <div className={cx('main-area-text')}>
-          <p className={cx('bold-message')}> KMDB </p>
+          <p className={cx('bold-message')}> KMDb </p>
+          <div className={cx('message-bar')} />
           <p className={cx('regular-message')}>
             This is your movie archive.
           </p>

@@ -2,7 +2,7 @@
   display: grid;
   grid-area: movieCon;
   grid-template-columns: 1fr;
-  grid-template-rows: 60 360 270 auto;
+  grid-template-rows: 60px 45vh 300px auto;
   grid-template-areas:
   "header-area"
   "main-area"
@@ -14,7 +14,7 @@
   padding: 0 5%;
   grid-area: poster-area;
   height: 100%;
-  background-color: rgb(15, 15, 15);
+  background-color: #fafafa;
   position: relative;
 }
 

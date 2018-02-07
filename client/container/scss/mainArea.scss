@@ -7,15 +7,15 @@
 
 .main-area-text {
   width: 50%;
-  margin: 4% 23% 2%;
+  margin: 6% 23% 3%;
 }
 
 .bold-message {
   font-size: 70px;
   font-weight: 600;
-  color: #e6b920;
+  color: #ffd030;
   display: block;
-  margin: 0 0 5;
+  margin: 0 0 -8;
 }
 
 .regular-message {
@@ -26,4 +26,11 @@
 .search-area {
   width: 54%;
   margin: 0 auto;
+}
+
+.message-bar {
+  margin: 0 0 8;
+  background: #ffd030;
+  width: 180;
+  height: 7px;
 }

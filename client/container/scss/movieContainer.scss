@@ -5,13 +5,13 @@
   grid-template-rows: 60px 45vh 300px auto;
   grid-template-areas:
   "header-area"
-  "main-area"
+  "main-view"
   "poster-area"
   "movies-area"
 }
 
 .poster-area {
-  padding: 0 5%;
+  padding: 0 12%;
   grid-area: poster-area;
   height: 100%;
   background-color: #fafafa;

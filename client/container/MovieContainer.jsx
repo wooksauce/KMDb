@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 
 import { moviesFetchData, moviesCarousel } from '../actions/moviesActions';
 import Header from '../components/Header'
-import MainArea from './MainArea'
+import MainView from './MainView'
 import Carousel from '../components/MovieCarousel';
 import MoviesArea from './MoviesArea'
+import Footer from '../components/Footer';
 
 import classNames from 'classnames/bind';
 import styles from './scss/movieContainer.scss'
@@ -22,23 +23,13 @@ class MovieContainer extends Component {
     this.props.fetchCarouselData();
   }
 
-  // handleUserRating(num) {
-  //   this.setState({userRating: num})
-  // }
-
-  // handleUserComment(text) {
-  //   this.setState({userComment: text})
-  // }
-
   render() {
     const search = this.props.search;
     const { imdbResults, udbResults, movies } = this.props;
     return(
       <div className={cx('movieContainer')}>
         <Header />
-        {/* <div className={cx('main-area')}> */}
-        <MainArea search={search} />
-        {/* </div> */}
+        <MainView search={search} />
         <div className={cx('poster-area')}>
           <Carousel carousel={this.props.carousel} />
         </div>
@@ -47,6 +38,7 @@ class MovieContainer extends Component {
           imdbResults = {imdbResults}
           udbResults = {udbResults}
         />
+        <Footer />
       </div>
     )
   }

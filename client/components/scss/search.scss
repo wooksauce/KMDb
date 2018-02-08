@@ -1,5 +1,8 @@
 .search-bar {
   display: flex;
+  width: 54%;
+  margin: 0 auto;
+  transition: width 0.3s;
 }
 
 .search-form {
@@ -31,4 +34,10 @@
   border-color: white;
   background: #ffd030;
   vertical-align: middle;
+}
+
+.dock .search-bar {
+  z-index: 50;
+  position: fixed;
+  width: 100%;
 }

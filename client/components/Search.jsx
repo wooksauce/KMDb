@@ -3,12 +3,31 @@ import { connect } from 'react-redux';
 import { moviesIMDbSearchTitle, moviesFetchUDbSearch, moviesFetchIMDbSearch } from '../actions/moviesActions'
 import classNames from 'classnames/bind';
 import styles from './scss/search.scss'
+import $ from 'jquery';
+import throttle from 'lodash.throttle';
 
 const cx = classNames.bind(styles);
 
 class Search extends Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    let elSearchBar = document.getElementsByClassName('search-bar')[0];
+    let elMainView = document.getElementsByClassName('main-view-container')[0];
+    let osSearchBar = elSearchBar.getBoundingClientRect().top;
+
+    window.addEventListener('scroll', throttle(() => {
+      elSearchBar.style.top = 0;
+      let screenTop = window.pageYOffset;
+      if (screenTop >= osSearchBar) {
+        console.log('here')
+        this.props.dockSearchBar();
+      } else {
+        this.props.undockSearchBar();
+      }
+    }, 20))
   }
 
   handleSearchTyping(e) {
@@ -26,6 +45,8 @@ class Search extends Component {
       this.searchForTitle();
     }
   }
+
+
 
   render() {
     return (

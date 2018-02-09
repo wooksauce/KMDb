@@ -10,3 +10,21 @@ textarea {
 .movie-entry-poster {
   width: 120px;
 }
+
+.movie-entry-container {
+  display: grid;
+  margin: 10px;
+  grid-template-columns: 130px 1fr;
+  grid-template-areas:
+  "movie-entry-poster movie-info-container";
+  padding: 10px;
+}
+
+.movie-entry-poster {
+  grid-area: movie-entry-poster;
+}
+
+.movie-info-container {
+  font-size: 14px;
+  grid-area: movie-info-container
+}

@@ -80,8 +80,8 @@ export default class MovieEntry extends Component {
       posterToDisplay = 'https://i5.walmartimages.com/asr/f752abb3-1b49-4f99-b68a-7c4d77b45b40_1.39d6c524f6033c7c58bd073db1b99786.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF';
     }
     return(
-      <div className={cx({fromImdb: fromImdb}, 'movieEntry')}>
-        <div className={cx({fromImdb: fromImdb}, 'MovieEntryContainer')} onClick={() => this.handleOpenModal(fromImdb)}>
+      <div className={cx({fromImdb: fromImdb}, 'movie-entry')}>
+        <div className={cx({fromImdb: fromImdb}, 'movie-entry-container')} onClick={() => this.handleOpenModal(fromImdb)}>
         <Modal
            isOpen={this.state.showModal}r
            contentLabel="onRequestClose Example"
@@ -124,8 +124,8 @@ export default class MovieEntry extends Component {
           <button onClick={this.handleCloseModal}>Close Modal</button>
         </Modal>
           <img className={cx({fromImdb: fromImdb}, 'movie-entry-poster')} src={posterToDisplay} />
-          <div className={cx({fromImdb: fromImdb}, 'movieInfoContainer')}>
-            <div className={cx({fromImdb: fromImdb}, 'imdbInfo')}>
+          <div className={cx({fromImdb: fromImdb}, 'movie-info-container')}>
+            <div className={cx({fromImdb: fromImdb}, 'imdb-info')}>
               <span className={cx({fromImdb: fromImdb}, 'movieEntryTitle')}> Title: </span>
               <span className={cx({fromImdb: fromImdb}, 'info', 'title')}> {title} </span>
               <div className={cx({fromImdb: fromImdb}, 'info', 'year')}> {year} </div>

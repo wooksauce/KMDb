@@ -3,6 +3,12 @@
   background-color: rgb(250, 250, 250);
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 55% auto;
+  grid-template-areas:
+  "main-view-top"
+  "main-view-bottom";
 }
 
 .main-area-text {
@@ -31,17 +37,14 @@
 }
 
 .main-view-top {
+  grid-area: main-view-top;
   margin: 90 0;
 }
 
 .main-view-bottom {
   padding: 0 12%;
-  grid-area: poster-area;
+  grid-area: main-view-bottom;
   height: 300px;
   background-color: #fafafa;
   position: relative;
-}
-
-.dock .main-view-bottom  {
-  padding: 68px 12% 0;
 }

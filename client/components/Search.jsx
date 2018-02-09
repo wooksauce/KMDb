@@ -12,6 +12,17 @@ class Search extends Component {
     super(props)
   }
 
+  autoScrollTo(target, offset=0) {
+    let targetDiv = document.getElementsByClassName(target)[0]
+    let targetPos = targetDiv.getBoundingClientRect().bottom + window.pageYOffset + offset;
+    console.log('??/', targetPos, offset)
+    window.scroll({
+      left: 0,
+      top: targetPos,
+      behavior: 'smooth',
+    });
+  }
+
   dockingSBThrottle() {
     let elSearchBar = document.getElementsByClassName('search-bar')[0];
     let osSearchBar = elSearchBar.getBoundingClientRect().top;
@@ -49,6 +60,7 @@ class Search extends Component {
     if (e.key === 'Enter' || e.which == 13 || e.keyCode == 13) {
       e.preventDefault();
       this.searchForTitle();
+      this.autoScrollTo('main-poster-container', 10)
     }
   }
 

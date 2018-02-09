@@ -17,7 +17,7 @@ export default class ImdbMoviesSearched extends Component {
     }
     const imdbMovies = makeMovieEntry(imdbResults);
     return(
-      <div className={cx('imdbResultsContainer', 'searchList')}>
+      <div className={cx('imdb-res-con', 'searchList')}>
         <div className={cx('imdb-results-title')}>
           <p className={cx('imdb-results-title-text')}> From IMDb </p>
         </div>

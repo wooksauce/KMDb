@@ -8,13 +8,13 @@ textarea {
 }
 
 .movie-entry-poster {
-  width: 120px;
+  width: 110px;
 }
 
 .movie-entry-container {
   display: grid;
   margin: 10px;
-  grid-template-columns: 130px 1fr;
+  grid-template-columns: 125px 1fr;
   grid-template-areas:
   "movie-entry-poster movie-info-container";
   padding: 10px;

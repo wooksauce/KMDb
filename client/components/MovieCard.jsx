@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import classNames from 'classnames/bind';
-import styles from './scss/movieEntry.scss';
+import styles from './scss/movieCard.scss';
 
 const cx = classNames.bind(styles);
 
@@ -126,7 +126,7 @@ export default class MovieEntry extends Component {
           <img className={cx({fromImdb: fromImdb}, 'movie-entry-poster')} src={posterToDisplay} />
           <div className={cx({fromImdb: fromImdb}, 'movie-info-container')}>
             <div className={cx({fromImdb: fromImdb}, 'imdb-info')}>
-              <span className={cx({fromImdb: fromImdb}, 'movieEntryTitle')}> Title: </span>
+              <span className={cx({fromImdb: fromImdb}, 'movie-entry-title')}> Title: </span>
               <span className={cx({fromImdb: fromImdb}, 'info', 'title')}> {title} </span>
               <div className={cx({fromImdb: fromImdb}, 'info', 'year')}> {year} </div>
               <div className={cx({fromImdb: fromImdb}, 'info', 'genre')}> genre </div>

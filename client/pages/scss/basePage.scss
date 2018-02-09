@@ -6,12 +6,15 @@
   }
 }
 
-.appGrid {
+.base-page {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   display: grid;
+  grid-area: movieCon;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: 60px 90vh auto;
   grid-template-areas:
-  "Header"
-  "movieCon"
+  "header-area"
+  "main-view-container"
+  "movies-area"
+  "footer-area"
 }

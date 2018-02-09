@@ -12,12 +12,14 @@ class Search extends Component {
     super(props)
   }
 
-  dockingSBThrottle(el, os) {
+  dockingSBThrottle() {
+    let elSearchBar = document.getElementsByClassName('search-bar')[0];
+    let osSearchBar = elSearchBar.getBoundingClientRect().top;
     return (
       throttle(() => {
-        el.style.top = 0;
+        elSearchBar.style.top = 0;
         let screenTop = window.pageYOffset;
-        if (screenTop >= os) {
+        if (screenTop >= osSearchBar) {
           this.props.dockSearchBar();
         } else {
           this.props.undockSearchBar();
@@ -27,14 +29,11 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    let elSearchBar = document.getElementsByClassName('search-bar')[0];
-    let osSearchBar = elSearchBar.getBoundingClientRect().top;
-
-    window.addEventListener('scroll', this.dockingSBThrottle(elSearchBar, osSearchBar));
+    window.addEventListener('scroll', this.dockingSBThrottle());
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.dockingSBThrottle(elSearchBar, osSearchBar));
+    window.removeEventListener('scroll', this.dockingSBThrottle());
   }
 
   handleSearchTyping(e) {

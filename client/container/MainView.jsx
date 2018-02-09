@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Search from '../components/Search';
+import PosterArea from '../components/PosterArea';
 
 import classNames from 'classnames/bind';
 import styles from './scss/mainView.scss'
@@ -34,18 +35,25 @@ class MainView extends Component {
     const search = this.props.search;
     return (
       <div className={cx('main-view-container', {dock: this.state.dockSB})}>
-        <div className={cx('main-area-text')}>
-          <p className={cx('bold-message')}> KMDb </p>
-          <div className={cx('message-bar')} />
-          <p className={cx('regular-message')}>
-            This is your movie archive.
-          </p>
+        <div className={cx('main-view-top')}>
+          <div className={cx('main-area-text')}>
+            <p className={cx('bold-message')}> KMDb </p>
+            <div className={cx('message-bar')} />
+            <p className={cx('regular-message')}>
+              This is your movie archive.
+            </p>
+          </div>
+          <Search
+            search={search}
+            dockSearchBar={this.dockSearchBar}
+            undockSearchBar={this.undockSearchBar}
+          />
         </div>
-        <Search
-          search={search}
-          dockSearchBar={this.dockSearchBar}
-          undockSearchBar={this.undockSearchBar}
-        />
+        <div className={cx('main-view-bottom')}>
+          <PosterArea
+            carousel={this.props.carousel}
+          />
+        </div>
       </div>
     )
   }

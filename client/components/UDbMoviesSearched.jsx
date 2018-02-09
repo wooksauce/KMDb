@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MovieEntry from './MovieEntry';
+import MovieCard from './MovieCard';
 import classNames from 'classnames/bind';
 import styles from './scss/udbMoviesSearched.scss';
 
@@ -30,7 +30,7 @@ export default class UDbMoviesSearched extends Component {
 const makeMovieEntry = (movies = []) => {
   if (movies.length) {
     return movies.map((movie) =>
-      <MovieEntry
+      <MovieCard
         movie={movie}
         imdb={false}
         key={movie.id}

@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 
 import { moviesFetchData, moviesCarousel } from '../actions/moviesActions';
 import Header from '../components/Header'
-import MainView from './MainView'
-import Carousel from '../components/MovieCarousel';
-import MoviesArea from './MoviesArea'
+import MainView from '../container/MainView'
+import MoviesArea from '../container/MoviesArea'
 import Footer from '../components/Footer';
 
 import classNames from 'classnames/bind';
-import styles from './scss/movieContainer.scss'
+import styles from './scss/basePage.scss'
 const cx = classNames.bind(styles);
 
 class MovieContainer extends Component {
@@ -27,12 +26,12 @@ class MovieContainer extends Component {
     const search = this.props.search;
     const { imdbResults, udbResults, movies } = this.props;
     return(
-      <div className={cx('movieContainer')}>
+      <div className={cx('base-page')}>
         <Header />
-        <MainView search={search} />
-        <div className={cx('poster-area')}>
-          <Carousel carousel={this.props.carousel} />
-        </div>
+        <MainView
+          search={search}
+          carousel={this.props.carousel}
+        />
         <MoviesArea
           movies={movies}
           imdbResults = {imdbResults}

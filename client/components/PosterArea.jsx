@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
-import styles from './scss/movieCarousel.scss'
+import styles from './scss/posterArea.scss'
 
 const cx = classNames.bind(styles);
 

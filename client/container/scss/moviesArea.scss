@@ -4,12 +4,13 @@
 }
 
 .searchResultsArea {
-  width: 100%;
+  width: 85%;
+  margin: 80 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-  "imdbResCon udbResCon"
+  "imdbResCon udbResCon";
 }
 
 .userMoviesContainer {

@@ -123,7 +123,7 @@ export default class MovieEntry extends Component {
           </form>
           <button onClick={this.handleCloseModal}>Close Modal</button>
         </Modal>
-          <img className={cx({fromImdb: fromImdb}, 'movieEntryPoster')} src={posterToDisplay} width='140'/>
+          <img className={cx({fromImdb: fromImdb}, 'movie-entry-poster')} src={posterToDisplay} />
           <div className={cx({fromImdb: fromImdb}, 'movieInfoContainer')}>
             <div className={cx({fromImdb: fromImdb}, 'imdbInfo')}>
               <span className={cx({fromImdb: fromImdb}, 'movieEntryTitle')}> Title: </span>

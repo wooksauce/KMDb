@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { moviesIMDbSearchTitle, moviesFetchUDbSearch, moviesFetchIMDbSearch } from '../actions/moviesActions'
 import classNames from 'classnames/bind';
 import styles from './scss/search.scss'
-import $ from 'jquery';
 import throttle from 'lodash.throttle';
 
 const cx = classNames.bind(styles);
@@ -13,21 +12,29 @@ class Search extends Component {
     super(props)
   }
 
+  dockingSBThrottle(el, os) {
+    return (
+      throttle(() => {
+        el.style.top = 0;
+        let screenTop = window.pageYOffset;
+        if (screenTop >= os) {
+          this.props.dockSearchBar();
+        } else {
+          this.props.undockSearchBar();
+        }
+      }, 20)
+    )
+  }
+
   componentDidMount() {
     let elSearchBar = document.getElementsByClassName('search-bar')[0];
-    let elMainView = document.getElementsByClassName('main-view-container')[0];
     let osSearchBar = elSearchBar.getBoundingClientRect().top;
 
-    window.addEventListener('scroll', throttle(() => {
-      elSearchBar.style.top = 0;
-      let screenTop = window.pageYOffset;
-      if (screenTop >= osSearchBar) {
-        console.log('here')
-        this.props.dockSearchBar();
-      } else {
-        this.props.undockSearchBar();
-      }
-    }, 20))
+    window.addEventListener('scroll', this.dockingSBThrottle(elSearchBar, osSearchBar));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.dockingSBThrottle(elSearchBar, osSearchBar));
   }
 
   handleSearchTyping(e) {
@@ -46,8 +53,6 @@ class Search extends Component {
     }
   }
 
-
-
   render() {
     return (
       <div className={cx('search-bar')}>
@@ -60,7 +65,12 @@ class Search extends Component {
             onKeyPress={(e) => this.keyPressEnter(e)}
           />
         </form>
-        <button className={cx('search-button')} onClick={() => this.searchForTitle()}> Search </button>
+        <button
+          className={cx('search-button')}
+          onClick={() => this.searchForTitle()}
+        >
+        Search
+        </button>
       </div>
     )
   }

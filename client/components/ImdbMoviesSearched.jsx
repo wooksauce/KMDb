@@ -28,14 +28,9 @@ export default class ImdbMoviesSearched extends Component {
     if (!imdbResults || !imdbResults.length) {
       return null;
     }
-    {console.log('am i in here???')}
     const imdbMovies = this.makeMovieEntry(imdbResults);
     return(
-      // <div className={cx('imdb-res-con', 'searchList')}>
-      //   <div className={cx('imdb-results-title')}>
-      //     <p className={cx('imdb-results-title-text')}> From IMDb </p>
-      //   </div>
-      <div className={cx('imdb-results')}>
+      <div className={cx('imdb-results', {loading: this.props.imdbLoading})}>
         {imdbMovies}
       </div>
     )

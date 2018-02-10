@@ -10,7 +10,6 @@ export default function searchReducer(state=initialState, action) {
   switch (action.type) {
     case 'SEARCH_IMDB_SEARCH_TITLE': {
       return {...state,
-        imdbLoading: false,
         search: action.search
       };
     }
@@ -22,13 +21,16 @@ export default function searchReducer(state=initialState, action) {
       };
     }
     case 'SEARCH_IMDB_SEARCH_RESULTS': {
-      return {...state, imdbResults: action.imdbResults};
+      return {
+        ...state,
+        imdbLoading: false,
+        imdbResults: action.imdbResults};
     }
     case 'SEARCH_IMDB_MOVIES_LOADING': {
-      return {...state, imdbLoading: true};
+      return {...state, imdbLoading: action.imdbLoading};
     }
     case 'SEARCH_UDB_MOVIES_LOADING': {
-      return {...state, udbLoading: true};
+      return {...state, udbLoading: action.udbLoading};
     }
   }
   return state;

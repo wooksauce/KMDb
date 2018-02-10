@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const searchIMDbSearchTitle = (search) => {
   return {
     type: 'SEARCH_IMDB_SEARCH_TITLE',
@@ -12,7 +14,7 @@ export const searchIMDbMoviesLoading = (bool) => {
   }
 }
 
-export const moviesIMDbSearchResult = (movies) => {
+export const searchIMDbSearchResult = (movies) => {
   return {
     type: 'SEARCH_IMDB_SEARCH_RESULTS',
     imdbResults: movies,
@@ -21,10 +23,10 @@ export const moviesIMDbSearchResult = (movies) => {
 
 export const searchFetchIMDbResults = (searchStr) => {
   return (dispatch) => {
-    dispatch(moviesIMDbMoviesLoading(true));
+    dispatch(searchIMDbMoviesLoading(true));
     axios.get('/api/searchIMDbMovies/' + searchStr)
       .then(({ data }) => {
-        dispatch(moviesIMDbSearchResult(data.results));
+        dispatch(searchIMDbSearchResult(data.results));
       })
       .catch((err) => {
         console.log('search action err', err);
@@ -39,7 +41,7 @@ export const searchUDbMoviesLoading = (bool) => {
   }
 }
 
-export const moviesUDbSearchResult = (movies) => {
+export const searchUDbSearchResult = (movies) => {
   return {
     type: 'SEARCH_UDB_SEARCH_RESULTS',
     udbResults: movies,
@@ -47,13 +49,12 @@ export const moviesUDbSearchResult = (movies) => {
 }
 
 
-export const moviesFetchUDbSearch = (searchStr) => {
+export const searchFetchUDbResults = (searchStr) => {
   return (dispatch) => {
     dispatch(searchUDbMoviesLoading(true));
     axios.get('/api/searchUserMovies/' + searchStr)
       .then(({ data }) => {
-        dispatch(searchUDbMoviesLoading(false));
-        dispatch(moviesUDbSearchResult(data));
+        dispatch(searchUDbSearchResult(data));
       })
       .catch((err) => {
         console.log('search udb action err', err);

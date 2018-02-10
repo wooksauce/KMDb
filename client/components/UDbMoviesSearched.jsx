@@ -29,12 +29,9 @@ export default class UDbMoviesSearched extends Component {
     if (!udbResults || !udbResults.length) {
       return null;
     }
-    const udbMovies = makeMovieEntry(udbResults);
+    const udbMovies = this.makeMovieEntry(udbResults);
     return (
-      <div className={cx('udbResultsContainer', 'searchList')}>
-        <div className={cx('udbResultsTitle')}>
-          <p className={cx('udbResultsTitleText')}> From UDb </p>
-        </div>
+      <div className={cx('udb-results')}>
         {udbMovies}
       </div>
     );

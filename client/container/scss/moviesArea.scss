@@ -1,16 +1,18 @@
 .movies-area {
   grid-area: movies-area;
+  min-height: 100vh;
   background: rgb(250, 250, 250);
 }
 
-.searchResultsArea {
+.res-title-area {
   width: 85%;
   margin: 80 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-  "imdb-res-con udbResCon";
+  "imdb-res-con udb-res-con"
+  // "imdb-results udb-results";
 }
 
 .userMoviesContainer {
@@ -21,7 +23,11 @@
   grid-area: imdb-res-con;
 }
 
-.imdb-results-title {
+.udb-res-con {
+  grid-area: udb-res-con;
+}
+
+.imdb-results-title, .udb-results-title {
   width: auto;
   font-size: 20px;
   margin: 0 0 0 20;
@@ -30,5 +36,12 @@
   &-text {
     width: auto;
     padding: 3 7;
+  }
+}
+
+.imdb-results {
+  grid-area: imdb-results;
+  &.loading {
+    display: none;
   }
 }

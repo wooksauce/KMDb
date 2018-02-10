@@ -13,9 +13,6 @@ const cx = classNames.bind(styles);
 class MoviesArea extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-
-    }
   }
 
   handleUserRating(num) {
@@ -39,27 +36,40 @@ class MoviesArea extends Component {
             />
           </div>
         }
-        <div className={cx('searchResultsArea')}>
-          <div className={cx('imdb-res-con', 'searchList')}>
-            {(this.props.imdbLoading || this.props.imdbResults.length) &&
+        {console.log('imdbloading', this.props.imdbLoading)}
+        {(this.props.imdbLoading || !!imdbResults.length) &&
+          <div className={cx('res-title-area')}>
+            <div className={cx('imdb-res-con', 'searchList')}>
               <div className={cx('imdb-results-title')}>
                 <p className={cx('imdb-results-title-text')}> From IMDb </p>
               </div>
-            }
-            {!this.props.imdbResults.length &&
-            <IMDbSearchResults
-              imdbResults={imdbResults}
-              handleUserRating={this.handleUserRating}
-              handleUserComment={this.handleUserComment}
-            />
-            }
+              {/* <div className={cx('imdb-results', {loading: !this.props.imdbLoading})}>
+                Loading...
+              </div>
+              <IMDbSearchResults
+                imdbResults={imdbResults}
+                imdbLoading={this.props.imdbLoading}
+                handleUserRating={this.handleUserRating}
+                handleUserComment={this.handleUserComment}
+              /> */}
+            </div>
+            <div className={cx('udb-res-con', 'searchList')}>
+              <div className={cx('udb-results-title')}>
+                <p className={cx('udb-results-title-text')}> From UDb </p>
+              </div>
+              {/* {(this.props.udbLoading) &&
+                <div className={cx('udb-results')}>
+                  Loading...
+                </div>
+              }
+              <UDbSearchResults
+                udbResults={udbResults}
+                handleUserRating={this.handleUserRating}
+                handleUserComment={this.handleUserComment}
+              /> */}
+            </div>
           </div>
-          <UDbSearchResults
-            udbResults={udbResults}
-            handleUserRating={this.handleUserRating}
-            handleUserComment={this.handleUserComment}
-          />
-        </div>
+        }
       </div>
     )
   }

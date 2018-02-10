@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchIMDbSearchTitle, searchFetchUDbSearch, searchFetchIMDbSearch } from '../actions/searchActions'
+import { searchIMDbSearchTitle, searchFetchUDbResults, searchFetchIMDbResults } from '../actions/searchActions'
 import classNames from 'classnames/bind';
 import styles from './scss/search.scss'
 import throttle from 'lodash.throttle';
@@ -95,10 +95,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(searchIMDbSearchTitle(title));
     },
     fetchIMDbSearchResults: (searchStr) => {
-      dispatch(searchFetchIMDbSearch(searchStr));
+      dispatch(searchFetchIMDbResults(searchStr));
     },
     fetchUDbSearchResults: (searchStr) => {
-      dispatch(searchFetchUDbSearch(searchStr));
+      dispatch(searchFetchUDbResults(searchStr));
     },
   };
 }

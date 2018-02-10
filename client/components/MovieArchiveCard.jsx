@@ -40,10 +40,12 @@ class MovieArchiveEntry extends Component{
   }
 
   handleEdit(e) {
+    document.getElementsByClassName('search-bar')[0].style.display = 'none';
     this.setState({showEditModal: true})
   }
 
   handleCloseModal() {
+    document.getElementsByClassName('search-bar')[0].style.display = '';
     this.setState({showEditModal: false});
   }
 

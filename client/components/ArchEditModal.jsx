@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './scss/archEditModal.scss';
 import axios from 'axios';
 
-const cx = classNames.bind(this);
+const cx = classNames.bind(styles);
 
 class ArchEditModal extends Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class ArchEditModal extends Component {
   }
 
   handleSave(id) {
-    console.log('im here', this.state.userRating)
     axios.put(`/api/updateMovie/${id}`, {
       userRating: this.state.userRating,
       userComment: this.state.userComment,
@@ -36,26 +35,12 @@ class ArchEditModal extends Component {
   render() {
     return (
       <Modal
-        style={
-          {
-          content:{
-            background: 'white',
-            border: '0',
-            borderRadius: '4px',
-            minHeight: '200px',
-            maxHeight: '280px',
-            width: '50%',
-            height: '40%',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%,-50%)',
-          }
-        }
-        }
         isOpen={this.props.showModal}
         contentLabel="onRequestClose Example"
         onRequestClose={this.props.handleCloseModal}
         appElement={document.getElementById('app')}
+        className="modal"
+        // overlayClassName="overlay"
       >
         <p className="entryModalTitle">Modal Title Goes Here</p>
         <br />

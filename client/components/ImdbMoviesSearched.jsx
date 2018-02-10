@@ -3,7 +3,7 @@ import MovieCard from './MovieCard';
 import classNames from 'classnames/bind';
 import styles from './scss/imdbMoviesSearched.scss';
 
-const cx = classNames.bind(this);
+const cx = classNames.bind(styles);
 
 export default class ImdbMoviesSearched extends Component {
   constructor(props) {

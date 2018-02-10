@@ -12,17 +12,6 @@ class Search extends Component {
     super(props)
   }
 
-  autoScrollTo(target, offset=0) {
-    let targetDiv = document.getElementsByClassName(target)[0]
-    let targetPos = targetDiv.getBoundingClientRect().bottom + window.pageYOffset + offset;
-    console.log('??/', targetPos, offset)
-    window.scroll({
-      left: 0,
-      top: targetPos,
-      behavior: 'smooth',
-    });
-  }
-
   dockingSBThrottle() {
     let elSearchBar = document.getElementsByClassName('search-bar')[0];
     let osSearchBar = elSearchBar.getBoundingClientRect().top;
@@ -60,7 +49,7 @@ class Search extends Component {
     if (e.key === 'Enter' || e.which == 13 || e.keyCode == 13) {
       e.preventDefault();
       this.searchForTitle();
-      this.autoScrollTo('main-poster-container', 10)
+      autoScrollTo('main-poster-container', 10)
     }
   }
 
@@ -78,13 +67,26 @@ class Search extends Component {
         </form>
         <button
           className={cx('search-button')}
-          onClick={() => this.searchForTitle()}
+          onClick={() => {
+            this.searchForTitle();
+            autoScrollTo('main-poster-container', 10)
+          }}
         >
         Search
         </button>
       </div>
     )
   }
+}
+
+const autoScrollTo = (target, offset=0) => {
+  let targetDiv = document.getElementsByClassName(target)[0]
+  let targetPos = targetDiv.getBoundingClientRect().bottom + window.pageYOffset + offset;
+  window.scroll({
+    left: 0,
+    top: targetPos,
+    behavior: 'smooth',
+  });
 }
 
 const mapDispatchToProps = (dispatch) => {

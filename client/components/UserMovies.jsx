@@ -3,7 +3,7 @@ import MovieArchiveCard from '../components/MovieArchiveCard'
 import classNames from 'classnames/bind';
 import styles from './scss/userMovies.scss';
 
-const cx = classNames.bind(this);
+const cx = classNames.bind(styles);
 
 class UserMovies extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { moviesIMDbSearchTitle, moviesFetchUDbSearch, moviesFetchIMDbSearch } from '../actions/moviesActions'
+import { searchIMDbSearchTitle, searchFetchUDbSearch, searchFetchIMDbSearch } from '../actions/searchActions'
 import classNames from 'classnames/bind';
 import styles from './scss/search.scss'
 import throttle from 'lodash.throttle';
@@ -92,13 +92,13 @@ const autoScrollTo = (target, offset=0) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     searchTitle: (title) => {
-      dispatch(moviesIMDbSearchTitle(title));
+      dispatch(searchIMDbSearchTitle(title));
     },
     fetchIMDbSearchResults: (searchStr) => {
-      dispatch(moviesFetchIMDbSearch(searchStr));
+      dispatch(searchFetchIMDbSearch(searchStr));
     },
     fetchUDbSearchResults: (searchStr) => {
-      dispatch(moviesFetchUDbSearch(searchStr));
+      dispatch(searchFetchUDbSearch(searchStr));
     },
   };
 }

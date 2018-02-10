@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { moviesFetchData, moviesCarousel } from '../actions/moviesActions';
+import { moviesMPFetchMovies, moviesCarousel } from '../actions/moviesActions';
 import Header from '../components/Header'
 import MainView from '../container/MainView'
 import MoviesArea from '../container/MoviesArea'
@@ -15,6 +15,9 @@ const cx = classNames.bind(styles);
 class MovieContainer extends Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   mpLoading: this.props.mpLoading,
+    // }
   }
 
   componentDidMount() {
@@ -32,11 +35,15 @@ class MovieContainer extends Component {
           search={search}
           carousel={this.props.carousel}
         />
-        <MoviesArea
-          movies={movies}
-          imdbResults = {imdbResults}
-          udbResults = {udbResults}
-        />
+        {!this.props.mpLoading &&
+          <MoviesArea
+            movies={movies}
+          />
+        }
+        {this.props.mpLoading &&
+          <div className={cx('main-page-loading')}> Loading
+          </div>
+        }
         <Footer />
       </div>
     )
@@ -46,17 +53,16 @@ class MovieContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
-    search: state.movies.search,
-    udbResults: state.movies.udbResults,
-    imdbResults: state.movies.imdbResults,
+    search: state.search.search,
     carousel: state.carousel.carouselData,
+    mpLoading: state.movies.mpLoading,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllMovies: () => {
-      dispatch(moviesFetchData());
+      dispatch(moviesMPFetchMovies());
     },
     fetchCarouselData: () => {
       dispatch(moviesCarousel());

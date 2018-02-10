@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 import classNames from 'classnames/bind';
 import styles from './scss/archEditModal.scss';
 import axios from 'axios';
@@ -34,13 +34,12 @@ class ArchEditModal extends Component {
 
   render() {
     return (
-      <Modal
+      <ReactModal
         isOpen={this.props.showModal}
         contentLabel="onRequestClose Example"
         onRequestClose={this.props.handleCloseModal}
         appElement={document.getElementById('app')}
         className="modal"
-        // overlayClassName="overlay"
       >
         <p className="entryModalTitle">Modal Title Goes Here</p>
         <br />
@@ -55,7 +54,6 @@ class ArchEditModal extends Component {
               max="10"
               defaultValue={this.state.userRating}
               onChange={(e) => this.handleUserRating(e.target.value)}
-              // onChange = {() => console.log('onchange', this.props.handleUserRating)}
               required
             />
           </div>
@@ -65,7 +63,6 @@ class ArchEditModal extends Component {
               id="userComment"
               defaultValue={this.state.userComment}
               onChange={(e) => this.handleUserComment(e.target.value)}
-              // onChange={(e) => this.handleMyComment(e.target.value)}
             >
             </textarea>
           </div>
@@ -74,7 +71,6 @@ class ArchEditModal extends Component {
               onClick={() => {this.handleSave(this.props.movieId)}}
               className={cx('modalButton')}
               type="button"
-              // onClick={this.handleSave}
             >
             Save
             </button>
@@ -83,7 +79,7 @@ class ArchEditModal extends Component {
         <div className={cx('modalCloseButton')}>
           <button className={cx('modalButton')} onClick={this.props.handleCloseModal}>Close</button>
         </div>
-      </Modal>
+      </ReactModal>
     )
   }
 }

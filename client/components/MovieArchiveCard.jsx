@@ -110,6 +110,7 @@ class MovieArchiveEntry extends Component{
                 handleUserRating={this.props.handleUserRating}
                 handleUserComment={this.props.handleUserComment}
                 fetchAllMovies={this.props.fetchAllMovies}
+                fromArchive={true}
               />
               <div className={cx('archDelButtonContainer')} onClick={(e)=>this.handleDelete(e, id)}>
                 <span className="far fa-trash-alt archDelButton"></span>

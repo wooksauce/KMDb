@@ -1,6 +1,6 @@
 const initialState = {
   errored: false,
-  loading: false,
+  mpLoading: false,
   movies: [],
   search: '',
   udbResults: [],
@@ -21,14 +21,15 @@ export default function moviesReducer(state=initialState, action) {
     case 'MOVIES_ERRORED': {
       return {...state, errored: true};
     }
-    case 'MOVIES_LOADING': {
-      return {...state, loading: true};
+    case 'MOVIES_MP_MOVIES_LOADING': {
+      return {...state, mpLoading: true};
     }
-    case 'MOVIES_FETCH_SUCCESS': {
+    case 'MOVIES_MP_MOVIES_FETCH_SUCCESS': {
+      console.log('mploadingfired')
       return {
         ...state,
         errored: false,
-        loading: false,
+        mpLoading: false,
         movies: action.movies,
       };
     }

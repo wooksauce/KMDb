@@ -10,8 +10,22 @@ export default class UDbMoviesSearched extends Component {
     super(props)
   }
 
+  makeMovieEntry (movies = []) {
+    if (movies.length) {
+      return movies.map((movie) =>
+        <MovieCard
+          movie={movie}
+          imdb={false}
+          key={movie.imdbid}
+          handleUserRating={this.props.handleUserRating}
+          handleUserComment={this.props.handleUserComment}
+        />)
+    }
+  }
+
   render() {
     const { udbResults } = this.props;
+    console.log('udb', udbResults.length)
     if (!udbResults || !udbResults.length) {
       return null;
     }
@@ -24,17 +38,5 @@ export default class UDbMoviesSearched extends Component {
         {udbMovies}
       </div>
     );
-  }
-}
-
-const makeMovieEntry = (movies = []) => {
-  if (movies.length) {
-    return movies.map((movie) =>
-      <MovieCard
-        movie={movie}
-        imdb={false}
-        key={movie.id}
-      />
-    )
   }
 }

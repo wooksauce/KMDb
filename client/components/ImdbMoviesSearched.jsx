@@ -10,31 +10,34 @@ export default class ImdbMoviesSearched extends Component {
     super(props)
   }
 
+  makeMovieEntry (movies = []) {
+    if (movies.length) {
+      return movies.map((movie) =>
+        <MovieCard
+          movie={movie}
+          imdb={true}
+          key={movie.imdbid}
+          handleUserRating={this.props.handleUserRating}
+          handleUserComment={this.props.handleUserComment}
+        />)
+    }
+  }
+
   render() {
     const { imdbResults } = this.props;
     if (!imdbResults || !imdbResults.length) {
       return null;
     }
-    const imdbMovies = makeMovieEntry(imdbResults);
+    {console.log('am i in here???')}
+    const imdbMovies = this.makeMovieEntry(imdbResults);
     return(
-      <div className={cx('imdb-res-con', 'searchList')}>
-        <div className={cx('imdb-results-title')}>
-          <p className={cx('imdb-results-title-text')}> From IMDb </p>
-        </div>
+      // <div className={cx('imdb-res-con', 'searchList')}>
+      //   <div className={cx('imdb-results-title')}>
+      //     <p className={cx('imdb-results-title-text')}> From IMDb </p>
+      //   </div>
+      <div className={cx('imdb-results')}>
         {imdbMovies}
       </div>
     )
-  }
-}
-
-//same as the one in UDbMoviesSearched. Should I have this in container level? or import it?
-const makeMovieEntry = (movies = []) => {
-  if (movies.length) {
-    return movies.map((movie) =>
-      <MovieCard
-        movie={movie}
-        imdb={true}
-        key={movie.imdbid}
-      />)
   }
 }

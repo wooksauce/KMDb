@@ -30,7 +30,6 @@ module.exports = {
   },
 
   searchIMDbMovies: (req, res) => {
-    setTimeout(()=>
     imdb.search({
       title: req.params.search}, {
         apiKey: process.env.IMDB_API_KEY
@@ -40,7 +39,6 @@ module.exports = {
       }).catch((err) => {
         res.status(404).send("an error occured while searcing for a movie", err);
       })
-    , 3000)
   },
 
   searchUDbMovies: (req, res) => {

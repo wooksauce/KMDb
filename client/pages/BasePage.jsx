@@ -32,7 +32,7 @@ class MovieContainer extends Component {
       <div className={cx('base-page')}>
         <Header />
         <MainView
-          search={search}
+          // search={search}
           carousel={this.props.carousel}
         />
         {!this.props.mpLoading &&
@@ -53,7 +53,7 @@ class MovieContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
-    search: state.search.search,
+    // search: state.search.search,
     carousel: state.carousel.carouselData,
     mpLoading: state.movies.mpLoading,
   }

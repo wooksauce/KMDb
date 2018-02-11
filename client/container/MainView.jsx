@@ -44,7 +44,7 @@ class MainView extends Component {
             </p>
           </div>
           <Search
-            search={search}
+            // search={search}
             dockSearchBar={this.dockSearchBar}
             undockSearchBar={this.undockSearchBar}
           />

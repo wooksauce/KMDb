@@ -10,6 +10,9 @@ const cx = classNames.bind(styles);
 class Search extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      searchStr: '',
+    }
   }
 
   dockingSBThrottle() {
@@ -37,12 +40,12 @@ class Search extends Component {
   }
 
   handleSearchTyping(e) {
-    this.props.searchTitle(e.target.value);
+    this.setState({searchStr: e.target.value});
   }
 
   searchForTitle() {
-    this.props.fetchIMDbSearchResults(this.props.search);
-    this.props.fetchUDbSearchResults(this.props.search);
+    this.props.fetchIMDbSearchResults(this.state.searchStr);
+    this.props.fetchUDbSearchResults(this.state.searchStr);
   }
 
   keyPressEnter(e) {

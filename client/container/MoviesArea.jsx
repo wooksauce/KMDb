@@ -43,7 +43,7 @@ class MoviesArea extends Component {
               <div className={cx('imdb-results-title')}>
                 <p className={cx('imdb-results-title-text')}> From IMDb </p>
               </div>
-              {/* <div className={cx('imdb-results', {loading: !this.props.imdbLoading})}>
+              <div className={cx('imdb-results', {loading: !this.props.imdbLoading})}>
                 Loading...
               </div>
               <IMDbSearchResults
@@ -51,13 +51,13 @@ class MoviesArea extends Component {
                 imdbLoading={this.props.imdbLoading}
                 handleUserRating={this.handleUserRating}
                 handleUserComment={this.handleUserComment}
-              /> */}
+              />
             </div>
             <div className={cx('udb-res-con', 'searchList')}>
               <div className={cx('udb-results-title')}>
                 <p className={cx('udb-results-title-text')}> From UDb </p>
               </div>
-              {/* {(this.props.udbLoading) &&
+              {(this.props.udbLoading) &&
                 <div className={cx('udb-results')}>
                   Loading...
                 </div>
@@ -66,7 +66,7 @@ class MoviesArea extends Component {
                 udbResults={udbResults}
                 handleUserRating={this.handleUserRating}
                 handleUserComment={this.handleUserComment}
-              /> */}
+              />
             </div>
           </div>
         }

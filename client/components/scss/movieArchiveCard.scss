@@ -83,8 +83,16 @@
   right: 0;
 }
 
-div svg:hover {
-  fill: rgb(101, 101, 101);
+// div svg:hover {
+//   fill: rgb(101, 101, 101);
+// }
+
+.archEditButtonContainer svg:hover {
+  fill: #8ea5f1;
+}
+
+.archDelButtonContainer svg:hover {
+  fill: #e06b6b;
 }
 
 .fa-trash-alt, .fa-edit {

@@ -24,10 +24,10 @@ class MoviesArea extends Component {
   }
 
   render() {
-    const { imdbResults, udbResults, movies } = this.props;
+    const { imdbResults, udbResults, movies, imdbLoading } = this.props;
     return (
       <div className={cx('movies-area')}>
-        {(!imdbResults.length && !udbResults.length) &&
+        {(!imdbResults.length && !udbResults.length && !imdbLoading) &&
           <div className={cx('userMoviesContainer')}>
             <UserMovies
               movies={movies}
@@ -37,18 +37,18 @@ class MoviesArea extends Component {
           </div>
         }
         {console.log('imdbloading', this.props.imdbLoading)}
-        {(this.props.imdbLoading || !!imdbResults.length) &&
+        {(imdbLoading || !!imdbResults.length) &&
           <div className={cx('res-title-area')}>
             <div className={cx('imdb-res-con', 'searchList')}>
               <div className={cx('imdb-results-title')}>
                 <p className={cx('imdb-results-title-text')}> From IMDb </p>
               </div>
-              <div className={cx('imdb-results', {loading: !this.props.imdbLoading})}>
+              <div className={cx('imdb-results', {loading: !imdbLoading})}>
                 Loading...
               </div>
               <IMDbSearchResults
                 imdbResults={imdbResults}
-                imdbLoading={this.props.imdbLoading}
+                imdbLoading={imdbLoading}
                 handleUserRating={this.handleUserRating}
                 handleUserComment={this.handleUserComment}
               />

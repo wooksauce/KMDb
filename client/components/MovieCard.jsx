@@ -34,7 +34,7 @@ export default class MovieCard extends Component {
   }
 
   render() {
-    const { title, poster, posterUrl, year, userRating, userComment, id, imdbid } = this.props.movie;
+    const { title, poster, posterUrl, year, userRating, userComment, id, imdbid, genres } = this.props.movie;
     const fromImdb = this.props.imdb;;
     let posterToDisplay
     if (posterUrl) {
@@ -46,7 +46,7 @@ export default class MovieCard extends Component {
     }
     return(
       <div className={cx({fromImdb: fromImdb}, 'movie-entry')}>
-        <div className={cx({fromImdb: fromImdb}, 'movie-entry-container')} onClick={() => this.handleOpenModal(fromImdb)}>
+        <div className={cx({fromImdb: fromImdb}, 'movie-card-container')} onClick={() => this.handleOpenModal(fromImdb)}>
         <MovieCardModal
           isOpen={this.state.showInitModal}r
           contentLabel="onRequestClose Example"
@@ -56,18 +56,32 @@ export default class MovieCard extends Component {
           handleUserComment={this.props.handleUserComment}
           handleCloseModal={this.handleCloseModal}
         />
-          <img className={cx({fromImdb: fromImdb}, 'movie-entry-poster')} src={posterToDisplay} />
-          <div className={cx({fromImdb: fromImdb}, 'movie-info-container')}>
+          <img className={cx({fromImdb: fromImdb}, 'movie-card-poster')} src={posterToDisplay} />
+          <div className={cx({fromImdb: fromImdb}, 'movie-card-info-con')}>
             <div className={cx({fromImdb: fromImdb}, 'imdb-info')}>
-              <span className={cx({fromImdb: fromImdb}, 'movie-entry-title')}> Title: </span>
-              <span className={cx({fromImdb: fromImdb}, 'info', 'title')}> {title} </span>
-              <div className={cx({fromImdb: fromImdb}, 'info', 'year')}> {year} </div>
-              <div className={cx({fromImdb: fromImdb}, 'info', 'genre')}> genre </div>
-              {/* <div className={resultSource + "Info rating"}> {imdbRating} </div> */}
+              <div className={cx({fromImdb: fromImdb}, 'movie-card-title')}>
+                <span className={cx({fromImdb: fromImdb}, 'movie-card-info', 'title')}> {title} </span>
+              </div>
+              <div className={cx({fromImdb: fromImdb}, 'movie-card-year')}>
+                <p className={cx({fromImdb: fromImdb}, 'movie-card-info', 'year-text')}>Year:&nbsp;</p>
+                <p className={cx({fromImdb: fromImdb}, 'movie-card-info', 'year')}> {year} </p>
+              </div>
+              <div className={cx({fromImdb: fromImdb}, 'movie-card-genres')}>
+                <p className={cx({fromImdb: fromImdb}, 'movie-card-info', 'genres-text')}>Genres:&nbsp;</p>
+                <p className={cx({fromImdb: fromImdb}, 'movie-card-info', 'genres')}> {genres} </p>
+              </div>
             </div>
-            <div className={cx({fromImdb: fromImdb}, 'userInfo')}>
-              <div className={cx({fromImdb: fromImdb}, 'info', 'userRating')}> {userRating} </div>
-              <div className={cx({fromImdb: fromImdb}, 'info', 'userComments')}> {userComment} </div>
+            <div className={cx({fromImdb: fromImdb}, 'movie-card-user-input')}>
+              <div className={cx({fromImdb: fromImdb}, 'movie-card-info', 'userRating')}> {userRating} </div>
+              <div className={cx({fromImdb: fromImdb}, 'movie-card-info', 'userComments')}> {userComment} </div>
+            </div>
+            <div className={cx('movie-card-button-area')}>
+              <div className={cx('other-reviews-button', 'movie-card-button')}>
+                <p className={cx('movie-card-button-text')}> Other Reviews </p>
+              </div>
+              <div className={cx('add-button', 'movie-card-button')}>
+                <p className={cx('movie-card-button-text')}> Add </p>
+              </div>
             </div>
             <button
               className={cx({fromImdb: fromImdb}, 'delButton')}

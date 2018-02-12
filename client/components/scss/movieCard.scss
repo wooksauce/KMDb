@@ -7,24 +7,70 @@ textarea {
   overflow-y: scroll
 }
 
-.movie-entry-poster {
+.movie-card-poster {
   width: 110px;
 }
 
-.movie-entry-container {
+.movie-card-container {
   display: grid;
   margin: 10px;
   grid-template-columns: 125px 1fr;
   grid-template-areas:
-  "movie-entry-poster movie-info-container";
+  "movie-card-poster movie-card-info-con";
   padding: 10px;
+  background: white;
+  box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.05);
+  &:hover {
+    box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.2);
+  }
 }
 
-.movie-entry-poster {
-  grid-area: movie-entry-poster;
+.movie-card-title {
+  border: 2px solid #ffd030;
+  display: inline-block;
+  margin: 0 50 0 0;
 }
 
-.movie-info-container {
+.movie-card-poster {
+  grid-area: movie-card-poster;
+}
+
+.movie-card-info-con {
   font-size: 14px;
-  grid-area: movie-info-container
+  grid-area: movie-card-info-con;
+}
+
+.movie-card-info {
+  display: inline-block;
+}
+
+.movie-card-button-area {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+}
+
+.movie-card-button {
+  background: #8ea5f1;
+  display: inline-block;
+  border-radius: 3px;
+  color: white;
+  position: relative;
+  margin: 0 8;
+  cursor: pointer;
+  &-text {
+    display: inline-block;
+    padding: 5 10;
+  }
+  &:hover {
+    transition: all 0.3s;
+    background: #6887ec;
+  }
+}
+
+.other-reviews-button {
+  background: #8ee281;
+  &:hover {
+    background: #67c859
+  }
 }

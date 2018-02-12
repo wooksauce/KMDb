@@ -27,20 +27,19 @@ class MovieContainer extends Component {
 
   render() {
     const search = this.props.search;
-    const { imdbResults, udbResults, movies } = this.props;
+    const { imdbResults, udbResults, movies, mpLoading } = this.props;
     return(
       <div className={cx('base-page')}>
         <Header />
         <MainView
-          // search={search}
           carousel={this.props.carousel}
         />
-        {!this.props.mpLoading &&
+        {!mpLoading &&
           <MoviesArea
             movies={movies}
           />
         }
-        {this.props.mpLoading &&
+        {mpLoading &&
           <div className={cx('main-page-loading')}> Loading
           </div>
         }
@@ -53,7 +52,6 @@ class MovieContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
-    // search: state.search.search,
     carousel: state.carousel.carouselData,
     mpLoading: state.movies.mpLoading,
   }

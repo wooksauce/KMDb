@@ -17,7 +17,7 @@ class Search extends Component {
 
   dockingSBThrottle() {
     let elSearchBar = document.getElementsByClassName('search-bar')[0];
-    let osSearchBar = elSearchBar.getBoundingClientRect().top;
+    let osSearchBar = elSearchBar.getBoundingClientRect().top + window.pageYOffset;
     return (
       throttle(() => {
         elSearchBar.style.top = 0;

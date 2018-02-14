@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import MovieCardModal from './MovieCardModal';
+import { searchFetchUDbResults } from '../actions/searchActions'
 import axios from 'axios';
 import classNames from 'classnames/bind';
 import styles from './scss/movieCard.scss';
 
 const cx = classNames.bind(styles);
 
-export default class MovieCard extends Component {
+class MovieCard extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -36,8 +39,13 @@ export default class MovieCard extends Component {
     this.setState({showInitModal: false});
   }
 
-  handleDelete(movieId) {
-    axios.delete(`api/deleteMovie/${movieId}`)
+  handleDelete(title, movieId) {
+    if (confirm('You sure?')) {
+      axios.delete(`api/deleteMovie/${movieId}`)
+        .then(() => {
+          this.props.updateUdbResults(title)
+        })
+    }
   }
 
   render() {
@@ -93,17 +101,24 @@ export default class MovieCard extends Component {
               </div>
               <div
                 className={cx({fromImdb: fromImdb}, 'del-button', 'movie-card-button')}
-                onClick={() => this.handleDelete(id)}
+                onClick={() => this.handleDelete(title, id)}
               >
                 <p className={cx('movie-card-button-text')}> Delete </p>
               </div>
             </div>
-            {/* <div className={cx({fromImdb: fromImdb}, 'movie-card-del-button')} onClick={() => this.handleDelete(id)}>
-              <p className={cx('movie-del-button-text')}> Delete </p>
-            </div> */}
           </div>
         </div>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateUdbResults: (searchStr) => {
+      dispatch(searchFetchUDbResults(searchStr));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps) (MovieCard);

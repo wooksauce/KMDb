@@ -31,12 +31,12 @@ class BasePage extends Component {
         <MainView
           carousel={this.props.carousel}
         />
-        {!!movies.length &&
+        {(!!movies.length || !!udbResults.length || !!imdbResults.length) &&
           <MoviesArea
             movies={movies}
           />
         }
-        {!movies.length &&
+        {mpLoading &&
           <div className={cx('main-page-loading')}> Loading
           </div>
         }
@@ -57,6 +57,8 @@ const mapStateToProps = (state) => {
     movies: state.movies.movies,
     carousel: state.carousel.carouselData,
     mpLoading: state.movies.mpLoading,
+    imdbResults: state.search.imdbResults,
+    udbResults: state.search.udbResults,
   }
 }
 

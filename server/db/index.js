@@ -6,6 +6,10 @@ const Movie = db.define('Movie', {
     type: Sequelize.STRING,
     allowNull: true
   },
+  imdbid: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   title: {
     type: Sequelize.STRING,
     allowNull: false
@@ -32,7 +36,7 @@ const Movie = db.define('Movie', {
   },
   userRating: {
     type: Sequelize.FLOAT,
-    allowNull: true
+    allowNull: false
   },
   userComment: {
     type: Sequelize.TEXT,

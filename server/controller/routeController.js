@@ -1,5 +1,3 @@
-// import { setTimeout } from 'timers';
-
 const Movie = require('../db/index');
 const imdb = require('imdb-api');
 var Sequelize = require('sequelize');
@@ -17,6 +15,16 @@ module.exports = {
     .catch(err => {
       res.status(404).send("an error occured getting a movie by imdbid", err);
     })
+  },
+
+  checkForMovie: (req, res) => {
+    Movie.findOne({where: {imdbid: req.params.id}})
+      .then((movie) => {
+        res.status(200).send(movie);
+      })
+      .catch(err => {
+        res.status(404).send('error', err);
+      })
   },
 
   getMovies: (req, res) => {
@@ -54,7 +62,7 @@ module.exports = {
       .then((movies) => {
         res.status(200).send(movies);
       }).catch((err) => {
-        console.log('server udb ctrl err', err);
+        res.status(404).send('server udb ctrl err', err);
       })
   },
 
@@ -70,8 +78,9 @@ module.exports = {
   },
 
   saveMovie: (req, res) => {
-    const { title, posterUrl, year, genres, userRating, userComment, director, actors } = req.body;
+    const { imdbid, title, posterUrl, year, genres, userRating, userComment, director, actors } = req.body;
     const movieInfo = {
+      imdbid: imdbid,
       title: title,
       posterUrl: posterUrl,
       year: year,

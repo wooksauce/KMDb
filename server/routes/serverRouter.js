@@ -17,4 +17,6 @@ router.delete('/deleteMovie/:id', control.deleteMovie);
 
 router.put('/updateMovie/:id', control.updateMovie);
 
+router.get('/checkForMovie/:id', control.checkForMovie);
+
 module.exports = router;

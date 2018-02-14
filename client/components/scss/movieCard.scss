@@ -1,5 +1,19 @@
-.fromImdb .delbutton {
-  display: none;
+.fromImdb {
+  &.movie-card-del-button {
+    display: none;
+  }
+  &.del-button {
+    display: none;
+  }
+}
+
+.fromUdb {
+  &.other-reviews-button {
+    display: none;
+  }
+  &.add-button {
+    display: none;
+  }
 }
 
 textarea {
@@ -19,6 +33,7 @@ textarea {
   "movie-card-poster movie-card-info-con";
   padding: 10px;
   background: white;
+  min-height: 100;
   box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.05);
   &:hover {
     box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.2);
@@ -51,7 +66,7 @@ textarea {
   right: 0;
   position: absolute;
   display: flex;
-  justify-content: space-evenly
+  justify-content: flex-end;
 }
 
 .movie-card-button {
@@ -69,6 +84,12 @@ textarea {
   &:hover {
     transition: all 0.3s;
     background: #6887ec;
+  }
+  &.del-button {
+    background: #e28181;
+    &:hover {
+      background: #cf5a5a
+    }
   }
 }
 

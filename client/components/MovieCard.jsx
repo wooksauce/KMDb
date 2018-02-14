@@ -21,7 +21,14 @@ export default class MovieCard extends Component {
 
   handleOpenModal (bool) {
     if (bool) {
-      this.setState({showInitModal: true});
+      axios.get(`api/checkForMovie/${this.props.movie.imdbid}`)
+        .then(({ data }) => {
+          if (!data) {
+            this.setState({showInitModal: true});
+          } else {
+            alert('You already have this movie!');
+          }
+        })
     }
   }
 
@@ -46,18 +53,7 @@ export default class MovieCard extends Component {
     }
     return(
       <div className={cx({fromImdb: fromImdb}, 'movie-entry')}>
-        <div className={cx({fromImdb: fromImdb}, 'movie-card-container')} onClick={() => this.handleOpenModal(fromImdb)}>
-        <MovieCardModal
-          showInitModal={this.state.showInitModal}
-          isOpen={this.state.showInitModal}r
-          contentLabel="onRequestClose Example"
-          onRequestClose={this.handleCloseModal}
-          appElement={document.getElementById('app')}
-          handleUserRating={this.props.handleUserRating}
-          handleUserComment={this.props.handleUserComment}
-          handleCloseModal={this.handleCloseModal}
-          imdbid={imdbid}
-        />
+        <div className={cx({fromImdb: fromImdb}, 'movie-card-container')}>
           <img className={cx({fromImdb: fromImdb}, 'movie-card-poster')} src={posterToDisplay} />
           <div className={cx({fromImdb: fromImdb}, 'movie-card-info-con')}>
             <div className={cx({fromImdb: fromImdb}, 'imdb-info')}>
@@ -77,20 +73,34 @@ export default class MovieCard extends Component {
               <div className={cx({fromImdb: fromImdb}, 'movie-card-info', 'userRating')}> {userRating} </div>
               <div className={cx({fromImdb: fromImdb}, 'movie-card-info', 'userComments')}> {userComment} </div>
             </div>
-            <div className={cx('movie-card-button-area')}>
-              <div className={cx('other-reviews-button', 'movie-card-button')}>
+            <div className={cx({fromImdb: fromImdb}, 'movie-card-button-area')}>
+              <div className={cx({fromUdb: !fromImdb}, 'other-reviews-button', 'movie-card-button')}>
                 <p className={cx('movie-card-button-text')}> Other Reviews </p>
               </div>
-              <div className={cx('add-button', 'movie-card-button')}>
+              <div className={cx({fromUdb: !fromImdb}, 'add-button', 'movie-card-button')} onClick={() => this.handleOpenModal(fromImdb)}>
                 <p className={cx('movie-card-button-text')}> Add </p>
+                <MovieCardModal
+                  showInitModal={this.state.showInitModal}
+                  isOpen={this.state.showInitModal}r
+                  contentLabel="onRequestClose Example"
+                  onRequestClose={this.handleCloseModal}
+                  appElement={document.getElementById('app')}
+                  handleUserRating={this.props.handleUserRating}
+                  handleUserComment={this.props.handleUserComment}
+                  handleCloseModal={this.handleCloseModal}
+                  imdbid={imdbid}
+                />
+              </div>
+              <div
+                className={cx({fromImdb: fromImdb}, 'del-button', 'movie-card-button')}
+                onClick={() => this.handleDelete(id)}
+              >
+                <p className={cx('movie-card-button-text')}> Delete </p>
               </div>
             </div>
-            <button
-              className={cx({fromImdb: fromImdb}, 'delButton')}
-              onClick={() => this.handleDelete(id)}
-            >
-            x
-            </button>
+            {/* <div className={cx({fromImdb: fromImdb}, 'movie-card-del-button')} onClick={() => this.handleDelete(id)}>
+              <p className={cx('movie-del-button-text')}> Delete </p>
+            </div> */}
           </div>
         </div>
       </div>

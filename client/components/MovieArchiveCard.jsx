@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import $ from 'jquery';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -129,6 +131,20 @@ class MovieArchiveCard extends Component{
       </div>
     )
   }
+}
+
+MovieArchiveCard.PropTypes = {
+  title: PropTypes.string,
+  posterUrl: PropTypes.string,
+  year: PropTypes.string,
+  genres: PropTypes.string,
+  director: PropTypes.string,
+  actors: PropTypes.sting,
+  userRating: PropTypes.number,
+  userComment: PropTypes.string,
+  movies: PropTypes.array,
+  handleUserRating: PropTypes.func,
+  handleUserComment: PropTypes.func,
 }
 
 const mapDispatchToProps = (dispatch) => {

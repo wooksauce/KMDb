@@ -17,7 +17,7 @@ class UDbMoviesSearched extends Component {
         <MovieCard
           movie={movie}
           imdb={false}
-          key={movie.imdbid}
+          key={`${movie.imdbid}+udb`}
           handleUserRating={this.props.handleUserRating}
           handleUserComment={this.props.handleUserComment}
         />)

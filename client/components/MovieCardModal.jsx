@@ -24,8 +24,8 @@ class MovieCardModal extends Component {
     const imdbid = this.props.imdbid;
     axios.get(`/api/getMovie/${imdbid}`)
       .then(({ data }) => {
-        console.log('saving', data, '{data}', {data})
         axios.post('/api/saveMovie', {
+          imdbid: data.imdbid,
           title: data.title,
           posterUrl: data.poster,
           year: data.year,
@@ -35,7 +35,7 @@ class MovieCardModal extends Component {
           userRating: this.state.userRating,
           userComment: this.state.userComment,
         })
-        .then(() => {
+        .then((res) => {
           this.props.updateUdbResults(data.title);
         })
       })

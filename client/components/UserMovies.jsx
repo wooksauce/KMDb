@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import MovieArchiveCard from '../components/MovieArchiveCard'
 import classNames from 'classnames/bind';
 import styles from './scss/userMovies.scss';
@@ -37,6 +39,12 @@ class UserMovies extends Component {
       </div>
     )
   }
+}
+
+UserMovies.PropTypes = {
+  movies: PropTypes.array,
+  handleUserRating: PropTypes.func,
+  handleUserComment: PropTypes.func,
 }
 
 export default UserMovies;

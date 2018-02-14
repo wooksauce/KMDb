@@ -58,4 +58,8 @@ class MainView extends Component {
   }
 }
 
+MainView.PropTypes = {
+  carousel: PropTypes.array,
+}
+
 export default MainView;

@@ -48,7 +48,7 @@ class BasePage extends Component {
 
 BasePage.PropTypes = {
   movies: PropTypes.array,
-  carousel: PropTypes.func,
+  carousel: PropTypes.array,
   mpLoading: PropTypes.bool,
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { searchIMDbSearchTitle, searchFetchUDbResults, searchFetchIMDbResults } from '../actions/searchActions'
 import classNames from 'classnames/bind';
 import styles from './scss/search.scss'
@@ -80,6 +81,11 @@ class Search extends Component {
       </div>
     )
   }
+}
+
+Search.PropTypes = {
+  dockSearhBar: PropTypes.func,
+  undockSearhBar: PropTypes.func,
 }
 
 const autoScrollTo = (target, offset=0) => {

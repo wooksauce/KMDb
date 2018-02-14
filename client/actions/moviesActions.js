@@ -44,6 +44,7 @@ export const moviesMPFetchMovies = () => {
 export const moviesCarousel = () => {
   //in the future, it will get some useful movie data
   const carouselData = [
+    //dummy posters
     {
       title: 'Room',
       posterUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjE4NzgzNzEwMl5BMl5BanBnXkFtZTgwMTMzMDE0NjE@._V1_SY1000_SX675_AL_.jpg',
@@ -65,50 +66,3 @@ export const moviesCarousel = () => {
     data: carouselData,
   }
 }
-// export const moviesIMDbMoviesLoading = (bool) => {
-//   return {
-//     type: 'MOVIES_IMDB_MOVIES_LOADING',
-//     imdbLoading: bool,
-//   }
-// }
-
-// export const moviesFetchIMDbSearch = (searchStr) => {
-//   return (dispatch) => {
-//     dispatch(moviesIMDbMoviesLoading(true));
-//     axios.get('/api/searchIMDbMovies/' + searchStr)
-//       .then(({ data }) => {
-//         dispatch(moviesIMDbMoviesLoading(false));
-//         dispatch(moviesIMDbSearchResult(data.results));
-//       })
-//       .catch((err) => {
-//         console.log('search action err', err);
-//       })
-//   }
-// }
-
-// export const moviesUDbSearchResult = (movies) => {
-//   return {
-//     type: 'MOVIES_UDB_SEARCH_RESULTS',
-//     udbResults: movies,
-//   }
-// }
-
-// export const moviesIMDbSearchResult = (movies) => {
-//   return {
-//     type: 'MOVIES_IMDB_SEARCH_RESULTS',
-//     imdbResults: movies,
-//   }
-// }
-
-// export const moviesFetchUDbSearch = (searchStr) => {
-//   return (dispatch) => {
-//     axios.get('/api/searchUserMovies/' + searchStr)
-//       .then(({ data }) => {
-//         console.log('data', data)
-//         dispatch(moviesUDbSearchResult(data));
-//       })
-//       .catch((err) => {
-//         console.log('search udb action err', err);
-//       })
-//   }
-// }

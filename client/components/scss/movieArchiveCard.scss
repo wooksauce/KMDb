@@ -18,6 +18,7 @@
     box-shadow:  3px 3px 10px rgba(0, 0, 0, 0.2);
   }
 }
+
 .archEntry .field {
   display: inline-block;
   width: auto;
@@ -110,7 +111,6 @@
 }
 
 .archTitle {
-  // color: white;
   padding: 3 8;
   vertical-align: top;
   text-align: center;
@@ -130,4 +130,10 @@
 .no-title-container {
   height: 133;
   overflow: scroll;
+}
+
+@media only screen and (max-width : 900px) {
+  .archEntryContainer {
+    width: 80%;
+  }
 }

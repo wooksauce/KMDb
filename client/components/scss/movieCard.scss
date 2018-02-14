@@ -38,6 +38,7 @@ textarea {
 .movie-card-info-con {
   font-size: 14px;
   grid-area: movie-card-info-con;
+  position: relative;
 }
 
 .movie-card-info {
@@ -45,9 +46,12 @@ textarea {
 }
 
 .movie-card-button-area {
+  width: 100%;
   bottom: 0;
-  position: absolute;
   right: 0;
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly
 }
 
 .movie-card-button {

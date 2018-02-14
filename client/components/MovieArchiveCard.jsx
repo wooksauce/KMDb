@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { moviesFetchData } from '../actions/moviesActions';
+import { moviesMPFetchMovies } from '../actions/moviesActions';
 import ArchEditModal from './ArchEditModal';
 import classNames from 'classnames/bind';
 import styles from './scss/movieArchiveCard.scss';
 
 const cx = classNames.bind(styles);
 
-class MovieArchiveEntry extends Component{
+class MovieArchiveCard extends Component{
   constructor(props) {
     super(props)
     this.state = {
@@ -134,9 +134,9 @@ class MovieArchiveEntry extends Component{
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllMovies: () => {
-      dispatch(moviesFetchData());
+      dispatch(moviesMPFetchMovies());
     },
   }
 }
 
-export default connect(null, mapDispatchToProps) (MovieArchiveEntry);
+export default connect(null, mapDispatchToProps) (MovieArchiveCard);

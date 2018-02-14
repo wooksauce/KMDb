@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MovieCard from './MovieCard';
 import classNames from 'classnames/bind';
 import styles from './scss/udbMoviesSearched.scss';
 
 const cx = classNames.bind(styles);
 
-export default class UDbMoviesSearched extends Component {
+class UDbMoviesSearched extends Component {
   constructor(props) {
     super(props)
   }
@@ -37,3 +38,11 @@ export default class UDbMoviesSearched extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    udbResults: state.search.udbResults,
+  }
+}
+
+export default connect(mapStateToProps, null) (UDbMoviesSearched);

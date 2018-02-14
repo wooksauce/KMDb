@@ -35,7 +35,7 @@ export default class MovieCard extends Component {
 
   render() {
     const { title, poster, posterUrl, year, userRating, userComment, id, imdbid, genres } = this.props.movie;
-    const fromImdb = this.props.imdb;;
+    const fromImdb = this.props.imdb;
     let posterToDisplay
     if (posterUrl) {
       posterToDisplay = posterUrl;
@@ -48,6 +48,7 @@ export default class MovieCard extends Component {
       <div className={cx({fromImdb: fromImdb}, 'movie-entry')}>
         <div className={cx({fromImdb: fromImdb}, 'movie-card-container')} onClick={() => this.handleOpenModal(fromImdb)}>
         <MovieCardModal
+          showInitModal={this.state.showInitModal}
           isOpen={this.state.showInitModal}r
           contentLabel="onRequestClose Example"
           onRequestClose={this.handleCloseModal}
@@ -55,6 +56,7 @@ export default class MovieCard extends Component {
           handleUserRating={this.props.handleUserRating}
           handleUserComment={this.props.handleUserComment}
           handleCloseModal={this.handleCloseModal}
+          imdbid={imdbid}
         />
           <img className={cx({fromImdb: fromImdb}, 'movie-card-poster')} src={posterToDisplay} />
           <div className={cx({fromImdb: fromImdb}, 'movie-card-info-con')}>

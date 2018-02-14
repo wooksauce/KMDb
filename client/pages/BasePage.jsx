@@ -12,12 +12,9 @@ import classNames from 'classnames/bind';
 import styles from './scss/basePage.scss'
 const cx = classNames.bind(styles);
 
-class MovieContainer extends Component {
+class BasePage extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   mpLoading: this.props.mpLoading,
-    // }
   }
 
   componentDidMount() {
@@ -34,12 +31,12 @@ class MovieContainer extends Component {
         <MainView
           carousel={this.props.carousel}
         />
-        {!mpLoading &&
+        {!!movies.length &&
           <MoviesArea
             movies={movies}
           />
         }
-        {mpLoading &&
+        {!movies.length &&
           <div className={cx('main-page-loading')}> Loading
           </div>
         }
@@ -47,6 +44,12 @@ class MovieContainer extends Component {
       </div>
     )
   }
+}
+
+BasePage.PropTypes = {
+  movies: PropTypes.array,
+  carousel: PropTypes.func,
+  mpLoading: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => {
@@ -68,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(BasePage);

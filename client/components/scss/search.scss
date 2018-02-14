@@ -2,7 +2,7 @@
   display: flex;
   width: 54%;
   margin: 0 auto;
-  // background: white;
+  position: relative;
   transition: all 0.3s;
 }
 
@@ -37,6 +37,8 @@
   background: #ffd030;
   vertical-align: middle;
   transition: all 0.2s;
+  position: absolute;
+  right: 0;
   &:hover {
     background: #f1c328;
     font-weight: 500;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 import classNames from 'classnames/bind';
 import styles from './scss/movieCardModal.scss';
 import axios from 'axios';
+import { searchFetchUDbResults } from '../actions/searchActions'
 
 const cx = classNames.bind(styles);
 
@@ -19,9 +21,10 @@ class MovieCardModal extends Component {
   }
 
   handleSave() {
-    const { title, poster, year, imdbid } = this.props.movie;
+    const imdbid = this.props.imdbid;
     axios.get(`/api/getMovie/${imdbid}`)
       .then(({ data }) => {
+        console.log('saving', data, '{data}', {data})
         axios.post('/api/saveMovie', {
           title: data.title,
           posterUrl: data.poster,
@@ -31,6 +34,9 @@ class MovieCardModal extends Component {
           actors: data.actors,
           userRating: this.state.userRating,
           userComment: this.state.userComment,
+        })
+        .then(() => {
+          this.props.updateUdbResults(data.title);
         })
       })
       .catch(err => {
@@ -44,7 +50,7 @@ class MovieCardModal extends Component {
       <ReactModal
         isOpen={this.props.showInitModal}
         contentLabel="onRequestClose Example"
-        onRequestClose={this.handleCloseModal}
+        onRequestClose={this.props.handleCloseModal}
         appElement={document.getElementById('app')}
         className="modal"
       >
@@ -87,4 +93,12 @@ class MovieCardModal extends Component {
   }
 }
 
-export default MovieCardModal;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateUdbResults: (searchStr) => {
+      dispatch(searchFetchUDbResults(searchStr));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps) (MovieCardModal);

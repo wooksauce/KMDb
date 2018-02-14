@@ -75,6 +75,14 @@ class MoviesArea extends Component {
   }
 }
 
+MoviesArea.PropTypes = {
+  imdbResults: PropTypes.array,
+  udbResults: PropTypes.array,
+  movies: PropTypes.array,
+  imdbLoading: PropTypes.bool,
+  search: PropTypes.string,
+}
+
 const mapStateToProps = (state) => {
   return {
     search: state.search.search,

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import MovieCardModal from './MovieCardModal';
@@ -111,6 +112,12 @@ class MovieCard extends Component {
       </div>
     );
   }
+}
+
+MovieCard.PropTypes = {
+  movies: PropTypes.array,
+  handleUserRating: PropTypes.func,
+  handleUserComment: PropTypes.func,
 }
 
 const mapDispatchToProps = (dispatch) => {

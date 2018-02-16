@@ -72,7 +72,12 @@ class MovieArchiveCard extends Component{
     return (
       <div className={cx('archEntryContainer')} onClick={(e)=>this.handleExpand(e.target)}>
         <div className={cx('archEntry', 'posterContainer')}>
-          <img className={cx('archPoster')} src={posterUrl} />
+          <div
+            className={cx('archPoster')}
+            style= {{
+              'backgroundImage': `url(${posterUrl})`
+            }}
+          />
         </div>
         <div className={cx('archEntry', 'fieldContainer')}>
           <div className={cx('archEntry', 'titleContainer')}>
